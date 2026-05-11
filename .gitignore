@@ -1,0 +1,17 @@
+# Environments
+.env
+venv/
+venvv/
+
+# Python caches
+__pycache__/
+*.pyc
+
+# IDEs and OS files
+.DS_Store
+.vscode/
+.idea/
+
+# Logs and backups
+streamlit.log
+*.zip

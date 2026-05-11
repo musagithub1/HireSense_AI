@@ -1,0 +1,37 @@
+# HireSense AI - Requirements
+# ===========================
+
+# AI/ML Framework (Updated to v0.3.x)
+langchain>=0.3.0
+langchain-core>=0.3.0
+langchain-openai>=0.2.0
+langsmith>=0.1.0
+
+# Environment & Config
+python-dotenv>=1.0.0
+
+# Web Framework
+streamlit>=1.40.0
+
+# PDF Processing (Updated: PyPDF2 is deprecated, use pypdf)
+pypdf>=5.0.0
+
+# Data Visualization & Analytics
+matplotlib>=3.9.0
+pandas>=2.2.0
+plotly>=5.24.0
+
+# Pydantic for data validation
+pydantic>=2.0.0
+
+# HTTP Requests (for API calls in copilot)
+requests>=2.32.0
+
+# Note: Emotion detection runs client-side using TensorFlow.js
+# No server-side TensorFlow is required
+# Voice input and TTS use browser's Web Speech API
+
+# Note: The following features use client-side JavaScript libraries:
+# - Monaco Editor (coding_whiteboard.py) - loaded via CDN
+# - Excalidraw/Fabric.js (whiteboard) - loaded via CDN
+# - Web Speech API (live_copilot.py) - browser native
