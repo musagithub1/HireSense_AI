@@ -226,25 +226,32 @@ def generate_interview_question(
     temperature: float = 0.7,
 ) -> Iterator[Dict[str, Any]]:
     """
-    Generate an interview question using the Antigravity Agent Workflow.
-    Yields intermediate tool traces and final question chunks as dicts.
+    Generate an interview question using the Antigravity 5-Agent Pipeline.
+    
+    Pipeline: ContentAgent → InsightAgent → ImpactAgent → StrategyAgent → ExecutionAgent
+    
+    On the first question, all 5 agents run.
+    On subsequent questions, Content + Insight are cached (resume doesn't change),
+    but Impact + Strategy + Execution re-run (emotion may have changed).
+    
+    Yields intermediate trace events and final question chunks as dicts.
     """
     try:
-        from antigravity_agent import AntigravityInterviewerAgent
+        from antigravity_agent import get_orchestrator
     except ImportError as e:
         raise ImportError(f"antigravity_agent module error: {e}")
 
-    agent = AntigravityInterviewerAgent(model_name=model_name, temperature=temperature)
+    orchestrator = get_orchestrator(model_name=model_name, temperature=temperature)
     
-    # Run the agentic loop which yields traces and the final question
-    for step in agent.run_agentic_loop(
+    # Run the full 5-agent pipeline
+    for step in orchestrator.run_pipeline(
         rag_context=rag_context,
         conversation_history=conversation_history,
         emotional_state=emotional_state,
         question_number=question_number,
         total_questions=total_questions,
         interview_type=interview_type,
-        company=company
+        company=company,
     ):
         yield step
 

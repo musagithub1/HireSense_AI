@@ -111,33 +111,90 @@ INTERVIEW_TYPES = {
 # ============================================================================
 
 def display_streaming_response(stream_generator):
-    """Display streaming response with typing effect and optional agent traces."""
+    """Display streaming response with per-agent pipeline traces."""
     response_text = ""
-    trace_text = ""
     
-    trace_expander = None
-    trace_placeholder = None
+    # Track per-agent trace content
+    agent_traces = {}   # agent_name -> list of trace strings
+    agent_status = {}   # agent_name -> "running" | "done"
+    agent_order = []    # maintain insertion order
+    
+    pipeline_container = None
+    pipeline_placeholder = None
     response_placeholder = st.empty()
+    
+    def _render_pipeline():
+        """Re-render the full pipeline view."""
+        if pipeline_placeholder is None:
+            return
+        md = ""
+        for agent_name in agent_order:
+            status = agent_status.get(agent_name, "running")
+            traces = agent_traces.get(agent_name, [])
+            
+            if status == "done":
+                status_icon = "✅"
+            else:
+                status_icon = "🔄"
+            
+            md += f"### {status_icon} {agent_name}\n"
+            for t in traces:
+                md += f"{t}\n"
+            md += "\n"
+        
+        pipeline_placeholder.markdown(md)
     
     for chunk in stream_generator:
         if isinstance(chunk, dict):
-            # It's an agent trace or tool chunk
-            if trace_expander is None:
-                trace_expander = st.expander("🧠 Antigravity Agent Traces", expanded=True)
-                trace_placeholder = trace_expander.empty()
+            chunk_type = chunk.get("type", "")
+            agent_name = chunk.get("agent", "")
+            icon = chunk.get("icon", "🔧")
+            
+            # Create the pipeline expander on first trace
+            if pipeline_container is None and chunk_type in ("trace", "tool_use", "agent_done", "pipeline_start"):
+                pipeline_container = st.expander("🧠 Antigravity 5-Agent Pipeline", expanded=True)
+                pipeline_placeholder = pipeline_container.empty()
+            
+            if chunk_type == "pipeline_start":
+                agent_traces["🧠 Orchestrator"] = [f"🚀 {chunk.get('content', '')}"]
+                agent_status["🧠 Orchestrator"] = "done"
+                if "🧠 Orchestrator" not in agent_order:
+                    agent_order.append("🧠 Orchestrator")
+                _render_pipeline()
                 
-            if chunk["type"] == "trace":
-                trace_text += f"🔹 **Agent Thought:** {chunk['content']}\n\n"
-                trace_placeholder.markdown(trace_text)
-            elif chunk["type"] == "tool_use":
-                trace_text += f"🛠️ **Tool Used:** `{chunk['tool']}`\n"
-                trace_text += f"📄 **Observation:** {chunk['result']}\n\n"
-                trace_placeholder.markdown(trace_text)
-            elif chunk["type"] == "question_chunk":
+            elif chunk_type == "trace":
+                display_name = f"{icon} {agent_name}"
+                if display_name not in agent_order:
+                    agent_order.append(display_name)
+                    agent_traces[display_name] = []
+                    agent_status[display_name] = "running"
+                agent_traces[display_name].append(f"- 🔹 {chunk.get('content', '')}")
+                _render_pipeline()
+                
+            elif chunk_type == "tool_use":
+                display_name = f"{icon} {agent_name}"
+                if display_name not in agent_order:
+                    agent_order.append(display_name)
+                    agent_traces[display_name] = []
+                agent_traces[display_name].append(
+                    f"- 🛠️ **`{chunk.get('tool', '')}`** → {chunk.get('result', '')}"
+                )
+                _render_pipeline()
+                
+            elif chunk_type == "agent_done":
+                display_name = f"{icon} {agent_name}"
+                agent_status[display_name] = "done"
+                if display_name in agent_traces:
+                    agent_traces[display_name].append(
+                        f"- ✅ **Done:** {chunk.get('summary', '')}"
+                    )
+                _render_pipeline()
+                
+            elif chunk_type == "question_chunk":
                 response_text += chunk["content"]
                 response_placeholder.markdown(response_text + "▌")
+                
         elif isinstance(chunk, str):
-            # Standard string chunk
             response_text += chunk
             response_placeholder.markdown(response_text + "▌")
     
@@ -595,6 +652,13 @@ def render_interview_setup():
             # Reset interview state
             st.session_state["interview_started"] = True
             st.session_state["interview_history"] = []
+            
+            # Reset the Antigravity orchestrator for a fresh pipeline
+            try:
+                from antigravity_agent import reset_orchestrator
+                reset_orchestrator()
+            except ImportError:
+                pass
             st.session_state["interview_stress_timeline"] = []
             st.session_state["current_question_num"] = 1
             st.session_state["interview_complete"] = False
