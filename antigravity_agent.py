@@ -140,6 +140,23 @@ class ContentAgent(BaseAgent):
         yield self._trace(state, "Starting content analysis of resume and job description...")
         time.sleep(0.3)
 
+        # ── Edge Case: Missing or very short input ──
+        rag_context = state.get("rag_context", "")
+        if not rag_context or len(rag_context.strip()) < 50:
+            yield self._trace(state, "⚠️ WARNING: Resume/JD content is missing or too short. Using fallback defaults.")
+            state["content_analysis"] = {
+                "candidate_skills": ["general problem-solving"],
+                "candidate_experience_years": "unknown",
+                "candidate_education": "unknown",
+                "jd_required_skills": ["communication", "teamwork"],
+                "jd_role_level": "mid",
+                "jd_company_values": "standard professional values",
+                "_edge_case": "insufficient_input"
+            }
+            yield self._tool_use(state, "PDFParserTool", "⚠️ Fallback: Insufficient input detected. Using generic profile.")
+            yield self._agent_done(state, "Fallback mode — insufficient resume/JD data")
+            return
+
         # Tool 1: PDFParserTool — extract structured info
         yield self._trace(state, "Invoking PDFParserTool to extract structured data...")
         prompt = (
@@ -205,6 +222,19 @@ class InsightAgent(BaseAgent):
         content = state.get("content_analysis", {})
         candidate_skills = content.get("candidate_skills", [])
         jd_skills = content.get("jd_required_skills", [])
+
+        # ── Edge Case: No skills extracted ──
+        if not candidate_skills and not jd_skills:
+            yield self._trace(state, "⚠️ WARNING: No skills found in either resume or JD. Proceeding with general assessment.")
+            state["skill_insights"] = {
+                "matching": [],
+                "missing": [],
+                "extra": [],
+                "gap_details": [],
+                "_edge_case": "no_skills_found"
+            }
+            yield self._agent_done(state, "Fallback — no skills data available for matching")
+            return
 
         # Tool 1: SkillMatcherTool
         yield self._trace(state, "Invoking SkillMatcherTool to find matching skills...")
