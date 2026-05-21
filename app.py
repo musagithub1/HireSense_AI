@@ -461,24 +461,42 @@ def render_interview_setup():
     
     with col1:
         st.markdown(f"#### 📄 {get_ui_text('upload_resume')}")
-        resume_file = st.file_uploader(
-            "Upload your resume (PDF)",
-            type=["pdf"],
-            key="interview_resume_upload",
-            help="Your resume will be used to personalize interview questions"
+        resume_input_method = st.radio(
+            "How would you like to provide your resume?",
+            ["Upload PDF", "Paste Text"],
+            horizontal=True,
+            key="resume_input_method"
         )
         
-        if resume_file:
-            with st.spinner("Processing resume..."):
-                resume_bytes = resume_file.getvalue()
-                resume_text = arena.extract_pdf_text(resume_bytes)
+        if resume_input_method == "Upload PDF":
+            resume_file = st.file_uploader(
+                "Upload your resume (PDF)",
+                type=["pdf"],
+                key="interview_resume_upload",
+                help="Your resume will be used to personalize interview questions"
+            )
+            
+            if resume_file:
+                with st.spinner("Processing resume..."):
+                    resume_bytes = resume_file.getvalue()
+                    resume_text = arena.extract_pdf_text(resume_bytes)
+                    st.session_state["interview_resume_text"] = resume_text
+                    st.success(f"✅ Resume loaded: {resume_file.name}")
+                    
+                    components.html(get_save_to_storage_html("resume_text", resume_text), height=0)
+                    
+                    with st.expander("Preview Resume Content"):
+                        st.text(resume_text[:1000] + "..." if len(resume_text) > 1000 else resume_text)
+        else:
+            resume_text = st.text_area(
+                "Paste resume text here",
+                height=200,
+                key="interview_resume_text_input",
+                placeholder="Paste the text of your resume or CV..."
+            )
+            if resume_text:
                 st.session_state["interview_resume_text"] = resume_text
-                st.success(f"✅ Resume loaded: {resume_file.name}")
-                
                 components.html(get_save_to_storage_html("resume_text", resume_text), height=0)
-                
-                with st.expander("Preview Resume Content"):
-                    st.text(resume_text[:1000] + "..." if len(resume_text) > 1000 else resume_text)
     
     with col2:
         st.markdown(f"#### 📋 {get_ui_text('job_description')}")
