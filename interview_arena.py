@@ -36,9 +36,18 @@ from pydantic import Field, SecretStr
 from langchain_core.utils.utils import secret_from_env
 
 try:
-    from PyPDF2 import PdfReader
+    from pypdf import PdfReader
 except ImportError:
-    PdfReader = None
+    try:
+        from PyPDF2 import PdfReader
+    except ImportError:
+        try:
+            from PyPDF3 import PdfReader
+        except ImportError:
+            try:
+                from PyPDF4 import PdfReader
+            except ImportError:
+                PdfReader = None
 
 
 # ============================================================================
@@ -77,7 +86,7 @@ class ChatOpenRouter(ChatOpenAI):
 def extract_pdf_text(file_data: bytes) -> str:
     """Extract all text from a PDF given its binary data."""
     if PdfReader is None:
-        raise ImportError("PyPDF2 is required for PDF parsing.")
+        raise ImportError("No PDF parser library (pypdf or PyPDF2) is available in the environment. Please ensure pypdf is installed.")
     
     reader = PdfReader(BytesIO(file_data))
     text: list[str] = []

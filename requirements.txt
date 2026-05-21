@@ -13,8 +13,9 @@ python-dotenv>=1.0.0
 # Web Framework
 streamlit>=1.40.0
 
-# PDF Processing (Updated: PyPDF2 is deprecated, use pypdf)
+# PDF Processing (Includes both modern pypdf and legacy PyPDF2 for maximum compatibility)
 pypdf>=5.0.0
+PyPDF2>=2.12.0
 
 # Data Visualization & Analytics
 matplotlib>=3.9.0
