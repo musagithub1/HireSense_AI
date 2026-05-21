@@ -728,7 +728,7 @@ def render_active_interview():
         if st.session_state["webcam_enabled"] and not st.session_state.get("video_recording_enabled"):
             st.components.v1.html(
                 webcam.get_webcam_emotion_detector_html(
-                    "https://raw.githubusercontent.com/musagithub1/HireSense_AI/main/tfjs_model/model.json"
+                    "https://cdn.jsdelivr.net/gh/musagithub1/HireSense_AI@main/tfjs_model/model.json"
                 ), 
                 height=400
             )
