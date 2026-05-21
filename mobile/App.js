@@ -11,7 +11,7 @@ import {
 import { WebView } from 'react-native-webview';
 
 // Expose public URL or fallback to a local tunnel URL
-const HIRESENSE_URL = "https://retroactively-fencelike-collins.ngrok-free.dev"; 
+const HIRESENSE_URL = "https://hiresense-ai.streamlit.app/"; 
 
 export default function App() {
   const [loading, setLoading] = useState(true);
