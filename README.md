@@ -3,10 +3,11 @@
 [![Hackathon](https://img.shields.io/badge/Hackathon-AI%20Seekho%202026-blue.svg)](https://aiseekho.org/)
 [![Challenge](https://img.shields.io/badge/Challenge-1%20Content--to--Action-purple.svg)]()
 [![Google Antigravity](https://img.shields.io/badge/Powered%20By-Google%20Antigravity-orange.svg)]()
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-blue?logo=github)](https://github.com/musagithub1/HireSense_AI)
 [![Python](https://img.shields.io/badge/Python-3.11-blue.svg)](https://www.python.org/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.28%2B-red.svg)](https://streamlit.io/)
 
-**HireSense AI** is an autonomous, agentic mock-interview platform that transforms unstructured career documents (resumes and job descriptions) into actionable outcomes — a fully adaptive mock interview powered by a transparent 5-agent pipeline orchestrated by **Google Antigravity**.
+**HireSense AI** is an autonomous, agentic mock-interview platform that transforms unstructured career documents (resumes and job descriptions) into actionable outcomes — a fully adaptive mock interview powered by a transparent 5-agent pipeline orchestrated by **Google Antigravity**. Officially hosted on [GitHub](https://github.com/musagithub1/HireSense_AI).
 
 ```
 Resume + JD (content) → Skill Gaps (insight) → Severity Scores (impact)
@@ -313,7 +314,7 @@ Open `http://localhost:8501` in your browser.
 - **English-optimized:** While multi-language is supported, skill extraction works best in English
 - **Emotion model:** Binary classification only (stressed vs confident) — not a full emotion spectrum
 - **No persistent user accounts:** Session data is browser-local only
-- **Mobile:** Currently web-only; mobile access via browser is functional but not a native app
+- **Mobile Support:** Fully supported! A high-performance native **React Native (Expo)** mobile application wrapper is provided under the `/mobile` directory, supporting native camera/microphone integrations.
 
 ---
 

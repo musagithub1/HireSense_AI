@@ -547,7 +547,7 @@ IMPORTANT: Conduct this entire interview in {lang_name}.
 
 
 def get_language_specific_tts_html(text: str, lang_code: str, speed: float = 1.1) -> str:
-    """Generate TTS HTML with language-specific voice."""
+    """Generate TTS HTML with robust dual-engine (Google MP3 Stream + Web Speech API fallback)."""
     tts_lang = get_tts_language(lang_code)
     clean_text = text.replace('`', '').replace('"', "'").replace('\n', ' ').replace('\\', '').replace("'", "\\'")[:500]
     
@@ -555,20 +555,23 @@ def get_language_specific_tts_html(text: str, lang_code: str, speed: float = 1.1
     <div id="tts-container">
         <script>
         (function() {{
-            function speakNow() {{
+            const text = "{clean_text}";
+            const lang = "{tts_lang}";
+            const speed = {speed};
+            
+            function speakNative() {{
                 if ('speechSynthesis' in window) {{
                     window.speechSynthesis.cancel();
-                    const utterance = new SpeechSynthesisUtterance('{clean_text}');
-                    utterance.rate = {speed};
+                    const utterance = new SpeechSynthesisUtterance(text);
+                    utterance.rate = speed;
                     utterance.pitch = 1.0;
                     utterance.volume = 1.0;
-                    utterance.lang = '{tts_lang}';
+                    utterance.lang = lang;
                     
                     const voices = window.speechSynthesis.getVoices();
                     if (voices.length > 0) {{
-                        // Try to find a voice matching the language
-                        const langPrefix = '{tts_lang}'.split('-')[0];
-                        const preferredVoice = voices.find(v => v.lang === '{tts_lang}')
+                        const langPrefix = lang.split('-')[0];
+                        const preferredVoice = voices.find(v => v.lang === lang)
                             || voices.find(v => v.lang.startsWith(langPrefix))
                             || voices.find(v => v.lang.startsWith('en'))
                             || voices[0];
@@ -577,8 +580,23 @@ def get_language_specific_tts_html(text: str, lang_code: str, speed: float = 1.1
                     window.speechSynthesis.speak(utterance);
                 }}
             }}
-            if (window.speechSynthesis.getVoices().length > 0) speakNow();
-            else window.speechSynthesis.onvoiceschanged = speakNow;
+
+            try {{
+                // Primary: Google Translate TTS MP3 stream (perfect for sandboxed iframes)
+                const langPrefix = lang.split('-')[0];
+                const audioUrl = "https://translate.google.com/translate_tts?ie=UTF-8&tl=" + langPrefix + "&client=tw-ob&q=" + encodeURIComponent(text);
+                const audio = new Audio(audioUrl);
+                audio.volume = 1.0;
+                audio.play().then(() => {{
+                    console.log("Google TTS playing successfully");
+                }}).catch(err => {{
+                    console.warn("Google TTS autoplay failed, falling back to Web Speech API", err);
+                    speakNative();
+                }});
+            }} catch (e) {{
+                console.error("Google TTS failed, using Web Speech API fallback", e);
+                speakNative();
+            }}
         }})();
         </script>
     </div>
