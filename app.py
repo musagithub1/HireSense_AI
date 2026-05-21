@@ -708,7 +708,12 @@ def render_active_interview():
         
         # Webcam and emotion display
         if st.session_state["webcam_enabled"] and not st.session_state.get("video_recording_enabled"):
-            st.components.v1.html(webcam.get_simple_webcam_html(), height=400)
+            st.components.v1.html(
+                webcam.get_webcam_emotion_detector_html(
+                    "https://raw.githubusercontent.com/musagithub1/HireSense_AI/main/tfjs_model/model.json"
+                ), 
+                height=400
+            )
         
         # Manual stress level adjustment (collapsed by default)
         with st.expander("🎛️ Manual Stress Control", expanded=False):
