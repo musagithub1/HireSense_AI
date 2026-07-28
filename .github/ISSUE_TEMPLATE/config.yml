@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security vulnerability
+    url: https://github.com/musagithub1/HireSense_AI/security
+    about: Read the security policy and use private reporting. Do not disclose vulnerabilities publicly.
+  - name: Setup guide
+    url: https://github.com/musagithub1/HireSense_AI/blob/main/docs/DEPLOYMENT.md
+    about: Review deployment and configuration instructions before opening an issue.

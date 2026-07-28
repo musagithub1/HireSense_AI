@@ -1,0 +1,17 @@
+{
+  "name": "hiresense-voice-input",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "vite build --base=./"
+  },
+  "dependencies": {
+    "react": "19.1.1",
+    "react-dom": "19.1.1",
+    "streamlit-component-lib": "2.0.0"
+  },
+  "devDependencies": {
+    "vite": "8.1.5"
+  }
+}

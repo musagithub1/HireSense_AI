@@ -1,0 +1,38 @@
+{
+  "expo": {
+    "name": "HireSense AI",
+    "slug": "hiresense-mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#1a1a2e"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.hiresense.app",
+      "infoPlist": {
+        "NSCameraUsageDescription": "HireSense AI needs camera access for client-side non-verbal analysis and real-time emotion detection.",
+        "NSMicrophoneUsageDescription": "HireSense AI needs microphone access for voice-based answers and RAG transcriptions."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#1a1a2e"
+      },
+      "package": "com.hiresense.app",
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO",
+        "android.permission.MODIFY_AUDIO_SETTINGS"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}

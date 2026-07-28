@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HireSense voice interview</title>
+    <script type="module" crossorigin src="./assets/index-B3OK4Fbn.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-DMou2u7L.css">
+  </head>
+  <body>
+    <main id="app">
+      <section class="voice-card">
+        <div class="state-row">
+          <span id="state-pill" class="state-pill" data-state="ready">Ready</span>
+          <span id="language-label" class="language-label">English</span>
+        </div>
+
+        <div id="progress-wrap" class="progress-wrap hidden">
+          <span id="progress-label"></span>
+          <div
+            class="progress-track"
+            role="progressbar"
+            aria-label="Interview progress"
+            aria-valuemin="0"
+            aria-valuemax="100"
+          >
+            <div id="progress-fill"></div>
+          </div>
+        </div>
+
+        <div id="interview-stage" class="interview-stage hidden">
+          <div id="interview-avatar" class="interview-avatar"></div>
+          <div class="question-column">
+            <div id="audio-fallback" class="audio-fallback hidden" role="alert">
+              <span class="audio-fallback-icon" aria-hidden="true">Aa</span>
+              <span>
+                <strong>Audio unavailable</strong>
+                <small id="audio-fallback-message">
+                  Read the written question below and continue normally.
+                </small>
+              </span>
+            </div>
+            <div id="question-wrap" class="question-wrap">
+              <span id="question-label">Interview question</span>
+              <p id="question" tabindex="-1"></p>
+              <div class="question-actions">
+                <button id="play-question" class="play-question hidden" type="button">
+                  Hear question
+                </button>
+                <button id="rephrase-question" class="rephrase-question hidden" type="button">
+                  Rephrase
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <details class="accessibility">
+          <summary>Accessibility and timing</summary>
+          <div class="settings-grid">
+            <label>
+              Speech speed
+              <select id="speech-speed">
+                <option value="0.75">Slower</option>
+                <option value="1" selected>Normal</option>
+                <option value="1.25">Faster</option>
+              </select>
+            </label>
+            <label>
+              Submit after silence
+              <select id="response-time">
+                <option value="adaptive" selected>Adaptive, about 1 second</option>
+                <option value="3000">3 seconds</option>
+                <option value="4000">4 seconds</option>
+                <option value="6000">6 seconds, extra time</option>
+                <option value="10000">10 seconds, extra time</option>
+                <option value="0">Manual submit only</option>
+              </select>
+            </label>
+            <button id="captions" class="setting-button" type="button" aria-pressed="true">
+              Captions on
+            </button>
+          </div>
+        </details>
+
+        <section id="answer-controls">
+          <h3 id="title">Voice answer</h3>
+          <button id="mic" class="mic" type="button" aria-label="Start listening">
+            🎙
+          </button>
+          <p id="status" role="status" aria-live="polite">
+            Select the microphone to start speaking.
+          </p>
+          <label class="transcript-label" for="transcript">
+            Live transcript
+          </label>
+          <textarea
+            id="transcript"
+            class="transcript"
+            rows="5"
+            spellcheck="true"
+            placeholder="Your transcript will appear here. You can correct it before submitting."
+          ></textarea>
+          <p id="interim-transcript" class="interim-transcript" aria-live="polite">
+            Your words will appear here while you speak.
+          </p>
+          <div class="actions">
+            <button id="pause" class="secondary" type="button">Pause</button>
+            <button id="clear" class="secondary" type="button">Clear</button>
+            <button id="submit" class="primary" type="button" disabled>
+              Use this answer
+            </button>
+            <button id="end" class="danger hidden" type="button">
+              End interview
+            </button>
+          </div>
+          <p class="support-note">
+            Keyboard users can tab through every control. Speech recognition requires
+            a supported browser and microphone permission.
+          </p>
+        </section>
+        <p id="speaker-status" class="speaker-status hidden" role="status">
+          Select Hear question to play it aloud.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>

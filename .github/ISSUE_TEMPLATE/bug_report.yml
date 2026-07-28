@@ -1,0 +1,73 @@
+name: Bug report
+description: Report a reproducible HireSense AI defect
+title: "[Bug]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting a bug. Remove all credentials and candidate data before submitting.
+  - type: textarea
+    id: summary
+    attributes:
+      label: What happened?
+      description: Describe the defect and the expected behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction steps
+      placeholder: |
+        1. Start the app
+        2. Open ...
+        3. Select ...
+        4. See ...
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Commit or release
+      placeholder: main, tag, or commit SHA
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Setup or deployment
+        - Authentication or Supabase
+        - Text interview
+        - Live voice interview
+        - Evidence scoring or reports
+        - Camera practice signal
+        - Mobile wrapper
+        - Documentation
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Include operating system, Python version, browser, and deployment type.
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Sanitized logs
+      description: Remove API keys, tokens, personal data, resumes, and transcripts.
+      render: shell
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I searched existing issues.
+          required: true
+        - label: I removed all credentials and personal data.
+          required: true
+        - label: This is not a security vulnerability.
+          required: true

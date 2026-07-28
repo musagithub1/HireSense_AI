@@ -1,0 +1,39 @@
+name: Feature request
+description: Suggest a focused improvement for HireSense AI
+title: "[Feature]: "
+body:
+  - type: textarea
+    id: need
+    attributes:
+      label: User need
+      description: What should a candidate or contributor be able to do?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed approach
+      description: Describe the smallest useful solution.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+  - type: textarea
+    id: validation
+    attributes:
+      label: How could this be tested?
+    validations:
+      required: true
+  - type: checkboxes
+    id: impact
+    attributes:
+      label: Impact review
+      options:
+        - label: I considered candidate privacy and data retention.
+          required: true
+        - label: I considered accessibility and multilingual use.
+          required: true
+        - label: This does not add scoring based on biometric or protected traits.
+          required: true

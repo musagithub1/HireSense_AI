@@ -1,0 +1,46 @@
+# Environments and local configuration
+.env*
+!.env.example
+.venv/
+venv/
+venvv/
+
+# Python caches
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# IDEs and OS files
+.DS_Store
+.vscode/
+.idea/
+
+# Logs, backups, and dependencies
+streamlit.log
+*.log
+*.bak
+*.tmp
+*.zip
+*.whl
+node_modules/
+.expo/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Credentials and API keys
+firebase_credentials.json
+.streamlit/secrets.toml
+*.pem
+*.p12
+*.key
+*service-account*.json
+*service_account*.json
+
+# Candidate data and local runtime output
+uploads/
+recordings/
+local_data/
