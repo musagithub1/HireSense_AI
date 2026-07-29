@@ -374,7 +374,7 @@ def render_login_screen() -> None:
     render_brand()
     st.title("Welcome to HireSense AI")
     st.caption(
-        "Sign in to securely sync interviews, transcripts, and evidence reports."
+        "Sign in to start a live voice interview and keep your feedback private."
     )
 
     callback_status, callback_message = _process_google_oauth_callback()

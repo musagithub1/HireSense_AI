@@ -1,13 +1,14 @@
 # Architecture
 
-HireSense AI is a Streamlit application with three browser components and an
-optional Supabase backend. The live interview path keeps browser interaction
-responsive while model and database work remains bounded or asynchronous.
+HireSense AI is a Streamlit application focused on one public workflow: a
+personalized Live Voice Interview. It uses browser speech components and an
+optional Supabase backend while keeping model and database work bounded or
+asynchronous.
 
 ```mermaid
 flowchart TD
-    UI["Streamlit workspace"] --> Engine["Interview engine"]
-    UI --> Components["Browser components"]
+    UI["Voice interview UI"] --> Engine["Interview engine"]
+    UI --> Components["Voice and persistence components"]
     Engine --> OpenRouter["OpenRouter models"]
     Engine --> Evidence["Evidence scoring"]
     UI --> Data["Persistence boundary"]
@@ -20,14 +21,13 @@ flowchart TD
 
 | Layer | Main files | Responsibility |
 |---|---|---|
-| Application shell | `app.py`, `ui_theme.py` | Navigation, setup, session state, reports |
+| Application shell | `app.py`, `ui_theme.py` | Voice-only setup, session state, and feedback |
 | Interview orchestration | `hiresense_agent.py`, `interview_arena.py`, `followup_questions.py` | Context extraction, question selection, bounded follow-ups |
 | Voice interview | `live_voice_interview.py`, `voice_input_component.py` | Interview lifecycle and browser voice bridge |
-| Evidence | `evidence_scoring.py`, `analytics_dashboard.py` | Transcript-grounded scoring and reporting |
+| Evidence | `evidence_scoring.py` | Transcript-grounded feedback |
 | Auth and persistence | `supabase_auth.py`, `supabase_backend.py`, `database.py` | RLS identity, cloud records, recovery, deletion |
 | Browser fallback | `persistence_component.py` | Namespaced session backup and OAuth recovery data |
-| Optional camera signal | `webcam_component.py`, `emotion_detector/frontend` | Local experimental practice signal, excluded from scoring |
-| Supporting practice tools | `skill_gap_analysis.py`, `company_prep.py`, `coding_whiteboard.py` | Preparation and practice workspaces |
+| Legacy modules | Camera, coding, coaching, skill, and analytics modules | Retained for migration reference but unreachable from the public router |
 
 ## Browser components
 
@@ -44,8 +44,8 @@ Node projects during a normal deployment.
 
 ## Interview data flow
 
-1. The candidate supplies a resume, job description, interview language, and
-   practice settings.
+1. The candidate uploads a resume, pastes a job description, and can
+   optionally change the interview language.
 2. Local extraction creates compact role and candidate context.
 3. The engine asks OpenRouter for one bounded question.
 4. The browser speaks the visible question and captures an editable
@@ -65,8 +65,8 @@ Node projects during a normal deployment.
 - Row Level Security is defined by the migrations under `supabase/migrations`.
 - Google client secrets stay in Supabase provider settings.
 - Partial speech transcripts and microphone samples are not persisted.
-- The optional facial signal is local, experimental, and excluded from
-  competency scoring.
+- Webcam, recording, nonverbal, coding, coaching, history, and skill-analysis
+  routes are disabled in the public product.
 
 ## Safe extension points
 

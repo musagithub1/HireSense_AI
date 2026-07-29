@@ -789,7 +789,7 @@ def brand_logo_source() -> str:
 
 def render_brand(*, compact: bool = False) -> None:
     """Render the HireSense product lockup."""
-    product = "Interview intelligence" if not compact else "Interview studio"
+    product = "Interview intelligence" if not compact else "Live voice practice"
     logo_source = brand_logo_source()
     if not logo_source:
         st.markdown(
@@ -915,6 +915,43 @@ def render_live_header(
     )
 
 
+def render_voice_only_header(
+    *,
+    language: str,
+    question_number: int,
+    total_questions: int,
+) -> None:
+    """Render a calm header for the single live voice product flow."""
+    current = min(max(1, int(question_number)), max(1, int(total_questions)))
+    total = max(1, int(total_questions))
+    logo_source = brand_logo_source()
+    logo_html = (
+        f'<div class="hs-live-brand"><img src="{logo_source}" alt="HireSense AI"></div>'
+        if logo_source
+        else ""
+    )
+    st.markdown(
+        f"""
+        <section class="hs-live-topbar">
+            <div class="hs-live-row">
+                <div>
+                    {logo_html}
+                    <div class="hs-eyebrow">Interview in progress</div>
+                    <h1 class="hs-live-title">Live voice interview</h1>
+                </div>
+                <div class="hs-progress-copy">Question {current} of {total}</div>
+            </div>
+            <div class="hs-meta-row">
+                <span class="hs-chip accent">Live voice</span>
+                <span class="hs-chip">{html.escape(language)}</span>
+                <span class="hs-chip">Personalized questions</span>
+            </div>
+        </section>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
 def render_results_header(
     *,
     interview_type: str,
@@ -939,6 +976,43 @@ def render_results_header(
                     <div class="hs-meta-row">
                         <span class="hs-chip accent">{html.escape(interview_type)}</span>
                         <span class="hs-chip">{html.escape(company)}</span>
+                        <span class="hs-chip">Reliability: {html.escape(reliability)}</span>
+                    </div>
+                </div>
+                <div class="hs-result-score">
+                    <div>
+                        <strong>{score_value}</strong>
+                        <span>{score_label}</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+def render_voice_only_results_header(
+    *,
+    score: float | None,
+    reliability: str,
+) -> None:
+    """Render a focused result summary without disabled product concepts."""
+    if score is None:
+        score_value = "N/A"
+        score_label = "Not assessed"
+    else:
+        score_value = f"{score:.1f}/5"
+        score_label = "Answer score"
+    st.markdown(
+        f"""
+        <section class="hs-result-hero">
+            <div class="hs-result-row">
+                <div>
+                    <div class="hs-eyebrow">Interview complete</div>
+                    <h1 class="hs-result-title">Your interview feedback</h1>
+                    <div class="hs-meta-row">
+                        <span class="hs-chip accent">Live voice</span>
                         <span class="hs-chip">Reliability: {html.escape(reliability)}</span>
                     </div>
                 </div>

@@ -1,8 +1,7 @@
-"""HireSense AI interview-practice application.
+"""HireSense AI live voice interview-practice application.
 
-The app combines resume and job-description context, adaptive interview
-questions, voice input, optional trained facial-signal inference, transparent
-analytics, skill-gap analysis, and browser-based coaching tools.
+The public product has one focused path: add resume and job context, complete
+a personalized live voice interview, and receive transcript-grounded feedback.
 """
 
 from __future__ import annotations
@@ -86,6 +85,9 @@ INTERVIEW_TYPES = {
         ],
     },
 }
+
+LIVE_VOICE_MODE = "🎙️ Live Voice Interview"
+LIVE_VOICE_QUESTION_COUNT = 5
 
 
 # ============================================================================
@@ -233,6 +235,7 @@ def init_session_state():
         "_latency_session_id": None,
         "latency_samples": [],
         "interview_type": "Mixed",
+        "interview_mode": LIVE_VOICE_MODE,
         "target_role": "",
         "question_bank": [],
         "current_voice_answer": "",
@@ -636,7 +639,7 @@ def _resume_recoverable_interview(record: dict) -> None:
     job_description = str(record.get("job_description", ""))
     resume_data = arena.parse_resume(resume_text)
     jd_data = arena.parse_job_description(job_description)
-    company_key = str(record.get("company") or "general")
+    company_key = "general"
     language = str(record.get("language") or "en")
     st.session_state["interview_rag_context"] = (
         f"{arena.build_rag_context(resume_data, jd_data)}\n\n"
@@ -672,15 +675,16 @@ def _resume_recoverable_interview(record: dict) -> None:
             "target_role": record.get("target_role", "Practice role"),
             "interview_resume_text": resume_text,
             "interview_jd_text": job_description,
-            "selected_company": company_key,
+            "selected_company": "general",
             "selected_language": language,
-            "interview_type": record.get("interview_type", "Mixed"),
-            "interview_mode": (
-                "🎙️ Live Voice Interview"
-                if record.get("mode") == "live_voice"
-                else "📝 Text Interview"
-            ),
-            "total_questions": int(record.get("total_questions") or 5),
+            "interview_type": "Mixed",
+            "interview_mode": LIVE_VOICE_MODE,
+            "total_questions": LIVE_VOICE_QUESTION_COUNT,
+            "followup_enabled": True,
+            "tts_enabled": True,
+            "voice_input_enabled": True,
+            "webcam_enabled": False,
+            "video_recording_enabled": False,
             "interview_history": list(record.get("conversation") or []),
             "current_question_num": current_question,
             "interview_started": True,
@@ -1135,8 +1139,8 @@ def _update_saved_assessment(assessment: dict, report: str) -> None:
 # ============================================================================
 
 
-def render_interview_setup():
-    """Render the HireSense AI interview setup interface."""
+def _render_legacy_interview_setup():
+    """Retain the previous multi-feature setup for migration reference only."""
     has_resume = bool(st.session_state.get("interview_resume_text"))
     has_job_description = bool(st.session_state.get("interview_jd_text"))
     ui_theme.render_page_header(
@@ -1656,23 +1660,280 @@ def render_interview_setup():
             st.rerun()
 
 
+def _enforce_live_voice_product_defaults() -> None:
+    """Keep the public product on one predictable live voice path."""
+    st.session_state.update(
+        {
+            "page": "interview",
+            "interview_mode": LIVE_VOICE_MODE,
+            "interview_type": "Mixed",
+            "selected_company": "general",
+            "total_questions": LIVE_VOICE_QUESTION_COUNT,
+            "followup_enabled": True,
+            "max_followups": 1,
+            "tts_enabled": True,
+            "voice_input_enabled": True,
+            "webcam_enabled": False,
+            "video_recording_enabled": False,
+            "copilot_enabled": False,
+            "coding_mode_enabled": False,
+            "save_resume_file": False,
+        }
+    )
+
+
+def _begin_live_voice_interview() -> None:
+    """Prepare one personalized live voice interview with safe fixed defaults."""
+    _enforce_live_voice_product_defaults()
+    resume_text = str(st.session_state.get("interview_resume_text") or "").strip()
+    job_description = str(
+        st.session_state.get("interview_jd_text") or ""
+    ).strip()
+    if not resume_text or not job_description:
+        raise ValueError("A resume and job description are required.")
+
+    resume_data = arena.parse_resume(resume_text)
+    jd_data = arena.parse_job_description(job_description)
+    base_context = arena.build_rag_context(resume_data, jd_data)
+    language_prompt = language_support.get_interview_language_prompt(
+        st.session_state.get("selected_language", "en")
+    )
+    st.session_state["interview_rag_context"] = (
+        f"{base_context}\n\n{language_prompt}"
+    )
+    if not str(st.session_state.get("target_role") or "").strip():
+        st.session_state["target_role"] = "Role-specific practice"
+
+    _cancel_question_prefetch()
+    st.session_state.update(
+        {
+            "interview_started": True,
+            "interview_history": [],
+            "_interview_orchestrator": None,
+            "_latency_session_id": uuid4().hex,
+            "latency_samples": [],
+            "interview_stress_timeline": [],
+            "current_question_num": 1,
+            "interview_complete": False,
+            "interview_start_time": time.time(),
+            "awaiting_question": True,
+            "interview_report": None,
+            "evidence_assessment": None,
+            "evidence_assessment_error": None,
+            "current_stress_level": None,
+            "emotion_reading": None,
+            "manual_stress_override": None,
+            "current_question_text": None,
+            "current_question_source": None,
+            "current_question_status": None,
+            "current_question_is_followup": False,
+            "current_question_revision": 0,
+            "last_followup_decision": None,
+            "rephrase_notice": None,
+            "tts_played": False,
+            "current_voice_answer": "",
+            "followup_count": 0,
+            "awaiting_followup": False,
+            "_database_completion_queued_for": None,
+        }
+    )
+
+    interview_id = str(uuid4())
+    st.session_state["active_interview_id"] = interview_id
+    _start_database_interview(interview_id)
+    _schedule_next_base_question(target_question=1)
+
+
+def render_interview_setup() -> None:
+    """Render the single-path setup for nontechnical candidates."""
+    _enforce_live_voice_product_defaults()
+    ui_theme.render_page_header(
+        "Live Voice Interview",
+        "Practise your next interview out loud",
+        (
+            "Upload your resume and paste the job description. HireSense handles "
+            "the question mix and runs a five-question voice interview for you."
+        ),
+    )
+
+    if _database_session_ready() and st.session_state.get(
+        "_database_sync_error"
+    ):
+        st.warning(
+            "Your interview is still available, but cloud saving is temporarily "
+            "unavailable."
+        )
+
+    recoverable = st.session_state.get("_recoverable_interview")
+    if isinstance(recoverable, dict) and recoverable.get("id"):
+        with st.container(border=True):
+            st.markdown("### Continue where you stopped")
+            st.caption(
+                f"{recoverable.get('target_role', 'Practice interview')} · "
+                f"{recoverable.get('turn_count', 0)} answers saved"
+            )
+            resume_col, discard_col = st.columns(2)
+            with resume_col:
+                if st.button(
+                    "Continue interview",
+                    type="primary",
+                    width="stretch",
+                ):
+                    _resume_recoverable_interview(recoverable)
+                    _enforce_live_voice_product_defaults()
+                    st.rerun()
+            with discard_col:
+                if st.button(
+                    "Start fresh",
+                    type="secondary",
+                    width="stretch",
+                ):
+                    try:
+                        _database_service().abandon_interview(
+                            interview_id=recoverable["id"]
+                        )
+                        st.session_state["_recoverable_interview"] = None
+                        st.rerun()
+                    except Exception as exc:
+                        st.error(str(exc))
+
+    with st.container(border=True):
+        st.markdown("### Get ready")
+        st.caption(
+            "You only need two things. HireSense chooses the interview format, "
+            "focus, and number of questions automatically."
+        )
+        resume_col, job_col = st.columns(2, gap="large")
+
+        with resume_col:
+            st.markdown("#### 1. Upload your resume")
+            resume_file = st.file_uploader(
+                "Resume PDF",
+                type=["pdf"],
+                key="live_voice_resume_upload",
+                help="Upload the resume you will use for this job application.",
+            )
+            if resume_file:
+                uploaded_bytes = resume_file.getvalue()
+                if uploaded_bytes != st.session_state.get("_resume_upload_bytes"):
+                    with st.spinner("Reading your resume..."):
+                        resume_text = extract_uploaded_pdf(resume_file, "Resume")
+                    if resume_text:
+                        st.session_state["interview_resume_text"] = resume_text
+                        st.session_state["_resume_upload_bytes"] = uploaded_bytes
+                        st.session_state["_resume_upload_name"] = resume_file.name
+                        persistence.save_to_browser(
+                            "resume_text",
+                            resume_text,
+                            key="save_live_voice_resume",
+                        )
+            if st.session_state.get("interview_resume_text"):
+                resume_name = st.session_state.get("_resume_upload_name")
+                st.success(
+                    f"Resume ready: {resume_name}"
+                    if resume_name
+                    else "Your saved resume is ready."
+                )
+
+        with job_col:
+            st.markdown("#### 2. Add the job description")
+            job_description = st.text_area(
+                "Paste the job description",
+                height=220,
+                value=st.session_state.get("interview_jd_text") or "",
+                key="live_voice_job_description",
+                placeholder=(
+                    "Copy the responsibilities and requirements from the job post "
+                    "and paste them here."
+                ),
+            )
+            normalized_job_description = job_description.strip()
+            st.session_state["interview_jd_text"] = (
+                normalized_job_description or None
+            )
+            persistence.save_to_browser(
+                "jd_text",
+                normalized_job_description,
+                key="save_live_voice_job_description",
+            )
+            if normalized_job_description:
+                st.success("Job description ready.")
+
+        with st.expander("Optional: role name or interview language"):
+            detail_col, language_col = st.columns(2)
+            with detail_col:
+                st.session_state["target_role"] = st.text_input(
+                    "Role name",
+                    value=st.session_state.get("target_role") or "",
+                    placeholder="For example: Machine Learning Engineer",
+                ).strip()
+
+            languages = language_support.get_language_list()
+            language_options = {
+                language["display"]: language["code"] for language in languages
+            }
+            current_language = st.session_state.get("selected_language", "en")
+            current_display = next(
+                (
+                    display
+                    for display, code in language_options.items()
+                    if code == current_language
+                ),
+                next(iter(language_options)),
+            )
+            with language_col:
+                selected_language = st.selectbox(
+                    "Interview language",
+                    options=list(language_options),
+                    index=list(language_options).index(current_display),
+                    key="live_voice_language_selector",
+                )
+            st.session_state["selected_language"] = language_options[
+                selected_language
+            ]
+            persistence.save_to_browser(
+                "language",
+                st.session_state["selected_language"],
+                key="save_live_voice_language",
+            )
+
+    can_start = bool(
+        st.session_state.get("interview_resume_text")
+        and st.session_state.get("interview_jd_text")
+    )
+    st.caption(
+        "Five live voice questions · Personalized to your resume and the role · "
+        "Transcript-based feedback"
+    )
+    if not can_start:
+        st.info(
+            "Upload your resume and paste the job description to start the interview."
+        )
+
+    button_col1, button_col2, button_col3 = st.columns([1, 2, 1])
+    with button_col2:
+        if st.button(
+            "Start live voice interview",
+            type="primary",
+            disabled=not can_start,
+            width="stretch",
+        ):
+            with st.spinner("Preparing your interview..."):
+                _begin_live_voice_interview()
+            st.rerun()
+
+
 def render_live_voice_session():
     """Render a low-latency, adaptive live voice interview."""
     import live_voice_interview as lvi
 
     ui_theme.enable_focus_mode()
     interview_type = st.session_state.get("interview_type", "Mixed")
-    company_name = company_prep.get_company_info(
-        st.session_state.get("selected_company", "general")
-    )["name"]
     language_info = language_support.get_language_info(
         st.session_state.get("selected_language", "en")
     )
-    ui_theme.render_live_header(
-        interview_type=interview_type,
-        company=company_name,
+    ui_theme.render_voice_only_header(
         language=language_info.get("name", "English"),
-        mode="Live voice",
         question_number=st.session_state.get("current_question_num", 1),
         total_questions=st.session_state.get("total_questions", 1),
     )
@@ -2499,8 +2760,8 @@ def render_active_interview():
                     st.rerun()
 
 
-def render_interview_results():
-    """Render the HireSense Report and analytics dashboard."""
+def _render_legacy_interview_results():
+    """Retain the previous multi-feature report for migration reference only."""
     pending_writes = st.session_state.get("_database_pending_writes", [])
     if pending_writes:
         status = database.flush_writes(
@@ -2877,6 +3138,129 @@ def render_interview_results():
                         st.session_state[key] = False
                     else:
                         st.session_state[key] = None
+            st.rerun()
+
+
+def _reset_live_voice_interview() -> None:
+    """Reset one completed interview while retaining the uploaded context."""
+    _cancel_question_prefetch()
+    st.session_state.update(
+        {
+            "interview_started": False,
+            "interview_complete": False,
+            "interview_history": [],
+            "interview_stress_timeline": [],
+            "current_question_num": 0,
+            "interview_report": None,
+            "evidence_assessment": None,
+            "evidence_assessment_error": None,
+            "awaiting_question": True,
+            "interview_start_time": None,
+            "current_question_text": None,
+            "current_question_source": None,
+            "current_question_status": None,
+            "tts_played": False,
+            "current_voice_answer": "",
+            "followup_count": 0,
+            "awaiting_followup": False,
+            "current_question_is_followup": False,
+            "current_question_revision": 0,
+            "last_followup_decision": None,
+            "rephrase_notice": None,
+            "_interview_orchestrator": None,
+            "_next_question_prefetch": None,
+            "_latency_session_id": None,
+            "latency_samples": [],
+            "active_interview_id": None,
+            "active_application_id": None,
+            "active_job_id": None,
+            "_database_sync_ready": False,
+            "_database_completion_queued_for": None,
+        }
+    )
+    _enforce_live_voice_product_defaults()
+
+
+def render_interview_results() -> None:
+    """Render concise, transcript-grounded feedback for the voice interview."""
+    pending_writes = st.session_state.get("_database_pending_writes", [])
+    if pending_writes:
+        status = database.flush_writes(
+            pending_writes,
+            timeout_seconds=2.0,
+        )
+        st.session_state["_database_pending_writes"] = status.pending
+        if status.errors:
+            st.session_state["_database_sync_error"] = status.errors[-1][:500]
+
+    assessment = st.session_state.get("evidence_assessment")
+    assessment_available = bool(assessment and assessment.get("available"))
+    ui_theme.render_voice_only_results_header(
+        score=(
+            float(assessment["overall_score_5"])
+            if assessment_available
+            and isinstance(assessment.get("overall_score_5"), (int, float))
+            else None
+        ),
+        reliability=(
+            str(assessment.get("overall_reliability", "Unavailable"))
+            if assessment_available
+            else "Not assessed"
+        ),
+    )
+
+    st.markdown("## Feedback from your answers")
+    st.caption(
+        "HireSense reviews what you said. A score is shown only when it can be "
+        "supported by an exact excerpt from your interview transcript."
+    )
+
+    if not assessment_available:
+        if assessment:
+            st.warning(
+                "Feedback could not be completed yet. "
+                f"{assessment.get('error', 'There was not enough evidence.')}"
+            )
+        if st.button("Generate my feedback", type="primary", width="stretch"):
+            with st.spinner("Reviewing your answers..."):
+                assessment = evidence_scoring.evaluate_interview(
+                    st.session_state.get("interview_rag_context", ""),
+                    st.session_state.get("interview_history", []),
+                )
+                report_text = evidence_scoring.format_assessment_markdown(
+                    assessment
+                )
+                st.session_state["evidence_assessment"] = assessment
+                st.session_state["evidence_assessment_error"] = assessment.get(
+                    "error"
+                )
+                st.session_state["interview_report"] = report_text
+                _update_saved_assessment(assessment, report_text)
+            st.rerun()
+    else:
+        st.success(
+            f"Answer score: {assessment['overall_score_5']:.2f}/5 · "
+            f"Reliability: {assessment['overall_reliability']} · "
+            f"Evidence found for {assessment['available_dimensions']} of "
+            f"{assessment['total_dimensions']} areas"
+        )
+        st.markdown(st.session_state.get("interview_report", ""))
+
+    with st.expander("View interview transcript", expanded=False):
+        for entry in st.session_state.get("interview_history", []):
+            role = "Interviewer" if entry.get("role") == "assistant" else "You"
+            followup = " (follow-up)" if entry.get("is_followup") else ""
+            st.markdown(f"**{role}{followup}:** {entry.get('content', '')}")
+
+    st.markdown("---")
+    new_col1, new_col2, new_col3 = st.columns([1, 2, 1])
+    with new_col2:
+        if st.button(
+            "Start another live voice interview",
+            type="primary",
+            width="stretch",
+        ):
+            _reset_live_voice_interview()
             st.rerun()
 
 
@@ -3276,14 +3660,14 @@ def render_coding_page():
 def main() -> None:
     """Main entry point for HireSense AI."""
     st.set_page_config(
-        page_title="HireSense AI - Intelligent Interview Platform",
+        page_title="HireSense AI | Live Voice Interview",
         layout="wide",
         page_icon=(
             str(ui_theme.BRAND_LOGO_PATH)
             if ui_theme.BRAND_LOGO_PATH.is_file()
             else "🎯"
         ),
-        initial_sidebar_state="expanded",
+        initial_sidebar_state="collapsed",
     )
 
     ui_theme.apply_theme()
@@ -3303,8 +3687,8 @@ def main() -> None:
     if not CONFIG_IS_VALID and not st.session_state.get("interview_started"):
         st.warning(
             "OpenRouter is not configured. Built-in interview questions remain "
-            "available, but generated questions, role analysis, and evidence "
-            "scoring will show as unavailable until OPENROUTER_API_KEY is set."
+            "available, but personalized questions and feedback will be "
+            "unavailable until OPENROUTER_API_KEY is set."
         )
 
     # Supabase Auth takes precedence when database sync is enabled because its
@@ -3362,8 +3746,9 @@ def main() -> None:
 
     _collect_database_writes()
     _restore_database_data()
+    _enforce_live_voice_product_defaults()
 
-    # Sidebar navigation
+    # Keep account controls available without exposing unrelated workspaces.
     with st.sidebar:
         ui_theme.render_brand(compact=True)
         ui_theme.render_sidebar_profile(
@@ -3390,69 +3775,9 @@ def main() -> None:
                 st.iframe(auth._get_clear_auth_html(), height=0)
                 st.rerun()
 
-        ui_theme.render_sidebar_label("Workspace")
-
-        if st.button(
-            get_ui_text("interview"),
-            width="stretch",
-            type="primary"
-            if st.session_state.get("page") == "interview"
-            else "secondary",
-        ):
-            st.session_state["page"] = "interview"
-            st.rerun()
-
-        if st.button(
-            get_ui_text("question_bank"),
-            width="stretch",
-            type="primary"
-            if st.session_state.get("page") == "history"
-            else "secondary",
-        ):
-            st.session_state["page"] = "history"
-            st.rerun()
-
-        if st.button(
-            "Skill analysis",
-            width="stretch",
-            type="primary" if st.session_state.get("page") == "skills" else "secondary",
-        ):
-            st.session_state["page"] = "skills"
-            st.rerun()
-
-        if st.button(
-            "Coaching practice",
-            width="stretch",
-            type="primary"
-            if st.session_state.get("page") == "copilot"
-            else "secondary",
-        ):
-            st.session_state["page"] = "copilot"
-            st.rerun()
-
-        if st.button(
-            "Coding practice",
-            width="stretch",
-            type="primary" if st.session_state.get("page") == "coding" else "secondary",
-        ):
-            st.session_state["page"] = "coding"
-            st.rerun()
-
-        bank_count = len(st.session_state.get("question_bank", []))
-        ui_theme.render_sidebar_status(bank_count)
-
-        if _database_session_ready():
-            if st.session_state.get("_database_sync_error"):
-                st.caption("Cloud sync: needs attention")
-            else:
-                pending_count = len(
-                    st.session_state.get("_database_pending_writes", [])
-                )
-                st.caption(
-                    "Cloud sync: saving"
-                    if pending_count
-                    else "Cloud sync: connected"
-                )
+        ui_theme.render_sidebar_label("Current product")
+        st.markdown("**Live Voice Interview**")
+        st.caption("Personalized voice practice with transcript-based feedback.")
 
         if config.developer_controls_enabled():
             with st.expander("Developer status", expanded=False):
@@ -3486,31 +3811,23 @@ def main() -> None:
                         + str(st.session_state["_database_sync_error"])[:180]
                     )
 
-    # Main content based on page
-    current_page = st.session_state.get("page", "interview")
-
-    if current_page == "history":
-        render_question_bank()
-    elif current_page == "skills":
-        render_skill_analysis_page()
-    elif current_page == "copilot":
-        render_copilot_page()
-    elif current_page == "coding":
-        render_coding_page()
-    elif (
+    if (
         st.session_state["interview_started"]
         and not st.session_state["interview_complete"]
     ):
-        if st.session_state.get("interview_mode") == "🎙️ Live Voice Interview":
-            render_live_voice_session()
-        else:
-            render_active_interview()
+        render_live_voice_session()
     elif st.session_state["interview_complete"]:
         render_interview_results()
     else:
         render_interview_setup()
 
-    ui_theme.render_footer()
+    ui_theme.render_footer(
+        (
+            "Live voice practice",
+            "Personalized questions",
+            "Transcript-based feedback",
+        )
+    )
 
 
 if __name__ == "__main__":

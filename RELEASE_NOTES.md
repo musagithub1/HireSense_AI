@@ -2,6 +2,22 @@
 
 Release date: 2026-07-29
 
+## Live Voice Interview focus
+
+- Reduced the public product to one candidate journey: upload a resume, paste
+  the job description, optionally change language, and start.
+- Fixed the public interview to live voice, five mixed questions, one adaptive
+  follow-up, general company context, and transcript-based feedback.
+- Removed public navigation to text interviews, history, skill analysis,
+  coaching, coding, company preparation, webcam signals, video recording, and
+  nonverbal analysis.
+- Replaced the four-part setup, interview-focus selector, review metrics, and
+  advanced settings with one short preparation card.
+- Simplified the active interview header and final report so disabled product
+  concepts cannot reappear through stale browser state.
+- Added regression checks for the public setup, router, fixed product defaults,
+  and voice-only header.
+
 ## Google sign-in hotfix
 
 - Restored the secure new-tab OAuth flow that was lost during open-source
