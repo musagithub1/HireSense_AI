@@ -11,6 +11,8 @@ assessment product.
 - Do not score or rank people by facial appearance, inferred emotion, accent,
   voice characteristics, age, gender, race, disability, or other protected or
   biometric traits.
+- Treat the speaking-delivery estimate as private coaching feedback only. Do
+  not use it to accept, reject, rank, or screen candidates.
 - Keep the optional facial practice signal out of hiring decisions, question
   difficulty, follow-up selection, and competency scores.
 - Let candidates review and correct speech-recognition transcripts before
@@ -25,7 +27,8 @@ Collect only what the practice session needs. By default:
 
 - Save only submitted and confirmed transcripts.
 - Do not save partial microphone transcripts or microphone volume samples.
-- Store the original resume PDF only after explicit selection.
+- Store the original resume PDF only after the user has consented to private
+  account storage during sign-in.
 - Keep storage private and protected by Row Level Security.
 - Give users a way to download or delete their data.
 - Define and publish a retention period for public deployments.
@@ -57,3 +60,6 @@ Do not penalize code-switching, accent, or speech-recognition errors.
   should remain an optional, non-decision practice signal.
 - Reliability labels describe evidence coverage, not a candidate's future job
   performance.
+- Speaking-delivery estimates can be affected by microphone quality, browser
+  transcription, disability, language, and environment. They do not reveal a
+  person's internal confidence or emotional state.

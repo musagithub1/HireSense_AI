@@ -1,9 +1,9 @@
 """Low-latency helpers for the HireSense live interview loop.
 
 The browser remains responsible for microphone capture and speech playback.
-This module overlaps generation of the next base question with the candidate's
-answer time, applies a short bounded hand-off wait, and records timing metadata
-without retaining additional candidate content.
+The public natural-interview flow generates each next question only after the
+current answer is confirmed. This module retains bounded generation,
+diagnostics, and optional prefetch helpers for non-public or future workflows.
 """
 
 from __future__ import annotations

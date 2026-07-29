@@ -26,17 +26,18 @@ The public app intentionally exposes one feature: **Live Voice Interview**.
 2. Upload a resume PDF.
 3. Paste the job description.
 4. Start the live voice interview.
-5. Answer five personalized questions.
+5. Move through eight natural interview stages with focused follow-ups.
 6. Generate transcript-grounded feedback.
 
 HireSense automatically uses:
 
 - Live voice mode
 - A mixed interview question set
-- Five main questions
-- One adaptive follow-up when useful
+- Eight main stages from introduction to closing
+- Up to three focused follow-ups across the full interview
 - General company context
 - Browser speech playback and recognition
+- An explainable speaking-delivery coaching signal
 - Transcript-based feedback
 
 The candidate does not need to choose an interview type, company, mode,
@@ -64,10 +65,17 @@ reference, but the application router cannot open them.
 - Maya, the HireSense AI interviewer, speaks every visible question.
 - Browser speech recognition creates an editable transcript.
 - Candidates can interrupt, pause, replay, rephrase, or correct the transcript.
-- The next question is prepared while the candidate answers.
+- The interview starts with introduction and motivation, then progresses through
+  experience, behavioural evidence, role depth, problem solving, an advanced
+  challenge, and closing.
+- HireSense waits for the confirmed answer before preparing the next question,
+  allowing Maya to acknowledge and respond to what the candidate actually said.
+- The speaking-delivery model uses observable transcript and timing features
+  for private practice feedback. It does not infer emotion or make hiring
+  recommendations.
 - A built-in question is disclosed and used if personalized generation fails.
-- Confirmed answers can be recovered through Supabase when cloud persistence is
-  configured.
+- Resume text, the private PDF, and confirmed answers are saved to the signed-in
+  user's Supabase account when cloud persistence is configured.
 - Feedback is scored only when an exact supporting excerpt can be verified
   against the transcript.
 
@@ -163,9 +171,9 @@ pytest -q
 ruff check .
 ```
 
-The regression suite verifies that the public router cannot reach disabled
-features and that stale browser state cannot restore text, coding, company, or
-webcam modes. It also protects the Google OAuth `_blank` navigation required by
+The regression suite verifies the natural interview-stage order, confidence
+signal boundaries, private resume path, voice telemetry validation, disabled
+feature routes, and the Google OAuth `_blank` navigation required by
 Streamlit's component sandbox.
 
 Rebuild browser components only when their source changes:

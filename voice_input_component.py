@@ -44,6 +44,41 @@ def _normalize_result(value: Any) -> dict | None:
         "hesitations": _nonnegative_int("hesitations"),
     }
 
+    for name in (
+        "response_start_ms",
+        "speaking_duration_ms",
+        "pause_ms",
+    ):
+        if name not in value:
+            continue
+        try:
+            milliseconds = int(value.get(name))
+        except (TypeError, ValueError):
+            continue
+        normalized[name] = max(0, min(600_000, milliseconds))
+
+    if "pause_count" in value:
+        normalized["pause_count"] = min(
+            10_000,
+            _nonnegative_int("pause_count"),
+        )
+    if "manual_submit" in value:
+        normalized["manual_submit"] = bool(value.get("manual_submit"))
+
+    if "recognition_confidence" in value:
+        try:
+            recognition_confidence = float(value.get("recognition_confidence"))
+        except (TypeError, ValueError):
+            recognition_confidence = -1.0
+        if (
+            not isinstance(value.get("recognition_confidence"), bool)
+            and 0 <= recognition_confidence <= 1
+        ):
+            normalized["recognition_confidence"] = round(
+                recognition_confidence,
+                3,
+            )
+
     raw_latency = value.get("latency")
     if isinstance(raw_latency, dict):
         latency: dict[str, Any] = {}

@@ -177,6 +177,7 @@ def test_voice_frontend_contains_adaptive_vad_and_safety_fallback() -> None:
     markup = (root / "index.html").read_text(encoding="utf-8")
 
     assert "getFloatTimeDomainData" in source
-    assert "ADAPTIVE_SILENCE_MS = 900" in source
+    assert "ADAPTIVE_SILENCE_MS = 1900" in source
+    assert "Adaptive, about 2 seconds" in markup
     assert "2200" in source
     assert 'option value="adaptive" selected' in markup

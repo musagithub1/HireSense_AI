@@ -92,16 +92,23 @@ let noiseFloor = 0.008;
 let consecutiveVoiceFrames = 0;
 let speechDetected = false;
 let listeningStartedAt = 0;
+let firstSpeechAt = 0;
 let lastVoiceActivityAt = 0;
 let lastTranscriptEventAt = 0;
+let silenceStartedAt = 0;
+let pauseCount = 0;
+let pauseTotalMs = 0;
+let recognitionConfidenceTotal = 0;
+let recognitionConfidenceWeight = 0;
 let questionActivatedAt = 0;
 let autoSubmitted = false;
 let interviewState = connectionLost ? "offline" : "ready";
 let activeSpeech = null;
 
-const ADAPTIVE_SILENCE_MS = 900;
+const ADAPTIVE_SILENCE_MS = 1900;
 const TRANSCRIPT_SETTLE_MS = 220;
 const MIN_SPEECH_MS = 550;
+const MIN_COUNTED_PAUSE_MS = 350;
 const avatarRoot = createRoot(interviewAvatar);
 
 function resize() {
@@ -290,11 +297,27 @@ function monitorVoiceActivity() {
   if (voiceFrame) {
     consecutiveVoiceFrames += 1;
     if (consecutiveVoiceFrames >= 3) {
+      if (!firstSpeechAt) firstSpeechAt = now;
+      if (silenceStartedAt) {
+        const pauseDuration = now - silenceStartedAt;
+        if (pauseDuration >= MIN_COUNTED_PAUSE_MS) {
+          pauseCount += 1;
+          pauseTotalMs += pauseDuration;
+        }
+        silenceStartedAt = 0;
+      }
       speechDetected = true;
       lastVoiceActivityAt = now;
     }
   } else {
     consecutiveVoiceFrames = 0;
+    if (
+      speechDetected &&
+      !silenceStartedAt &&
+      now - lastVoiceActivityAt >= MIN_COUNTED_PAUSE_MS
+    ) {
+      silenceStartedAt = lastVoiceActivityAt;
+    }
     if (!speechDetected || now - lastVoiceActivityAt > 1400) {
       noiseFloor = Math.max(
         0.003,
@@ -320,8 +343,14 @@ function startVadMonitoring({ reset = false } = {}) {
     speechDetected = false;
     consecutiveVoiceFrames = 0;
     listeningStartedAt = performance.now();
+    firstSpeechAt = 0;
     lastVoiceActivityAt = listeningStartedAt;
     lastTranscriptEventAt = listeningStartedAt;
+    silenceStartedAt = 0;
+    pauseCount = 0;
+    pauseTotalMs = 0;
+    recognitionConfidenceTotal = 0;
+    recognitionConfidenceWeight = 0;
     autoSubmitted = false;
   }
   vadFrame = window.requestAnimationFrame(monitorVoiceActivity);
@@ -372,7 +401,33 @@ function speechStats(text) {
     const escaped = term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     hesitations += (lower.match(new RegExp(`\\b${escaped}\\b`, "g")) || []).length;
   }
-  return { word_count: words.length, hesitations };
+  const recognitionConfidence =
+    recognitionConfidenceWeight > 0
+      ? recognitionConfidenceTotal / recognitionConfidenceWeight
+      : null;
+  const metric = (value) =>
+    Number.isFinite(value) && value >= 0 ? Math.round(value) : null;
+  return {
+    word_count: words.length,
+    hesitations,
+    recognition_confidence:
+      recognitionConfidence === null
+        ? null
+        : Math.round(recognitionConfidence * 1000) / 1000,
+    response_start_ms: metric(
+      firstSpeechAt && listeningStartedAt
+        ? firstSpeechAt - listeningStartedAt
+        : null,
+    ),
+    speaking_duration_ms: metric(
+      firstSpeechAt && lastVoiceActivityAt
+        ? lastVoiceActivityAt - firstSpeechAt
+        : null,
+    ),
+    pause_count: pauseCount,
+    pause_ms: metric(pauseTotalMs),
+    manual_submit: !autoSubmitted,
+  };
 }
 
 function latencyStats(now = performance.now()) {
@@ -498,7 +553,17 @@ function makeRecognition() {
     for (let index = event.resultIndex; index < event.results.length; index += 1) {
       const result = event.results[index];
       if (result.isFinal) {
-        finalText = `${finalText} ${result[0].transcript}`.trim();
+        const segment = result[0].transcript;
+        finalText = `${finalText} ${segment}`.trim();
+        const confidence = Number(result[0].confidence);
+        const segmentWeight = Math.max(
+          1,
+          segment.trim().split(/\s+/).filter(Boolean).length,
+        );
+        if (Number.isFinite(confidence) && confidence > 0 && confidence <= 1) {
+          recognitionConfidenceTotal += confidence * segmentWeight;
+          recognitionConfidenceWeight += segmentWeight;
+        }
         receivedFinal = true;
       } else {
         interimText += result[0].transcript;
@@ -611,8 +676,14 @@ function resetTranscript() {
   speechDetected = false;
   consecutiveVoiceFrames = 0;
   listeningStartedAt = 0;
+  firstSpeechAt = 0;
   lastVoiceActivityAt = 0;
   lastTranscriptEventAt = 0;
+  silenceStartedAt = 0;
+  pauseCount = 0;
+  pauseTotalMs = 0;
+  recognitionConfidenceTotal = 0;
+  recognitionConfidenceWeight = 0;
   autoSubmitted = false;
   stopRecognition();
   micButton.disabled = false;

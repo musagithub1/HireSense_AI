@@ -20,6 +20,7 @@ history. No service-role key is used by the Streamlit app.
 3. Run these files in order:
    - `supabase/migrations/202607280001_hiresense_core.sql`
    - `supabase/migrations/202607290001_google_auth_profile.sql`
+   - `supabase/migrations/202607300001_natural_voice_defaults.sql`
 4. Select **Run** after pasting each file.
 
 The migration creates:
@@ -127,11 +128,14 @@ Verify this flow:
 5. Add a resume and job description.
 6. Start an interview.
 7. Submit one answer.
-8. Open Supabase Table Editor and confirm an `interviews` row and an
-   `interview_turns` row exist.
-9. Refresh the browser and select **Resume saved interview**.
-10. Finish the interview and generate the evidence assessment.
-11. Open Interview history on a second device after signing in with the same
+8. Open Supabase Table Editor and confirm the `applications` row contains
+   extracted resume text and a private `resume_path`.
+9. Open Supabase Storage and confirm the PDF is under
+   `resumes/<user-id>/<application-id>/`.
+10. Confirm an `interviews` row and an `interview_turns` row exist.
+11. Refresh the browser and select **Resume saved interview**.
+12. Finish the interview and generate the evidence assessment.
+13. Open Interview history on a second device after signing in with the same
     Google account.
 
 ## What is saved
@@ -140,20 +144,19 @@ Verify this flow:
   interview
 - Interview language, type, model, mode, progress, and timestamps
 - Only submitted and confirmed transcripts
+- Per-answer speaking-delivery coaching signals and their reliability metadata
 - Evidence scores, verified excerpts, reasons, and reliability
 - The final report and summary metrics
-- The original resume PDF only when the candidate explicitly selects the
-  private-storage option
+- The original resume PDF in the signed-in user's private Storage path
 
-Partial microphone transcripts are not saved. Facial or vocal confidence
-scores are not stored.
+Partial microphone transcripts and raw microphone samples are not saved. The
+speaking-delivery signal is not an emotion reading or hiring score.
 
 ## Failure behavior
 
-If Supabase is temporarily unavailable, the interview continues with the
-existing browser backup. The app shows **Cloud sync: needs attention** and does
-not block the voice loop. Confirmed-answer writes run outside the critical
-speech-response path.
+If the original PDF upload fails, the extracted resume text remains saved in
+the RLS-protected application record and HireSense shows a private-storage
+warning. Confirmed-answer writes run outside the critical speech-response path.
 
 ## Production checklist
 

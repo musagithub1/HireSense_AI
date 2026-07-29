@@ -143,6 +143,27 @@ def test_assessment_rows_keep_verified_evidence() -> None:
     assert score["owner_id"] == USER_ID
 
 
+def test_resume_pdf_is_saved_to_private_user_path() -> None:
+    gateway = FakeGateway()
+    path = service(gateway).upload_resume(
+        application_id=APPLICATION_ID,
+        filename="../Mussa Khan CV.pdf",
+        content=b"%PDF-1.7 private resume",
+    )
+
+    assert path == (
+        f"{USER_ID}/{APPLICATION_ID}/Mussa-Khan-CV.pdf"
+    )
+    assert gateway.calls[0] == (
+        "upload_pdf",
+        path,
+        b"%PDF-1.7 private resume",
+    )
+    update_call = gateway.calls[1]
+    assert update_call[0:2] == ("update", "applications")
+    assert update_call[2]["resume_path"] == path
+
+
 def test_recovery_reconstructs_original_question_and_transcript() -> None:
     gateway = FakeGateway()
     gateway.select_results = {

@@ -4,21 +4,40 @@
 
 The live interview keeps one Streamlit component instance for the full session:
 
-1. HireSense generates and displays one question.
-2. The next base question begins generating in the background.
-3. Maya, the local animated HireSense AI interviewer, enters Speaking while
+1. HireSense selects the current interview stage and generates one question.
+2. Maya, the local animated HireSense AI interviewer, enters Speaking while
    browser speech synthesis reads the current question aloud.
-4. Browser speech recognition streams interim and final transcript text.
-5. The candidate may correct the transcript before submission.
-6. Adaptive voice activity detection normally submits about 900 ms after the
+3. Browser speech recognition streams interim and final transcript text.
+4. The candidate may correct the transcript before submission.
+5. Adaptive voice activity detection normally submits about 1.9 seconds after the
    candidate finishes. Fixed timing and manual submission remain available.
-7. A local answer-structure check looks for context, ownership, results, and
+6. A local answer-structure check looks for context, ownership, results, and
    reasoning.
-8. When one important element is missing, HireSense generates one targeted
-   follow-up. Otherwise it hands off the prefetched base question.
+7. When one important element is missing, HireSense may generate one targeted
+   follow-up, subject to a session-wide limit of three.
+8. After the answer is confirmed, HireSense prepares the next stage using the
+   answer as conversation context. It never pre-generates an answer-blind
+   question while the candidate is still speaking.
 
 Only question wording uses a network model call. The follow-up decision itself
 is deterministic and does not add a separate analysis request.
+
+## Natural interview progression
+
+| Stage | Difficulty | Purpose |
+|---|---|---|
+| Introduction | Easy | Establish background and help the candidate settle in |
+| Motivation and fit | Easy | Understand genuine interest in the role |
+| Relevant experience | Medium | Explore resume evidence and personal ownership |
+| Behavioural evidence | Medium | Examine teamwork, judgment, or a difficult situation |
+| Role depth | Medium | Test practical use of an important job requirement |
+| Problem solving | Hard | Explore a structured response to ambiguity |
+| Advanced challenge | Hard | Probe constraints, tradeoffs, scaling, and risk |
+| Closing | Reflection | Give the candidate one final opportunity to add evidence |
+
+Maya briefly acknowledges the previous response before moving forward. The
+stage plan controls the gradual increase in complexity, while a follow-up
+stays tied to evidence missing from the candidate's latest answer.
 
 ## Animated interviewer
 
@@ -69,6 +88,29 @@ connectivity.
 - All controls are keyboard reachable and use visible focus styles.
 - Reduced-motion browser preferences are respected.
 - Interview language controls both recognition and spoken-question language.
+
+## Speaking-delivery confidence signal
+
+`confidence_model.py` creates an explainable coaching estimate from observable
+answer features:
+
+- Filler-word ratio
+- Speaking pace
+- Time before the answer starts
+- Pause frequency and duration
+- Answer completeness
+- Transcript evidence for context, personal action, reasoning, and results
+
+The browser's speech-recognition confidence value describes transcription
+certainty. It is retained only as a reliability signal and never increases or
+decreases the candidate's delivery score.
+
+Scores are rounded to five-point increments and paired with a reliability
+label, strengths, improvement areas, and a visible limitation statement.
+Typed fallback answers do not receive a speaking-delivery score. The model
+does not inspect pitch, accent, gender, identity, facial appearance, or
+emotion. It must not be used for hiring, ranking, screening, or psychological
+judgment.
 
 ## Evidence scoring
 

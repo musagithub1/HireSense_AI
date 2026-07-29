@@ -22,8 +22,9 @@ flowchart TD
 | Layer | Main files | Responsibility |
 |---|---|---|
 | Application shell | `app.py`, `ui_theme.py` | Voice-only setup, session state, and feedback |
-| Interview orchestration | `hiresense_agent.py`, `interview_arena.py`, `followup_questions.py` | Context extraction, question selection, bounded follow-ups |
+| Interview orchestration | `interview_flow.py`, `hiresense_agent.py`, `interview_arena.py`, `followup_questions.py` | Stage progression, context extraction, question selection, bounded follow-ups |
 | Voice interview | `live_voice_interview.py`, `voice_input_component.py` | Interview lifecycle and browser voice bridge |
+| Speaking delivery | `confidence_model.py` | Explainable practice-only delivery signals |
 | Evidence | `evidence_scoring.py` | Transcript-grounded feedback |
 | Auth and persistence | `supabase_auth.py`, `supabase_backend.py`, `database.py` | RLS identity, cloud records, recovery, deletion |
 | Browser fallback | `persistence_component.py` | Namespaced session backup and OAuth recovery data |
@@ -47,15 +48,19 @@ Node projects during a normal deployment.
 1. The candidate uploads a resume, pastes a job description, and can
    optionally change the interview language.
 2. Local extraction creates compact role and candidate context.
-3. The engine asks OpenRouter for one bounded question.
-4. The browser speaks the visible question and captures an editable
+3. The phase controller moves from introduction to progressively harder
+   role-relevant stages.
+4. The engine asks OpenRouter for one bounded question.
+5. The browser speaks the visible question and captures an editable
    transcript.
-5. Only a submitted, confirmed answer enters interview history.
-6. A background persistence queue stores the confirmed turn when Supabase is
+6. Only a submitted, confirmed answer enters interview history.
+7. The speaking-delivery model calculates an explainable coaching signal from
+   sanitized timing and transcript features.
+8. A background persistence queue stores the confirmed turn when Supabase is
    configured.
-7. Final evidence scoring cites exact transcript excerpts or reports
+9. Final evidence scoring cites exact transcript excerpts or reports
    insufficient evidence.
-8. Browser persistence remains a temporary fallback if cloud sync fails.
+10. Browser persistence remains a temporary fallback if cloud sync fails.
 
 ## Security boundaries
 
@@ -65,6 +70,8 @@ Node projects during a normal deployment.
 - Row Level Security is defined by the migrations under `supabase/migrations`.
 - Google client secrets stay in Supabase provider settings.
 - Partial speech transcripts and microphone samples are not persisted.
+- Speaking-delivery signals are coaching metadata, not emotion or hiring
+  predictions.
 - Webcam, recording, nonverbal, coding, coaching, history, and skill-analysis
   routes are disabled in the public product.
 

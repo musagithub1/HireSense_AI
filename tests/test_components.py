@@ -58,3 +58,42 @@ def test_voice_result_validation() -> None:
     assert rephrase is not None
     assert rephrase["action"] == "rephrase"
     assert rephrase["answer"] == ""
+
+
+def test_voice_result_accepts_only_bounded_delivery_telemetry() -> None:
+    result = _normalize_result(
+        {
+            "action": "answer",
+            "answer": "I built and measured the result.",
+            "submission_id": "delivery-1",
+            "word_count": 7,
+            "hesitations": 1,
+            "recognition_confidence": 0.8421,
+            "response_start_ms": 1250,
+            "speaking_duration_ms": 18_500,
+            "pause_count": 2,
+            "pause_ms": 1_800,
+            "manual_submit": False,
+        }
+    )
+
+    assert result is not None
+    assert result["recognition_confidence"] == 0.842
+    assert result["response_start_ms"] == 1250
+    assert result["speaking_duration_ms"] == 18_500
+    assert result["pause_count"] == 2
+    assert result["pause_ms"] == 1_800
+    assert result["manual_submit"] is False
+
+    invalid = _normalize_result(
+        {
+            "action": "answer",
+            "answer": "Answer",
+            "submission_id": "delivery-2",
+            "recognition_confidence": 4.2,
+            "response_start_ms": -50,
+        }
+    )
+    assert invalid is not None
+    assert "recognition_confidence" not in invalid
+    assert invalid["response_start_ms"] == 0

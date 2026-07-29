@@ -27,6 +27,7 @@ from pydantic import Field, SecretStr
 from pypdf import PdfReader
 
 import config
+import interview_flow
 from model_utils import message_text, normalize_question
 
 # ============================================================================
@@ -249,9 +250,16 @@ BUILT_IN_QUESTION_BANK = {
 
 
 def get_builtin_interview_question(
-    interview_type: str, question_number: int
+    interview_type: str,
+    question_number: int,
+    total_questions: int = interview_flow.DEFAULT_MAIN_QUESTION_COUNT,
 ) -> str:
     """Return a deterministic backup question when live generation is unavailable."""
+    if interview_type == "Mixed":
+        return interview_flow.fallback_question(
+            question_number,
+            total_questions,
+        )
     questions = BUILT_IN_QUESTION_BANK.get(
         interview_type, BUILT_IN_QUESTION_BANK["Mixed"]
     )
@@ -363,6 +371,7 @@ def generate_interview_question(
     Yields intermediate trace events and final question chunks as dicts.
     """
     selected_model = model_name or config.get_openrouter_model()
+    phase = interview_flow.phase_context(question_number, total_questions)
     buffered_question = []
     failure_reason = None
 
@@ -383,6 +392,7 @@ def generate_interview_question(
             total_questions=total_questions,
             interview_type=interview_type,
             company=company,
+            phase=phase,
         ):
             if isinstance(step, dict) and step.get("type") == "question_chunk":
                 text = _message_content_to_text(step.get("content"))
@@ -410,7 +420,11 @@ def generate_interview_question(
     }
     yield {
         "type": "question_chunk",
-        "content": get_builtin_interview_question(interview_type, question_number),
+        "content": get_builtin_interview_question(
+            interview_type,
+            question_number,
+            total_questions,
+        ),
     }
 
 

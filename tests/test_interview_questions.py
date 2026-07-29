@@ -111,8 +111,9 @@ Python and SQL are required. Kubernetes is preferred for this senior role.
     assert state["skill_insights"]["matching"] == ["python", "sql"]
     assert state["skill_insights"]["missing"] == ["kubernetes"]
     assert state["interview_strategy"]["focus_area"].startswith(
-        "General role-relevant"
+        "Welcome the candidate as Maya"
     )
+    assert state["interview_strategy"]["difficulty"] == "easy"
 
 
 def test_full_five_agent_pipeline_uses_one_network_model(monkeypatch) -> None:
@@ -154,9 +155,9 @@ def test_builtin_bank_covers_full_session() -> None:
     for interview_type in interview_arena.BUILT_IN_QUESTION_BANK:
         questions = [
             interview_arena.get_builtin_interview_question(interview_type, number)
-            for number in range(1, 11)
+            for number in range(1, 9)
         ]
-        assert len(set(questions)) == 10
+        assert len(set(questions)) == 8
         assert all(question.endswith("?") for question in questions)
 
 

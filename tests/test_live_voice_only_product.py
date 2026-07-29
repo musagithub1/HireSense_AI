@@ -5,6 +5,7 @@ from __future__ import annotations
 import inspect
 
 import app
+import interview_flow
 import ui_theme
 
 
@@ -49,10 +50,13 @@ def test_live_voice_defaults_override_stale_workspace_state(monkeypatch) -> None
     assert session_state["interview_mode"] == app.LIVE_VOICE_MODE
     assert session_state["interview_type"] == "Mixed"
     assert session_state["selected_company"] == "general"
-    assert session_state["total_questions"] == 5
+    assert session_state["total_questions"] == 8
+    assert session_state["total_questions"] == len(interview_flow.INTERVIEW_PHASES)
     assert session_state["followup_enabled"] is True
+    assert session_state["max_total_followups"] == 3
     assert session_state["webcam_enabled"] is False
     assert session_state["video_recording_enabled"] is False
+    assert session_state["save_resume_file"] is True
 
 
 def test_voice_only_header_escapes_language(monkeypatch) -> None:
@@ -65,11 +69,70 @@ def test_voice_only_header_escapes_language(monkeypatch) -> None:
     ui_theme.render_voice_only_header(
         language="<script>alert(1)</script>",
         question_number=2,
-        total_questions=5,
+        total_questions=8,
     )
 
     markup = rendered[-1]
     assert "<script>" not in markup
     assert "&lt;script&gt;" in markup
-    assert "Question 2 of 5" in markup
+    assert "Question 2 of 8" in markup
     assert "Live voice interview" in markup
+
+
+def test_next_question_is_not_prepared_before_current_answer() -> None:
+    session_source = inspect.getsource(app.render_live_voice_session)
+    advance_source = inspect.getsource(app._advance_after_answer)
+    begin_source = inspect.getsource(app._begin_live_voice_interview)
+
+    assert "_schedule_next_base_question()" not in session_source
+    assert "_schedule_next_base_question(" not in advance_source
+    assert "_schedule_next_base_question(" not in begin_source
+    assert "awaiting_question" in advance_source
+
+
+def test_starting_interview_saves_resume_text_and_private_pdf(
+    monkeypatch,
+) -> None:
+    calls: list[tuple[str, dict]] = []
+
+    class FakeDatabaseService:
+        def start_interview(self, **kwargs):
+            calls.append(("start", kwargs))
+            return {
+                "application_id": "00000000-0000-0000-0000-000000000003",
+                "job_id": "00000000-0000-0000-0000-000000000004",
+            }
+
+        def upload_resume(self, **kwargs):
+            calls.append(("upload", kwargs))
+            return "private/resume.pdf"
+
+    session_state = {
+        "selected_company": "general",
+        "interview_mode": app.LIVE_VOICE_MODE,
+        "target_role": "AI Engineer",
+        "interview_jd_text": "Build reliable AI systems.",
+        "interview_resume_text": "Python engineer.",
+        "selected_language": "en",
+        "interview_type": "Mixed",
+        "total_questions": 8,
+        "_resume_upload_name": "resume.pdf",
+        "_resume_upload_bytes": b"%PDF-1.7 resume",
+        "_recoverable_interview": None,
+    }
+    monkeypatch.setattr(app.st, "session_state", session_state)
+    monkeypatch.setattr(app, "_database_session_ready", lambda: True)
+    monkeypatch.setattr(app, "_database_service", FakeDatabaseService)
+
+    app._start_database_interview(
+        "00000000-0000-0000-0000-000000000002"
+    )
+
+    assert calls[0][0] == "start"
+    assert calls[0][1]["resume_text"] == "Python engineer."
+    assert calls[1][0] == "upload"
+    assert calls[1][1]["content"] == b"%PDF-1.7 resume"
+    assert session_state["resume_saved_to_supabase"] is True
+    assert session_state["resume_storage_status"] == (
+        "text_and_private_pdf_saved"
+    )

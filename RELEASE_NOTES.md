@@ -1,4 +1,44 @@
-# HireSense AI Open-Source Release
+# HireSense AI Natural Voice Interview Release
+
+Release date: 2026-07-30
+
+## Human-style interview flow
+
+- Replaced the fixed five-question structure with eight deliberate stages:
+  introduction, motivation, relevant experience, behavioural evidence, role
+  depth, problem solving, advanced challenge, and closing.
+- Added an explicit easy-to-hard difficulty progression and natural
+  acknowledgments between answers.
+- Stopped preparing the next question before the current answer is submitted,
+  so every new question can use what the candidate actually said.
+- Limited targeted follow-ups to three across the entire interview and removed
+  follow-ups from the introduction, motivation, and closing stages.
+- Increased adaptive silence tolerance from 900 ms to 1.9 seconds so a normal
+  thinking pause is less likely to end an answer.
+
+## Explainable confidence coaching
+
+- Added a practice-only speaking-delivery model using filler words, pace,
+  response timing, pauses, completeness, and transcript evidence.
+- Added Web Speech telemetry for recognition certainty, answer start time,
+  speaking duration, pause count, and pause duration.
+- Uses browser recognition confidence only to describe data reliability, never
+  as candidate confidence.
+- Rounds estimates to five-point increments, shows reliability and limitations,
+  and does not score typed fallback answers.
+- Excludes facial appearance, pitch, accent, identity, and inferred emotion.
+
+## Supabase resume persistence
+
+- Saves extracted resume text to the RLS-protected application record.
+- Saves the original PDF synchronously to the signed-in user's private Supabase
+  Storage path when the interview starts.
+- Keeps the interview usable with a clear warning if the PDF upload fails after
+  the extracted text has been saved.
+- Stores per-answer coaching signals inside the existing `speech_stats` JSONB
+  field and the rounded interview summary inside final metrics.
+
+# Previous HireSense AI Open-Source Release
 
 Release date: 2026-07-29
 

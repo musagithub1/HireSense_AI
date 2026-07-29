@@ -26,10 +26,12 @@ import analytics_dashboard as analytics
 import auth
 import coding_whiteboard
 import company_prep
+import confidence_model
 import database
 import evidence_scoring
 import followup_questions
 import interview_arena as arena
+import interview_flow
 
 # New feature imports
 import language_support
@@ -87,7 +89,7 @@ INTERVIEW_TYPES = {
 }
 
 LIVE_VOICE_MODE = "🎙️ Live Voice Interview"
-LIVE_VOICE_QUESTION_COUNT = 5
+LIVE_VOICE_QUESTION_COUNT = interview_flow.DEFAULT_MAIN_QUESTION_COUNT
 
 
 # ============================================================================
@@ -214,7 +216,7 @@ def init_session_state():
         "interview_history": [],
         "interview_stress_timeline": [],
         "current_question_num": 0,
-        "total_questions": 5,
+        "total_questions": LIVE_VOICE_QUESTION_COUNT,
         "current_emotional_state": "neutral",
         "interview_complete": False,
         "tts_enabled": True,
@@ -247,6 +249,8 @@ def init_session_state():
         "followup_enabled": True,
         "awaiting_followup": False,
         "followup_count": 0,
+        "total_followups_asked": 0,
+        "max_total_followups": interview_flow.MAX_TOTAL_FOLLOWUPS,
         "max_followups": 1,
         "current_question_is_followup": False,
         "current_question_revision": 0,
@@ -279,7 +283,9 @@ def init_session_state():
         "_recoverable_interview_loaded": False,
         "_resume_upload_bytes": None,
         "_resume_upload_name": None,
-        "save_resume_file": False,
+        "save_resume_file": True,
+        "resume_saved_to_supabase": False,
+        "resume_storage_status": None,
     }
 
     for key, value in defaults.items():
@@ -431,7 +437,15 @@ def _progress_snapshot() -> dict:
             )
             else None
         ),
-        "total_questions": int(st.session_state.get("total_questions", 5)),
+        "total_questions": int(
+            st.session_state.get(
+                "total_questions",
+                LIVE_VOICE_QUESTION_COUNT,
+            )
+        ),
+        "total_followups_asked": int(
+            st.session_state.get("total_followups_asked", 0)
+        ),
         "updated_at_epoch": time.time(),
     }
 
@@ -496,6 +510,9 @@ def _persist_confirmed_turn(
 
 def _record_metrics(qa_pairs: list[dict], duration: str) -> dict:
     assessment = st.session_state.get("evidence_assessment") or {}
+    delivery_summary = confidence_model.summarize_interview_delivery(
+        st.session_state.get("interview_history", [])
+    )
     stress_values = [
         float(item["stress_level"])
         for item in st.session_state.get("interview_stress_timeline", [])
@@ -513,8 +530,12 @@ def _record_metrics(qa_pairs: list[dict], duration: str) -> dict:
         "scoring_coverage": assessment.get("coverage_percent", 0),
         "optional_facial_readings_count": len(stress_values),
         "duration": duration,
-        "total_questions": st.session_state.get("total_questions", 5),
+        "total_questions": st.session_state.get(
+            "total_questions",
+            LIVE_VOICE_QUESTION_COUNT,
+        ),
         "questions_answered": len(qa_pairs),
+        "delivery_confidence": delivery_summary,
     }
 
 
@@ -558,29 +579,40 @@ def _start_database_interview(interview_id: str) -> None:
             interview_type=st.session_state.get("interview_type", "Mixed"),
             mode=mode,
             model=config.get_openrouter_model(),
-            total_questions=st.session_state.get("total_questions", 5),
+            total_questions=st.session_state.get(
+                "total_questions",
+                LIVE_VOICE_QUESTION_COUNT,
+            ),
         )
         st.session_state["active_application_id"] = row.get("application_id")
         st.session_state["active_job_id"] = row.get("job_id")
         st.session_state["_database_sync_ready"] = True
         st.session_state["_database_sync_error"] = None
 
+        st.session_state["resume_saved_to_supabase"] = True
+        st.session_state["resume_storage_status"] = "text_saved"
         if (
-            st.session_state.get("save_resume_file")
-            and st.session_state.get("_resume_upload_bytes")
+            st.session_state.get("_resume_upload_bytes")
             and row.get("application_id")
         ):
-            _queue_database_operation(
-                "Upload private resume PDF",
-                "upload_resume",
-                {
-                    "application_id": row["application_id"],
-                    "filename": st.session_state.get("_resume_upload_name")
+            try:
+                service.upload_resume(
+                    application_id=row["application_id"],
+                    filename=st.session_state.get("_resume_upload_name")
                     or "resume.pdf",
-                    "content": st.session_state["_resume_upload_bytes"],
-                },
-            )
+                    content=st.session_state["_resume_upload_bytes"],
+                )
+                st.session_state["resume_storage_status"] = (
+                    "text_and_private_pdf_saved"
+                )
+            except Exception as exc:
+                st.session_state["_database_sync_error"] = (
+                    "The extracted resume text was saved, but the private PDF "
+                    f"upload could not finish: {exc}"
+                )[:500]
     except Exception as exc:
+        st.session_state["resume_saved_to_supabase"] = False
+        st.session_state["resume_storage_status"] = "save_failed"
         st.session_state["_database_sync_error"] = str(exc)[:500]
 
 
@@ -680,6 +712,10 @@ def _resume_recoverable_interview(record: dict) -> None:
             "interview_type": "Mixed",
             "interview_mode": LIVE_VOICE_MODE,
             "total_questions": LIVE_VOICE_QUESTION_COUNT,
+            "total_followups_asked": int(
+                progress.get("total_followups_asked", 0)
+            ),
+            "max_total_followups": interview_flow.MAX_TOTAL_FOLLOWUPS,
             "followup_enabled": True,
             "tts_enabled": True,
             "voice_input_enabled": True,
@@ -908,7 +944,10 @@ def _schedule_next_base_question(*, target_question: int | None = None) -> None:
     ]
     interview_type = st.session_state.get("interview_type", "Mixed")
     company = st.session_state.get("selected_company", "general")
-    total = st.session_state.get("total_questions", 5)
+    total = st.session_state.get(
+        "total_questions",
+        LIVE_VOICE_QUESTION_COUNT,
+    )
     key = latency_optimizer.question_cache_key(
         session_id=session_id,
         target_question=target_question,
@@ -1017,6 +1056,23 @@ def _clear_current_turn() -> None:
 
 def _followup_decision(question: str, answer: str) -> dict:
     """Choose one evidence-seeking follow-up without an extra model call."""
+    phase = interview_flow.phase_for_question(
+        st.session_state["current_question_num"],
+        st.session_state["total_questions"],
+    )
+    if not phase.allow_followup:
+        return {
+            "should_followup": False,
+            "reason": f"The {phase.name.lower()} stage moves forward naturally",
+        }
+    if st.session_state.get("total_followups_asked", 0) >= st.session_state.get(
+        "max_total_followups",
+        interview_flow.MAX_TOTAL_FOLLOWUPS,
+    ):
+        return {
+            "should_followup": False,
+            "reason": "The interview has enough focused follow-up evidence",
+        }
     started = st.session_state.get("interview_start_time") or time.time()
     return followup_questions.should_ask_followup(
         answer=answer,
@@ -1671,13 +1727,14 @@ def _enforce_live_voice_product_defaults() -> None:
             "total_questions": LIVE_VOICE_QUESTION_COUNT,
             "followup_enabled": True,
             "max_followups": 1,
+            "max_total_followups": interview_flow.MAX_TOTAL_FOLLOWUPS,
             "tts_enabled": True,
             "voice_input_enabled": True,
             "webcam_enabled": False,
             "video_recording_enabled": False,
             "copilot_enabled": False,
             "coding_mode_enabled": False,
-            "save_resume_file": False,
+            "save_resume_file": True,
         }
     )
 
@@ -1733,6 +1790,7 @@ def _begin_live_voice_interview() -> None:
             "tts_played": False,
             "current_voice_answer": "",
             "followup_count": 0,
+            "total_followups_asked": 0,
             "awaiting_followup": False,
             "_database_completion_queued_for": None,
         }
@@ -1741,7 +1799,6 @@ def _begin_live_voice_interview() -> None:
     interview_id = str(uuid4())
     st.session_state["active_interview_id"] = interview_id
     _start_database_interview(interview_id)
-    _schedule_next_base_question(target_question=1)
 
 
 def render_interview_setup() -> None:
@@ -1752,7 +1809,8 @@ def render_interview_setup() -> None:
         "Practise your next interview out loud",
         (
             "Upload your resume and paste the job description. HireSense handles "
-            "the question mix and runs a five-question voice interview for you."
+            "the interview flow, starts with the basics, and gradually increases "
+            "the difficulty."
         ),
     )
 
@@ -1822,6 +1880,9 @@ def render_interview_setup() -> None:
                         st.session_state["interview_resume_text"] = resume_text
                         st.session_state["_resume_upload_bytes"] = uploaded_bytes
                         st.session_state["_resume_upload_name"] = resume_file.name
+                        st.session_state["save_resume_file"] = True
+                        st.session_state["resume_saved_to_supabase"] = False
+                        st.session_state["resume_storage_status"] = None
                         persistence.save_to_browser(
                             "resume_text",
                             resume_text,
@@ -1833,6 +1894,10 @@ def render_interview_setup() -> None:
                     f"Resume ready: {resume_name}"
                     if resume_name
                     else "Your saved resume is ready."
+                )
+                st.caption(
+                    "Your extracted resume and original PDF will be saved "
+                    "privately to your account when the interview starts."
                 )
 
         with job_col:
@@ -1902,8 +1967,8 @@ def render_interview_setup() -> None:
         and st.session_state.get("interview_jd_text")
     )
     st.caption(
-        "Five live voice questions · Personalized to your resume and the role · "
-        "Transcript-based feedback"
+        "Natural interview stages · Adaptive follow-ups · Gradually increasing "
+        "difficulty · Transcript-based feedback"
     )
     if not can_start:
         st.info(
@@ -1937,6 +2002,14 @@ def render_live_voice_session():
         question_number=st.session_state.get("current_question_num", 1),
         total_questions=st.session_state.get("total_questions", 1),
     )
+    if (
+        st.session_state.get("resume_storage_status") == "text_saved"
+        and st.session_state.get("_database_sync_error")
+    ):
+        st.warning(
+            "Your resume text is saved privately, but the original PDF could not "
+            "be stored. You can continue this practice interview."
+        )
 
     if st.session_state.get("webcam_enabled", False):
         with st.expander("Optional practice-only facial signal", expanded=False):
@@ -2027,6 +2100,9 @@ def render_live_voice_session():
             st.session_state["followup_count"] = (
                 st.session_state.get("followup_count", 0) + 1
             )
+            st.session_state["total_followups_asked"] = (
+                st.session_state.get("total_followups_asked", 0) + 1
+            )
             st.session_state["current_question_revision"] = (
                 st.session_state.get("current_question_revision", 0) + 1
             )
@@ -2055,6 +2131,7 @@ def render_live_voice_session():
                 question_text = arena.get_builtin_interview_question(
                     interview_type,
                     question_number,
+                    st.session_state["total_questions"],
                 )
                 question_status = {
                     "source": "built_in_fallback",
@@ -2085,6 +2162,7 @@ def render_live_voice_session():
                 question_text = arena.get_builtin_interview_question(
                     interview_type,
                     question_number,
+                    st.session_state["total_questions"],
                 )
                 question_status = {
                     "source": "built_in_fallback",
@@ -2101,6 +2179,10 @@ def render_live_voice_session():
                     "timestamp": time.time(),
                     "is_followup": False,
                     "generation_source": question_status.get("source", "model"),
+                    "phase": interview_flow.phase_for_question(
+                        question_number,
+                        st.session_state["total_questions"],
+                    ).key,
                 }
             )
             st.session_state["current_question_text"] = question_text
@@ -2123,13 +2205,14 @@ def render_live_voice_session():
     question_text = st.session_state.get("current_question_text", "")
     if question_text:
         is_followup = st.session_state.get("current_question_is_followup", False)
+        current_phase = interview_flow.phase_for_question(
+            st.session_state["current_question_num"],
+            st.session_state["total_questions"],
+        )
         visible_label = (
-            f"Follow-up for question {st.session_state['current_question_num']}"
+            f"{current_phase.name} follow-up"
             if is_followup
-            else (
-                f"Question {st.session_state['current_question_num']} of "
-                f"{st.session_state['total_questions']}"
-            )
+            else current_phase.name
         )
         rephrase_notice = st.session_state.get("rephrase_notice")
         if rephrase_notice:
@@ -2146,9 +2229,6 @@ def render_live_voice_session():
             if st.button("Retry personalized question", key="retry_live_ai_question"):
                 retry_current_question()
                 st.rerun()
-
-        # Overlap the next base-question call with the candidate's speaking time.
-        _schedule_next_base_question()
 
         speech_lang = language_support.get_speech_recognition_code(
             st.session_state.get("selected_language", "en")
@@ -2179,6 +2259,28 @@ def render_live_voice_session():
                     st.rerun()
 
                 answer_text = voice_result["answer"]
+                latency = voice_result.get("latency") or {}
+                speech_stats = {
+                    "word_count": voice_result["word_count"],
+                    "hesitations": voice_result["hesitations"],
+                    "latency": latency,
+                    "capture_ms": latency.get("capture_ms"),
+                    "recognition_confidence": voice_result.get(
+                        "recognition_confidence"
+                    ),
+                    "response_start_ms": voice_result.get("response_start_ms"),
+                    "speaking_duration_ms": voice_result.get(
+                        "speaking_duration_ms"
+                    ),
+                    "pause_count": voice_result.get("pause_count"),
+                    "pause_ms": voice_result.get("pause_ms"),
+                    "manual_submit": voice_result.get("manual_submit"),
+                }
+                delivery_signal = confidence_model.estimate_delivery_confidence(
+                    answer_text,
+                    speech_stats,
+                )
+                speech_stats["delivery_confidence"] = delivery_signal
                 record_current_stress(st.session_state["current_question_num"])
                 _record_client_latency(
                     question_number=st.session_state["current_question_num"],
@@ -2189,22 +2291,14 @@ def render_live_voice_session():
                         "role": "user",
                         "content": answer_text,
                         "timestamp": time.time(),
-                        "speech_stats": {
-                            "word_count": voice_result["word_count"],
-                            "hesitations": voice_result["hesitations"],
-                            "latency": voice_result.get("latency"),
-                        },
+                        "speech_stats": speech_stats,
                     }
                 )
                 _persist_confirmed_turn(
                     answer_text,
                     is_followup=is_followup,
                     transcription_engine="browser_speech",
-                    speech_stats={
-                        "word_count": voice_result["word_count"],
-                        "hesitations": voice_result["hesitations"],
-                        "latency": voice_result.get("latency"),
-                    },
+                    speech_stats=speech_stats,
                 )
                 _advance_after_answer(
                     answer_text,
@@ -3162,6 +3256,7 @@ def _reset_live_voice_interview() -> None:
             "tts_played": False,
             "current_voice_answer": "",
             "followup_count": 0,
+            "total_followups_asked": 0,
             "awaiting_followup": False,
             "current_question_is_followup": False,
             "current_question_revision": 0,
@@ -3245,6 +3340,27 @@ def render_interview_results() -> None:
             f"{assessment['total_dimensions']} areas"
         )
         st.markdown(st.session_state.get("interview_report", ""))
+
+    delivery_summary = confidence_model.summarize_interview_delivery(
+        st.session_state.get("interview_history", [])
+    )
+    if delivery_summary:
+        st.markdown("### Speaking delivery")
+        st.info(
+            f"{delivery_summary['label']} · approximately "
+            f"{delivery_summary['score']}/100 · "
+            f"{delivery_summary['reliability']} reliability"
+        )
+        delivery_col1, delivery_col2 = st.columns(2)
+        with delivery_col1:
+            st.markdown("**What sounded strong**")
+            for item in delivery_summary.get("strengths", []):
+                st.markdown(f"- {item}")
+        with delivery_col2:
+            st.markdown("**What to practise next**")
+            for item in delivery_summary.get("opportunities", []):
+                st.markdown(f"- {item}")
+        st.caption(delivery_summary["disclaimer"])
 
     with st.expander("View interview transcript", expanded=False):
         for entry in st.session_state.get("interview_history", []):
