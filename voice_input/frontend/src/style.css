@@ -297,7 +297,10 @@ h3 {
   display: block;
   width: min(100%, 278px);
   height: 326px;
-  filter: saturate(0.97);
+  overflow: hidden;
+  border-radius: 18px;
+  filter: saturate(1);
+  box-shadow: 0 18px 44px rgba(2, 6, 23, 0.18);
   transition: filter 220ms ease, opacity 220ms ease;
 }
 
@@ -308,7 +311,7 @@ h3 {
 }
 
 .interviewer-fallback {
-  overflow: visible;
+  object-fit: cover;
 }
 
 .avatar-depth-label {

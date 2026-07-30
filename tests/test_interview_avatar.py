@@ -33,15 +33,29 @@ def test_avatar_is_a_local_accessible_threejs_component_with_fallback() -> None:
     assert 'data-avatar-engine="threejs"' in source
     assert "StaticAvatarFallback" in source
     assert "<canvas" in source
-    assert "<svg" in source
+    assert "<img" in source
     assert "HireSense 3D AI interviewer" in source
     assert "Interrupt interviewer" in source
     assert "new THREE.WebGLRenderer" in engine
+    assert "makePortraitGeometry" in engine
+    assert "maya-speak-a.webp" in engine
+    assert "maya-speak-o.webp" in engine
+    assert "maya-blink.webp" in engine
     assert "setSupportMode" in engine
     assert "setViseme" in engine
     assert "webglcontextlost" in engine
     assert "http://" not in source + engine
     assert "https://" not in source + engine
+
+    for asset_name in (
+        "maya-neutral.webp",
+        "maya-speak-a.webp",
+        "maya-speak-o.webp",
+        "maya-blink.webp",
+    ):
+        asset = FRONTEND / "src" / "assets" / asset_name
+        assert asset.is_file()
+        assert 10_000 < asset.stat().st_size < 150_000
 
 
 def test_voice_lifecycle_drives_avatar_and_recovery_controls() -> None:

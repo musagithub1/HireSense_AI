@@ -38,7 +38,7 @@ HireSense automatically uses:
 - Up to three focused follow-ups across the full interview
 - General company context
 - Browser speech playback and recognition
-- A local, lightweight 3D Maya interviewer
+- A local, lightweight cinematic Maya interviewer
 - An explainable speaking-delivery coaching signal
 - Optional on-device Viva Defense facial-expression coaching
 - Transcript-based feedback
@@ -66,11 +66,13 @@ reference, but the application router cannot open them.
 
 ## Live voice behavior
 
-- Maya, the local 3D HireSense AI interviewer, speaks every visible question.
-- Three.js renders her face and upper body with blinking, gaze, restrained head
-  movement, listening behavior, and vowel-shaped mouth animation.
-- The avatar falls back to a local 2D portrait if WebGL is unavailable. It does
-  not call an avatar service or download a character model.
+- Maya, the local HireSense AI interviewer, speaks every visible question.
+- Three.js renders four optimized, identity-matched portrait frames on a gently
+  curved WebGL surface, with natural blinking, restrained head movement,
+  listening behavior, and speech-driven mouth changes.
+- The avatar falls back to the same local professional portrait if WebGL is
+  unavailable. It does not call an avatar service or download a character
+  model at runtime.
 - Browser speech recognition creates an editable transcript.
 - Candidates can interrupt, pause, replay, rephrase, or correct the transcript.
 - The interview starts with introduction and motivation, then progresses through

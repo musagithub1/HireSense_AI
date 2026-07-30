@@ -34,9 +34,9 @@ Its source project is
 must not be presented as a calibrated probability, medical measurement, lie
 detector, biometric identification system, or hiring-decision signal.
 
-Maya's 3D interviewer is assembled at runtime from project-authored primitive
-geometry and materials through Three.js. No third-party avatar mesh, texture,
-motion file, or character likeness is bundled.
+Maya's interviewer uses original project portrait frames rendered locally on a
+project-authored curved surface through Three.js. No stock avatar, third-party
+character mesh, motion file, or public figure likeness is bundled.
 
 The HireSense name and logo identify this project. The MIT License does not
 grant trademark rights or imply endorsement of modified deployments.

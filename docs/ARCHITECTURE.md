@@ -24,7 +24,7 @@ flowchart TD
 |---|---|---|
 | Application shell | `app.py`, `ui_theme.py` | Voice-only setup, session state, and feedback |
 | Interview orchestration | `interview_flow.py`, `hiresense_agent.py`, `interview_arena.py`, `followup_questions.py` | Stage progression, context extraction, question selection, bounded follow-ups |
-| Voice interview | `live_voice_interview.py`, `voice_input_component.py`, `voice_input/frontend/src/MayaAvatar3D.ts` | Interview lifecycle, browser voice bridge, and local 3D interviewer |
+| Voice interview | `live_voice_interview.py`, `voice_input_component.py`, `voice_input/frontend/src/MayaAvatar3D.ts` | Interview lifecycle, browser voice bridge, and local WebGL interviewer |
 | Speaking delivery | `confidence_model.py` | Explainable practice-only delivery signals |
 | Facial expression | `webcam_component.py`, `emotion_detector/frontend` | Opt-in local face detection, Viva Defense inference, and question-level coaching checkpoints |
 | Evidence | `evidence_scoring.py` | Transcript-grounded feedback |

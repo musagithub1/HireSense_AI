@@ -5,7 +5,7 @@
 The live interview keeps one Streamlit component instance for the full session:
 
 1. HireSense selects the current interview stage and generates one question.
-2. Maya, the local 3D HireSense AI interviewer, enters Speaking while browser
+2. Maya, the local WebGL HireSense AI interviewer, enters Speaking while browser
    speech synthesis reads the current question aloud.
 3. Browser speech recognition streams interim and final transcript text.
 4. The candidate may correct the transcript before submission.
@@ -41,17 +41,19 @@ stays tied to evidence missing from the candidate's latest answer.
 
 ## 3D interviewer
 
-`voice_input/frontend/src/MayaAvatar3D.ts` builds Maya locally from lightweight
-Three.js geometry. `InterviewAvatar.tsx` connects the WebGL scene to the live
-interview and provides an accessible 2D fallback if WebGL initialization fails
-or the browser loses its rendering context. The app does not call an avatar
+`voice_input/frontend/src/MayaAvatar3D.ts` renders Maya's optimized local
+portrait frames on a gently curved Three.js surface. `InterviewAvatar.tsx`
+connects that WebGL scene to the live interview and provides an accessible
+fallback using the same professional portrait if WebGL initialization fails or
+the browser loses its rendering context. The app does not call an avatar
 service, download video, or fetch a third-party character model.
 
 The voice lifecycle drives the avatar directly:
 
 - Speech start: Speaking animation, waveform, and lip motion
-- Speech word boundary: best-effort A, E, I, O, and U mouth shapes
-- Browsers without reliable boundaries: procedural jaw motion while speaking
+- Speech word boundary: best-effort open and rounded mouth frames derived from
+  A, E, I, O, and U boundaries
+- Browsers without reliable boundaries: procedural speaking-frame timing
 - Speech end: Ready, followed by Listening
 - Candidate microphone activity: Listening pulse, direct gaze, and restrained nod
 - Answer submission: Thoughtful gaze while Streamlit prepares the next turn
@@ -65,10 +67,11 @@ During Speaking, **Interrupt interviewer** cancels the current utterance and
 starts the microphone. The control is optional at the Python component boundary
 and is enabled for live mode only.
 
-The scene uses only an upper body, conservative geometry counts, capped pixel
-density, no shadows, and no external textures. The production JavaScript bundle
-is cached with the rest of the Streamlit component. Reduced-motion preferences
-disable nonessential movement.
+The scene uses four compressed local WebP frames, a conservative curved mesh,
+capped pixel density, and no runtime network request. The portrait assets add
+less than 120 KB before bundle compression. The production component is cached
+with the rest of the Streamlit app. Reduced-motion preferences disable
+nonessential movement.
 
 ## Visible states
 

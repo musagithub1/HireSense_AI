@@ -1,4 +1,23 @@
-# HireSense AI 3D Maya Interviewer
+# HireSense AI Beautiful Maya Refresh
+
+Release date: 2026-07-30
+
+## Professional Maya visual redesign
+
+- Replaced the geometric character face with a polished, professional Maya
+  portrait while keeping the existing interview screen and behavior unchanged.
+- Adds identity-matched neutral, blink, open-mouth, and rounded-mouth frames.
+- Keeps speech-boundary lip movement, procedural speaking fallback, natural
+  blinking, subtle listening nods, processing movement, pointer parallax, and
+  Viva Defense support-mode warmth.
+- Renders the portrait locally on a gently curved Three.js surface with no
+  avatar API, runtime asset download, or paid character service.
+- Uses four optimized WebP frames totaling less than 120 KB.
+- Uses the same professional portrait as the WebGL fallback.
+- Preserves the natural interview flow, Web Speech API, Viva Defense, Supabase
+  resume storage, Google authentication, and all existing controls.
+
+# Previous HireSense AI 3D Maya Interviewer
 
 Release date: 2026-07-30
 

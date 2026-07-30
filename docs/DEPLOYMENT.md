@@ -66,8 +66,8 @@ Select **Deploy**, then test the public HTTPS address:
 
 1. The setup page opens without a configuration warning.
 2. Resume PDF upload and the job-description text field both work.
-3. Maya's 3D face appears, blinks, and changes state without downloading a
-   character model.
+3. Maya's professional WebGL portrait appears, blinks, speaks, and changes
+   state without downloading a character model.
 4. The browser asks for microphone permission in live voice mode.
 5. Maya speaks the question, then the candidate's words appear in the editable
    transcript.
