@@ -1,4 +1,4 @@
-"""Regression coverage for the local animated AI interviewer."""
+"""Regression coverage for the local 3D AI interviewer."""
 
 from __future__ import annotations
 
@@ -11,8 +11,11 @@ ROOT = Path(__file__).parents[1]
 FRONTEND = ROOT / "voice_input" / "frontend"
 
 
-def test_avatar_is_a_local_accessible_svg_component() -> None:
+def test_avatar_is_a_local_accessible_threejs_component_with_fallback() -> None:
     source = (FRONTEND / "src" / "InterviewAvatar.tsx").read_text(
+        encoding="utf-8"
+    )
+    engine = (FRONTEND / "src" / "MayaAvatar3D.ts").read_text(
         encoding="utf-8"
     )
 
@@ -26,12 +29,19 @@ def test_avatar_is_a_local_accessible_svg_component() -> None:
         "error",
         "offline",
     ):
-        assert f'"{state}"' in source
+        assert f'"{state}"' in source + engine
+    assert 'data-avatar-engine="threejs"' in source
+    assert "StaticAvatarFallback" in source
+    assert "<canvas" in source
     assert "<svg" in source
-    assert "HireSense AI interviewer" in source
+    assert "HireSense 3D AI interviewer" in source
     assert "Interrupt interviewer" in source
-    assert "http://" not in source
-    assert "https://" not in source
+    assert "new THREE.WebGLRenderer" in engine
+    assert "setSupportMode" in engine
+    assert "setViseme" in engine
+    assert "webglcontextlost" in engine
+    assert "http://" not in source + engine
+    assert "https://" not in source + engine
 
 
 def test_voice_lifecycle_drives_avatar_and_recovery_controls() -> None:
@@ -43,11 +53,17 @@ def test_voice_lifecycle_drives_avatar_and_recovery_controls() -> None:
     assert "function handleSpeechEnd" in source
     assert "function handleSpeechPause" in source
     assert "function handleSpeechError" in source
+    assert "function handleSpeechBoundary" in source
+    assert "hiresense:maya-viseme" in source
     assert "function interruptInterviewer" in source
     assert "function showAudioFallback" in source
     assert 'id="interview-avatar"' in markup
     assert 'id="audio-fallback"' in markup
     assert 'id="question" tabindex="-1"' in markup
+    assert "<summary>More options</summary>" in markup
+    assert "<summary>Review live transcript</summary>" in markup
+    assert "progressWrap.classList.add" in source
+    assert "\"I'm done\"" in source
 
 
 def test_live_mode_enables_interrupt_without_exposing_it_to_speaker_mode(
@@ -67,6 +83,7 @@ def test_live_mode_enables_interrupt_without_exposing_it_to_speaker_mode(
         question_text="Tell me about a difficult engineering decision.",
         interviewer_name="Maya",
         allow_interrupt=True,
+        support_mode=True,
     )
     voice_input_component.render_voice_input(
         key="speaker",
@@ -78,7 +95,9 @@ def test_live_mode_enables_interrupt_without_exposing_it_to_speaker_mode(
 
     assert captured[0]["interviewer_name"] == "Maya"
     assert captured[0]["allow_interrupt"] is True
+    assert captured[0]["support_mode"] is True
     assert captured[1]["allow_interrupt"] is False
+    assert captured[1]["support_mode"] is False
 
 
 def test_frontend_manifest_pins_react_runtime() -> None:
@@ -86,6 +105,7 @@ def test_frontend_manifest_pins_react_runtime() -> None:
 
     assert package["dependencies"]["react"] == "19.1.1"
     assert package["dependencies"]["react-dom"] == "19.1.1"
+    assert package["dependencies"]["three"] == "0.185.1"
 
 
 def test_built_voice_bundle_contains_avatar_controls() -> None:
@@ -93,6 +113,8 @@ def test_built_voice_bundle_contains_avatar_controls() -> None:
     assert len(bundles) == 1
     bundle = bundles[0].read_text(encoding="utf-8")
 
-    assert "HireSense AI interviewer" in bundle
+    assert "HireSense 3D AI interviewer" in bundle
     assert "Interrupt interviewer" in bundle
     assert "Audio unavailable" in bundle
+    assert "hiresense:maya-viseme" in bundle
+    assert "WebGLRenderer" in bundle

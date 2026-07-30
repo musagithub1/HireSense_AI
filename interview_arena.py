@@ -302,16 +302,17 @@ def _looks_like_interview_question(text: str) -> bool:
 # ============================================================================
 
 INTERVIEW_SYSTEM_PROMPT_SUPPORTIVE = """You are HireSense AI, a supportive and encouraging AI interviewer.
-    An experimental facial model returned an elevated stress signal. Do not
-    treat this as a diagnosis or claim to know the candidate's feelings. Your role is to:
+    Repeated Viva Defense checkpoints were stressed-like. Do not treat this as
+    a diagnosis or claim to know the candidate's feelings. Preserve the planned
+    competency and difficulty. Your role is to:
 1. Ask questions in a warm, friendly manner
 2. Provide encouragement and positive reinforcement
 3. Give the candidate time to think
-4. Offer hints if they struggle
-5. Focus on building their confidence
+4. Use clear, single-part wording
+5. Keep the interview progression unchanged
 
 Use the provided resume and job description to ask relevant, personalized questions.
-Keep questions clear and not overly complex. Be patient and understanding."""
+Keep questions clear, patient, and professional."""
 
 INTERVIEW_SYSTEM_PROMPT_CHALLENGING = """You are HireSense AI, a rigorous and challenging AI interviewer.
     An experimental facial model returned a low stress signal, so advanced
@@ -340,10 +341,7 @@ def get_interview_system_prompt(emotional_state: str) -> str:
     """Get the appropriate system prompt based on emotional state."""
     if emotional_state in {"stress_signal", "stressed"}:
         return INTERVIEW_SYSTEM_PROMPT_SUPPORTIVE
-    elif emotional_state in {"calm_signal", "confident"}:
-        return INTERVIEW_SYSTEM_PROMPT_CHALLENGING
-    else:
-        return INTERVIEW_SYSTEM_PROMPT_NEUTRAL
+    return INTERVIEW_SYSTEM_PROMPT_NEUTRAL
 
 
 def generate_interview_question(

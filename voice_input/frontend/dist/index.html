@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HireSense voice interview</title>
-    <script type="module" crossorigin src="./assets/index-BUN7hZyl.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-DMou2u7L.css">
+    <script type="module" crossorigin src="./assets/index-9CpGi3WH.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-C4JasR44.css">
   </head>
   <body>
     <main id="app">
@@ -47,16 +47,13 @@
                 <button id="play-question" class="play-question hidden" type="button">
                   Hear question
                 </button>
-                <button id="rephrase-question" class="rephrase-question hidden" type="button">
-                  Rephrase
-                </button>
               </div>
             </div>
           </div>
         </div>
 
         <details class="accessibility">
-          <summary>Accessibility and timing</summary>
+          <summary>More options</summary>
           <div class="settings-grid">
             <label>
               Speech speed
@@ -80,6 +77,9 @@
             <button id="captions" class="setting-button" type="button" aria-pressed="true">
               Captions on
             </button>
+            <button id="rephrase-question" class="setting-button hidden" type="button">
+              Ask differently
+            </button>
           </div>
         </details>
 
@@ -91,19 +91,22 @@
           <p id="status" role="status" aria-live="polite">
             Select the microphone to start speaking.
           </p>
-          <label class="transcript-label" for="transcript">
-            Live transcript
-          </label>
-          <textarea
-            id="transcript"
-            class="transcript"
-            rows="5"
-            spellcheck="true"
-            placeholder="Your transcript will appear here. You can correct it before submitting."
-          ></textarea>
-          <p id="interim-transcript" class="interim-transcript" aria-live="polite">
-            Your words will appear here while you speak.
-          </p>
+          <details class="transcript-review">
+            <summary>Review live transcript</summary>
+            <label class="transcript-label" for="transcript">
+              Live transcript
+            </label>
+            <textarea
+              id="transcript"
+              class="transcript"
+              rows="5"
+              spellcheck="true"
+              placeholder="Your transcript will appear here. You can correct it before submitting."
+            ></textarea>
+            <p id="interim-transcript" class="interim-transcript" aria-live="polite">
+              Your words will appear here while you speak.
+            </p>
+          </details>
           <div class="actions">
             <button id="pause" class="secondary" type="button">Pause</button>
             <button id="clear" class="secondary" type="button">Clear</button>

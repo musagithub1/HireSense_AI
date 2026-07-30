@@ -1,22 +1,53 @@
-# Model integrity record
+# Viva Defense model integrity record
 
-## Finding
+## Provenance
 
-The original archive contained two different model artifacts:
+The bundled camera model is Mussa Khan's Viva Defense CNN:
 
-- `models/viva_defense_final.keras`, a nontrivial Keras model with trained
-  batch-normalization parameters and nonzero learned values.
-- A root TensorFlow.js LayersModel whose weights matched initialization
-  patterns and whose outputs stayed near 0.5 for very different inputs.
+- Source repository:
+  `https://github.com/musagithub1/Viva-Defense-Face-Sensor`
+- Reviewed source commit:
+  `f6dfaec3fae94985f66e01963e98d8e4c6db57e2`
+- Training source: FER2013-derived 48 by 48 grayscale facial images
+- Final mapped dataset described by the project: 29,262 images
+- Model input: one 48 by 48 grayscale face crop
+- Model output: one sigmoid value toward the stressed-like training class
 
-The original webcam path did not use either model reliably. It calculated a
-display value from frame brightness and motion, while an unused loader
-silently generated synthetic values after load failures.
+The training mapping is:
 
-The unrelated TensorFlow.js model and every synthetic fallback were removed.
-The supplied Keras model was exported as the GraphModel used by the browser.
+| FER2013 labels | Viva Defense class |
+|---|---|
+| Happy, Neutral | Confident-like |
+| Fear, Anger, Sadness | Stressed-like |
+| Surprise, Disgust | Excluded |
 
-## Packaged hashes
+## Reported evaluation
+
+The repository's notebook and README report results on a 5,820-image holdout
+set:
+
+| Metric | Reported result |
+|---|---:|
+| Accuracy | About 85.1% |
+| ROC AUC | 0.9349 |
+| Confident-like recall | About 85.3% |
+| Stressed-like recall | About 84.8% |
+
+ROC AUC and accuracy are different metrics. The model must not be described as
+having 93.49% accuracy.
+
+## Packaged artifacts
+
+The original HireSense archive contained:
+
+- `models/viva_defense_final.keras`, a nontrivial trained Keras model
+- An unrelated root TensorFlow.js LayersModel whose outputs stayed near 0.5
+- A webcam path that used brightness and motion instead of the trained model
+- A fallback path that could generate synthetic values
+
+The unrelated model, brightness heuristic, and synthetic fallback were
+removed. The supplied Keras model was exported as the TensorFlow.js GraphModel
+that now runs in the browser.
 
 SHA-256:
 
@@ -47,7 +78,7 @@ export.
 | All black | 0.731987 | 0.731970 |
 | All white | 0.517777 | 0.517531 |
 
-The small difference is consistent with conversion/runtime numerical
+The small difference is consistent with conversion and runtime numerical
 variation. The browser verification script allows a tolerance of 0.002 and
 also requires the two outputs to differ by at least 0.1.
 
@@ -59,14 +90,37 @@ npm install
 npm run verify:model
 ```
 
+## Runtime safeguards
+
+- Camera use requires explicit candidate opt-in.
+- Face detection and CNN inference run inside the browser.
+- Frames, images, face crops, and video are never uploaded or saved.
+- HireSense records at most one numeric checkpoint when an answer is submitted.
+- Missing camera, face, or model data stays unavailable.
+- No random, neutral, or simulated value replaces a missing reading.
+- Facial output has zero weight in transcript evidence scoring.
+- A single reading never changes Maya's tone.
+- Repeated stressed-like checkpoints may soften wording only. They do not
+  change the planned competency, difficulty, or follow-up decision.
+
 ## Limitations
 
-The archive contains no training dataset, class-balance record, holdout
-evaluation, demographic performance analysis, or calibration evidence.
-Therefore:
+The available project materials do not establish:
 
-- The output is labelled an estimated facial stress signal.
-- It is not labelled confidence.
-- Missing values remain unavailable.
-- It has zero weight in the practice grade.
-- It must not be used for medical, deception, employment, or hiring decisions.
+- External validity in real interviews or vivas
+- Demographic fairness across skin tone, age, gender presentation, disability,
+  culture, lighting, camera quality, or pose
+- Calibration as a probability of internal confidence or stress
+- Construct validity for competence, truthfulness, personality, or hiring
+  suitability
+
+Therefore, HireSense labels the classes confident-like and stressed-like
+expressions. It does not claim to read a person's internal state and must not
+be used for employment decisions, medical assessment, deception detection, or
+biometric identification.
+
+## Project acknowledgements
+
+The Viva Defense repository credits Dr. Mumtaz Zahoor and Ayesha Khalid for
+guidance and support, and Abdul Haseeb and M saad Arshad for development
+discussions and encouragement.

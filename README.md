@@ -25,9 +25,10 @@ The public app intentionally exposes one feature: **Live Voice Interview**.
 1. Sign in.
 2. Upload a resume PDF.
 3. Paste the job description.
-4. Start the live voice interview.
-5. Move through eight natural interview stages with focused follow-ups.
-6. Generate transcript-grounded feedback.
+4. Optionally enable the Viva Defense camera coaching signal.
+5. Start the live voice interview.
+6. Move through eight natural interview stages with focused follow-ups.
+7. Generate transcript-grounded feedback.
 
 HireSense automatically uses:
 
@@ -37,11 +38,14 @@ HireSense automatically uses:
 - Up to three focused follow-ups across the full interview
 - General company context
 - Browser speech playback and recognition
+- A local, lightweight 3D Maya interviewer
 - An explainable speaking-delivery coaching signal
+- Optional on-device Viva Defense facial-expression coaching
 - Transcript-based feedback
 
 The candidate does not need to choose an interview type, company, mode,
-question count, webcam setting, recording option, or scoring method.
+question count, recording option, or scoring method. Camera coaching is an
+explicit opt-in because it requires webcam access.
 
 ## Disabled public features
 
@@ -53,7 +57,7 @@ The public interface does not expose:
 - Company preparation
 - Coaching or copilot pages
 - Interview-history navigation
-- Webcam or facial scoring
+- Facial grading or hiring scores
 - Video recording
 - Nonverbal scoring
 
@@ -62,7 +66,11 @@ reference, but the application router cannot open them.
 
 ## Live voice behavior
 
-- Maya, the HireSense AI interviewer, speaks every visible question.
+- Maya, the local 3D HireSense AI interviewer, speaks every visible question.
+- Three.js renders her face and upper body with blinking, gaze, restrained head
+  movement, listening behavior, and vowel-shaped mouth animation.
+- The avatar falls back to a local 2D portrait if WebGL is unavailable. It does
+  not call an avatar service or download a character model.
 - Browser speech recognition creates an editable transcript.
 - Candidates can interrupt, pause, replay, rephrase, or correct the transcript.
 - The interview starts with introduction and motivation, then progresses through
@@ -73,6 +81,12 @@ reference, but the application router cannot open them.
 - The speaking-delivery model uses observable transcript and timing features
   for private practice feedback. It does not infer emotion or make hiring
   recommendations.
+- If the candidate opts in, the Viva Defense CNN runs locally in the browser
+  and distinguishes dataset-defined confident-like and stressed-like
+  expressions. No image or video is uploaded or saved.
+- Two consecutive high stressed-like checkpoints can make Maya use calmer,
+  clearer wording. The planned competency, question difficulty, evidence
+  score, and follow-up decision do not change.
 - A built-in question is disclosed and used if personalized generation fails.
 - Resume text, the private PDF, and confirmed answers are saved to the signed-in
   user's Supabase account when cloud persistence is configured.
@@ -88,6 +102,8 @@ operating system, and language.
 - Python 3.11 or 3.12
 - An OpenRouter API key for personalized questions and feedback
 - A current Chromium-based browser for the best voice experience
+- WebGL support for the 3D interviewer, with an automatic 2D fallback
+- A webcam only for optional Viva Defense coaching
 - Node.js 20.19 or newer only when rebuilding browser components
 
 ## Quick start
@@ -171,8 +187,9 @@ pytest -q
 ruff check .
 ```
 
-The regression suite verifies the natural interview-stage order, confidence
-signal boundaries, private resume path, voice telemetry validation, disabled
+The regression suite verifies the natural interview-stage order, delivery and
+Viva Defense signal boundaries, camera consent, private resume path, voice
+telemetry validation, local 3D avatar lifecycle, WebGL fallback, disabled
 feature routes, and the Google OAuth `_blank` navigation required by
 Streamlit's component sandbox.
 
@@ -186,15 +203,21 @@ npm run build
 cd ../../persistence/frontend
 npm install
 npm run build
+
+cd ../../emotion_detector/frontend
+npm install
+npm run verify:model
+npm run build
 ```
 
 Do not package `node_modules`.
 
 ## Privacy and responsible use
 
-Resume text, job-description text, transcripts, and feedback are sensitive.
-Deployers should use HTTPS, Supabase Row Level Security, a private resume
-bucket, clear retention rules, and an accessible deletion process. Read
+Resume text, job-description text, transcripts, feedback, and any derived
+camera signal are sensitive. Webcam frames stay in the browser and are never
+persisted. Deployers should use HTTPS, Supabase Row Level Security, a private
+resume bucket, clear retention rules, and an accessible deletion process. Read
 [Privacy and responsible use](docs/PRIVACY_AND_RESPONSIBLE_USE.md) before
 sharing the app publicly.
 

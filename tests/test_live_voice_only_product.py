@@ -17,7 +17,8 @@ def test_public_setup_has_one_live_voice_path() -> None:
     assert "Text Interview" not in source
     assert "company_selector" not in source
     assert "num_questions_slider" not in source
-    assert "webcam_enabled" not in source
+    assert "Use my Viva Defense facial-expression model" in source
+    assert "facial_signal_consent" in source
     assert "skill_gap_analysis" not in source
 
 
@@ -59,6 +60,18 @@ def test_live_voice_defaults_override_stale_workspace_state(monkeypatch) -> None
     assert session_state["save_resume_file"] is True
 
 
+def test_camera_model_runs_only_after_explicit_consent(monkeypatch) -> None:
+    session_state = {
+        "facial_signal_consent": True,
+        "webcam_enabled": False,
+    }
+    monkeypatch.setattr(app.st, "session_state", session_state)
+
+    app._enforce_live_voice_product_defaults()
+
+    assert session_state["webcam_enabled"] is True
+
+
 def test_voice_only_header_escapes_language(monkeypatch) -> None:
     rendered: list[str] = []
 
@@ -75,8 +88,9 @@ def test_voice_only_header_escapes_language(monkeypatch) -> None:
     markup = rendered[-1]
     assert "<script>" not in markup
     assert "&lt;script&gt;" in markup
-    assert "Question 2 of 8" in markup
+    assert "Question 2 of 8" not in markup
     assert "Live voice interview" in markup
+    assert "3D interviewer" in markup
 
 
 def test_next_question_is_not_prepared_before_current_answer() -> None:

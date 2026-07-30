@@ -2,6 +2,9 @@
 
 from __future__ import annotations
 
+import inspect
+
+import hiresense_agent
 import interview_flow
 
 
@@ -64,3 +67,12 @@ def test_delivery_guidance_never_claims_to_know_emotion() -> None:
     assert "single-part wording" in guidance
     assert "emotion" not in guidance.casefold()
     assert "planned competency and difficulty unchanged" in guidance
+
+
+def test_facial_support_changes_tone_not_planned_difficulty() -> None:
+    source = inspect.getsource(hiresense_agent.StrategyAgent.run)
+
+    assert "Repeated Viva Defense checkpoints were stressed-like" in source
+    assert "planned competency and difficulty unchanged" in source
+    assert "Use advanced practice questions" not in source
+    assert "lower initial difficulty" not in source

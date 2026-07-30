@@ -65,13 +65,15 @@ Do not commit the real API key to GitHub.
 Select **Deploy**, then test the public HTTPS address:
 
 1. The setup page opens without a configuration warning.
-2. Resume and job-description PDF upload both work.
-3. Text interview questions appear and can be answered.
+2. Resume PDF upload and the job-description text field both work.
+3. Maya's 3D face appears, blinks, and changes state without downloading a
+   character model.
 4. The browser asks for microphone permission in live voice mode.
-5. Spoken words appear in the editable transcript.
+5. Maya speaks the question, then the candidate's words appear in the editable
+   transcript.
 6. Adaptive timing submits shortly after speech ends, while fixed and manual
    timing remain available.
-7. The prefetched next question or disclosed backup question appears without
+7. The next adaptive question or disclosed backup question appears without
    silent delay.
 8. Evidence assessment either cites verified transcript text or reports that
    evidence is unavailable.
@@ -82,7 +84,8 @@ Select **Deploy**, then test the public HTTPS address:
 Before deploying, run
 `supabase/migrations/202607280001_hiresense_core.sql` in the Supabase SQL
 Editor, followed by
-`supabase/migrations/202607290001_google_auth_profile.sql`. See
+`supabase/migrations/202607290001_google_auth_profile.sql`, then
+`supabase/migrations/202607300001_natural_voice_defaults.sql`. See
 `docs/SUPABASE_SETUP.md` for the complete setup and verification flow.
 
 ## Authentication note
@@ -97,11 +100,14 @@ service-role key to Streamlit Secrets.
 The current build saves extracted resume text, job-description snapshots,
 confirmed transcripts, reports, and evidence scores in the user's private
 Supabase account. Partial microphone transcripts are not saved. The original
-resume PDF is stored only when the candidate explicitly selects that option.
-Browser storage remains a fallback if cloud sync is unavailable.
+resume PDF is stored in the signed-in user's private resume bucket when the
+interview starts. Browser storage remains a fallback if cloud sync is
+unavailable.
 
-The optional facial practice signal is excluded from evidence scoring. It
-should not be used as a hiring decision signal.
+The optional Viva Defense signal requires explicit camera opt-in. Frames and
+face crops stay in the browser and are never saved. A question-level numeric
+summary may be stored with the private practice report, but it is excluded
+from evidence scoring and must not be used for hiring decisions.
 
 ## Useful official references
 

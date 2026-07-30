@@ -145,12 +145,16 @@ Verify this flow:
 - Interview language, type, model, mode, progress, and timestamps
 - Only submitted and confirmed transcripts
 - Per-answer speaking-delivery coaching signals and their reliability metadata
+- An optional final Viva Defense expression summary when the candidate enabled
+  camera coaching
 - Evidence scores, verified excerpts, reasons, and reliability
 - The final report and summary metrics
 - The original resume PDF in the signed-in user's private Storage path
 
 Partial microphone transcripts and raw microphone samples are not saved. The
-speaking-delivery signal is not an emotion reading or hiring score.
+speaking-delivery signal is not an emotion reading or hiring score. Webcam
+frames, face crops, photos, and video never leave the browser and are not
+stored in Supabase.
 
 ## Failure behavior
 

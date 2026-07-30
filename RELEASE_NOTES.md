@@ -1,4 +1,54 @@
-# HireSense AI Natural Voice Interview Release
+# HireSense AI 3D Maya Interviewer
+
+Release date: 2026-07-30
+
+## Local 3D interview experience
+
+- Replaced the inline SVG interviewer with a real lightweight Three.js Maya.
+- Builds the face, hair, eyes, mouth, blazer, lighting, and upper body locally
+  from optimized WebGL geometry. No paid avatar service or external character
+  model is required.
+- Adds natural blinking, direct gaze, restrained breathing and head movement,
+  listening nods, and a thoughtful processing state.
+- Uses browser speech word boundaries for best-effort vowel mouth shapes and
+  procedural jaw motion when boundary events are unavailable.
+- Connects Ready, Speaking, Listening, Thinking, Paused, audio-error, and
+  offline states to the real voice lifecycle.
+- Gives Maya a subtly warmer expression when the existing opt-in Viva Defense
+  support mode is active, without changing question difficulty or scoring.
+- Adds automatic local 2D fallback for failed WebGL initialization or context
+  loss.
+- Removes the visible fixed question counter from the voice-only interview so
+  the conversation feels less scripted.
+- Keeps natural interview progression, Web Speech API, Viva Defense, private
+  Supabase resume storage, and the Google OAuth fix unchanged.
+
+# Previous HireSense AI Viva Defense Integration
+
+Release date: 2026-07-30
+
+## Facial-expression coaching
+
+- Integrated the trained Viva Defense CNN into the focused Live Voice
+  Interview flow.
+- Added explicit camera opt-in and an in-app camera/model readiness check.
+- Runs face detection and TensorFlow.js inference locally in the browser.
+- Does not upload or save frames, photos, face crops, or video.
+- Shows confident-like, uncertain, and stressed-like expression states with a
+  green, amber, or red face box.
+- Records one genuine numeric checkpoint when each answer is submitted.
+- Uses two consecutive high stressed-like checkpoints only to make Maya's
+  wording calmer and clearer. Planned competency and difficulty remain
+  unchanged.
+- Keeps the facial signal completely separate from transcript evidence scores,
+  speaking-delivery scores, hiring decisions, and follow-up selection.
+- Adds a final private coaching summary based on question-level checkpoints.
+- Documents the correct reported results: about 85.1% test accuracy and 0.9349
+  ROC AUC.
+- Preserves the natural eight-stage interview, Web Speech API, private
+  Supabase resume storage, and Google OAuth popup fix.
+
+# Previous Natural Voice Interview Release
 
 Release date: 2026-07-30
 

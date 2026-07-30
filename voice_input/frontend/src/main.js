@@ -62,6 +62,7 @@ let args = {
   tts_enabled: false,
   interviewer_name: "Maya",
   allow_interrupt: true,
+  support_mode: false,
 };
 let recognition = null;
 let listening = false;
@@ -121,6 +122,8 @@ function renderAvatar() {
       interviewState,
       interviewerName: args.interviewer_name || "Maya",
       allowInterrupt: Boolean(args.allow_interrupt),
+      supportMode: Boolean(args.support_mode),
+      spokenText: args.question_text || "",
       onInterrupt: interruptInterviewer,
     }),
   );
@@ -690,7 +693,7 @@ function resetTranscript() {
   micButton.textContent = "🎙";
   micButton.setAttribute("aria-label", "Start listening");
   submitButton.textContent =
-    args.mode === "live" ? "Submit answer" : "Use this answer";
+    args.mode === "live" ? "I'm done" : "Use this answer";
   renderTranscript();
   if (connectionLost) {
     showState("offline", "Reconnect to continue.", "error");
@@ -712,14 +715,36 @@ function cancelSpeech(code = "cancelled", reason = "") {
     });
   }
   speaking = false;
+  emitMayaViseme("rest", 0);
   playQuestionButton.disabled = false;
   if (window.speechSynthesis) window.speechSynthesis.cancel();
+}
+
+function emitMayaViseme(viseme = "rest", intensity = 1) {
+  window.dispatchEvent(
+    new CustomEvent("hiresense:maya-viseme", {
+      detail: {
+        viseme,
+        intensity: Math.max(0, Math.min(1, Number(intensity) || 0)),
+      },
+    }),
+  );
+}
+
+function visemeAtBoundary(text, charIndex) {
+  const segment = String(text || "")
+    .slice(Math.max(0, Number(charIndex) || 0), (Number(charIndex) || 0) + 18)
+    .toLocaleLowerCase(args.language_code || "en-US");
+  const vowel = segment.match(/[aeiou]/)?.[0] || "";
+  const map = { a: "A", e: "E", i: "I", o: "O", u: "U" };
+  return map[vowel] || "A";
 }
 
 function handleSpeechStart(runId) {
   if (!activeSpeech || activeSpeech.runId !== runId) return;
   activeSpeech.started = true;
   speaking = true;
+  emitMayaViseme("A", 0.52);
   hideAudioFallback();
   showState(
     "speaking",
@@ -730,16 +755,19 @@ function handleSpeechStart(runId) {
 
 function handleSpeechEnd(runId) {
   if (!activeSpeech || activeSpeech.runId !== runId) return;
+  emitMayaViseme("rest", 0);
   activeSpeech.finish({ ok: true, code: "ended", reason: "" });
 }
 
 function handleSpeechPause(runId) {
   if (!activeSpeech || activeSpeech.runId !== runId) return;
+  emitMayaViseme("rest", 0);
   showState("paused", "Interviewer paused. Select Resume to continue.");
 }
 
 function handleSpeechResume(runId) {
   if (!activeSpeech || activeSpeech.runId !== runId) return;
+  emitMayaViseme("A", 0.45);
   showState(
     "speaking",
     `${args.interviewer_name || "Maya"} is continuing the question.`,
@@ -749,6 +777,7 @@ function handleSpeechResume(runId) {
 
 function handleSpeechError(runId, event) {
   if (!activeSpeech || activeSpeech.runId !== runId) return;
+  emitMayaViseme("rest", 0);
   const errorCode = String(event?.error || "playback_error");
   activeSpeech.finish({
     ok: false,
@@ -758,6 +787,14 @@ function handleSpeechError(runId, event) {
         ? "Speech playback failed."
         : `Speech playback failed: ${errorCode}.`,
   });
+}
+
+function handleSpeechBoundary(runId, event) {
+  if (!activeSpeech || activeSpeech.runId !== runId) return;
+  emitMayaViseme(
+    visemeAtBoundary(args.question_text, event?.charIndex),
+    event?.name === "sentence" ? 0.48 : 0.9,
+  );
 }
 
 function speakQuestion() {
@@ -788,6 +825,7 @@ function speakQuestion() {
       if (settled) return;
       settled = true;
       speaking = false;
+      emitMayaViseme("rest", 0);
       playQuestionButton.disabled = false;
       window.clearTimeout(startTimer);
       window.clearTimeout(finishTimer);
@@ -813,6 +851,7 @@ function speakQuestion() {
     utterance.onpause = () => handleSpeechPause(runId);
     utterance.onresume = () => handleSpeechResume(runId);
     utterance.onerror = (event) => handleSpeechError(runId, event);
+    utterance.onboundary = (event) => handleSpeechBoundary(runId, event);
 
     try {
       window.speechSynthesis.speak(utterance);
@@ -872,6 +911,7 @@ async function playQuestion({ startMicrophone = false } = {}) {
   paused = false;
   pauseButton.textContent = "Pause";
   audioActivated = true;
+  updateLiveControlVisibility();
   hideAudioFallback();
   playQuestionButton.textContent =
     args.mode === "live" ? "Hear question again" : "Hear question";
@@ -962,6 +1002,18 @@ function setCaptions(enabled) {
   resize();
 }
 
+function updateLiveControlVisibility() {
+  const live = args.mode === "live";
+  const speakerOnly = args.mode === "speaker";
+  app.dataset.audioActive = String(audioActivated);
+  pauseButton.classList.toggle(
+    "hidden",
+    speakerOnly || (live && !audioActivated),
+  );
+  endButton.classList.toggle("hidden", !live || !audioActivated);
+  submitButton.classList.toggle("hidden", live && !audioActivated);
+}
+
 function applyArgs(nextArgs) {
   args = { ...args, ...nextArgs };
   const live = args.mode === "live";
@@ -969,6 +1021,7 @@ function applyArgs(nextArgs) {
   const hasQuestion = Boolean(args.question_text);
   const canSpeakQuestion = hasQuestion && Boolean(args.tts_enabled);
 
+  app.dataset.mode = args.mode;
   title.textContent = live ? "Live answer" : "Voice answer";
   languageLabel.textContent = args.language_label || args.language_code;
   answerControls.classList.toggle("hidden", speakerOnly);
@@ -979,10 +1032,9 @@ function applyArgs(nextArgs) {
   );
   playQuestionButton.classList.toggle("hidden", !canSpeakQuestion);
   rephraseButton.classList.toggle("hidden", !hasQuestion || speakerOnly);
-  progressWrap.classList.toggle("hidden", !live);
-  endButton.classList.toggle("hidden", !live);
-  pauseButton.classList.toggle("hidden", speakerOnly);
-  submitButton.textContent = live ? "Submit answer" : "Use this answer";
+  progressWrap.classList.add("hidden");
+  updateLiveControlVisibility();
+  submitButton.textContent = live ? "I'm done" : "Use this answer";
   question.textContent = args.question_text;
   questionLabel.textContent = args.question_label || "Interview question";
   progressLabel.textContent = `Question ${args.question_num} of ${args.total_questions}`;

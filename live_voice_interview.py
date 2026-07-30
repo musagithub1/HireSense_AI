@@ -16,6 +16,7 @@ def render_live_voice_component(
     question_label: str = "Interview question",
     interviewer_name: str = "Maya",
     allow_interrupt: bool = True,
+    support_mode: bool = False,
 ) -> dict | None:
     """Speak a question, capture an answer, and return it to Streamlit."""
     return render_voice_input(
@@ -34,4 +35,5 @@ def render_live_voice_component(
         tts_enabled=True,
         interviewer_name=interviewer_name,
         allow_interrupt=allow_interrupt,
+        support_mode=support_mode,
     )

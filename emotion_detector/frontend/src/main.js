@@ -34,6 +34,8 @@ let lastPayloadSignature = "";
 let componentArgs = {
   model_url: "app/static/emotion_model/model.json",
   face_models_url: "app/static/face_models/",
+  model_name: "Viva Defense CNN",
+  model_version: "viva-defense-fer2013-v1",
 };
 
 function assetUrl(path) {
@@ -46,8 +48,8 @@ function setBadge(text, kind) {
 }
 
 function stateFromScore(score) {
-  if (score < 0.4) return "calm";
-  if (score > 0.6) return "stressed";
+  if (score < 0.4) return "confident_like";
+  if (score > 0.6) return "stressed_like";
   return "uncertain";
 }
 
@@ -71,11 +73,13 @@ function readingPayload({
   return {
     status,
     stress_score: validScore,
+    confident_score: validScore === null ? null : 1 - validScore,
     calm_score: validScore === null ? null : 1 - validScore,
     state: validScore === null ? "unavailable" : stateFromScore(validScore),
     sample_count: sampleCount,
     measured_at: Date.now(),
-    model_name: "VivaDefense_FaceSensor",
+    model_name: componentArgs.model_name,
+    model_version: componentArgs.model_version,
     model_loaded: model !== null,
     error_code: errorCode,
     message,
@@ -122,22 +126,22 @@ function renderScore(score) {
   const percent = Math.round(score * 100);
   const state = stateFromScore(score);
   const labels = {
-    calm: "Calm signal",
-    uncertain: "Uncertain signal",
-    stressed: "Stress signal",
+    confident_like: "Confident-like expression",
+    uncertain: "Expression signal uncertain",
+    stressed_like: "Stressed-like expression",
   };
   const colors = {
-    calm: "#22c55e",
+    confident_like: "#22c55e",
     uncertain: "#f59e0b",
-    stressed: "#ef4444",
+    stressed_like: "#ef4444",
   };
 
   stateLabel.textContent = labels[state];
-  scoreLabel.textContent = `${percent}% estimated stress`;
+  scoreLabel.textContent = `${percent}% toward stressed-like`;
   scoreTrack.setAttribute("aria-valuenow", String(percent));
   scoreFill.style.width = `${percent}%`;
   scoreFill.style.background = colors[state];
-  statusMessage.textContent = `Smoothed from ${scoreHistory.length} recent face samples.`;
+  statusMessage.textContent = `Model output smoothed from ${scoreHistory.length} recent face samples.`;
 }
 
 function fitOverlay() {
@@ -149,7 +153,7 @@ function fitOverlay() {
   }
 }
 
-function drawFaceBox(box) {
+function drawFaceBox(box, score) {
   fitOverlay();
   const scaleX = overlay.width / video.videoWidth;
   const scaleY = overlay.height / video.videoHeight;
@@ -159,7 +163,13 @@ function drawFaceBox(box) {
   const height = box.height * scaleY;
 
   overlayContext.clearRect(0, 0, overlay.width, overlay.height);
-  overlayContext.strokeStyle = "#4ade80";
+  const state = stateFromScore(score);
+  overlayContext.strokeStyle =
+    state === "confident_like"
+      ? "#4ade80"
+      : state === "stressed_like"
+        ? "#f87171"
+        : "#fbbf24";
   overlayContext.lineWidth = 2;
   overlayContext.strokeRect(x, y, width, height);
 }
@@ -256,7 +266,6 @@ async function processFrame() {
     }
 
     lastFaceAt = Date.now();
-    drawFaceBox(detection.box);
     cropFace(detection.box);
     const score = await inferStressScore();
     sampleCount += 1;
@@ -264,12 +273,13 @@ async function processFrame() {
     if (scoreHistory.length > HISTORY_SIZE) scoreHistory.shift();
 
     const smoothedScore = median(scoreHistory);
+    drawFaceBox(detection.box, smoothedScore);
     renderScore(smoothedScore);
     sendReading(
       readingPayload({
         status: "ready",
         stressScore: smoothedScore,
-        message: "Live trained-model reading.",
+        message: "Live Viva Defense expression reading.",
       }),
     );
   } catch (error) {
@@ -302,7 +312,7 @@ async function start() {
       tf.loadGraphModel(modelUrl),
       faceapi.nets.tinyFaceDetector.loadFromUri(faceModelUrl),
     ]);
-    setBadge("Trained model ready", "ready");
+    setBadge("Viva Defense ready", "ready");
   } catch (error) {
     console.error("HireSense model loading failed", error);
     setBadge("Model unavailable", "error");

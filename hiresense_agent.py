@@ -572,11 +572,17 @@ class StrategyAgent(BaseAgent):
             state, f"Invoking EmotionAdaptationTool with state: '{emotion}'"
         )
         if emotion in {"stress_signal", "stressed"}:
-            emotion_strategy = "Experimental stress signal is elevated. Use a warm tone and lower initial difficulty without claiming to know the candidate's feelings."
-        elif emotion in {"calm_signal", "confident"}:
-            emotion_strategy = "Experimental stress signal is low. Use advanced practice questions without calling it a confidence measurement."
+            emotion_strategy = (
+                "Repeated Viva Defense checkpoints were stressed-like. Use a "
+                "calm acknowledgment and clear single-part wording. Keep the "
+                "planned competency and difficulty unchanged. Never mention "
+                "the signal or claim to know how the candidate feels."
+            )
         else:
-            emotion_strategy = "Candidate is NEUTRAL → Maintain balanced professional tone. Standard difficulty."
+            emotion_strategy = (
+                "Use a balanced professional tone and follow the planned "
+                "interview progression."
+            )
         yield self._tool_use(state, "EmotionAdaptationTool", emotion_strategy)
 
         # Company context is already assembled from the selected in-app guide.
@@ -736,6 +742,7 @@ Stage purpose: {phase.get("purpose", "Assess role-relevant evidence.")}
 Difficulty: {strategy.get("difficulty", "medium")}
 Question plan: {strategy.get("focus_area", "Ask one role-relevant question.")}
 Delivery guidance: {strategy.get("delivery_guidance", "Use a calm professional tone.")}
+Facial coaching guidance: {strategy.get("emotion_strategy", "Use a balanced professional tone.")}
 
 Make the conversation feel connected to what the candidate just said. For
 questions after the introduction, begin with a brief natural acknowledgment,

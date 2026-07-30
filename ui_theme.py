@@ -922,8 +922,6 @@ def render_voice_only_header(
     total_questions: int,
 ) -> None:
     """Render a calm header for the single live voice product flow."""
-    current = min(max(1, int(question_number)), max(1, int(total_questions)))
-    total = max(1, int(total_questions))
     logo_source = brand_logo_source()
     logo_html = (
         f'<div class="hs-live-brand"><img src="{logo_source}" alt="HireSense AI"></div>'
@@ -939,12 +937,12 @@ def render_voice_only_header(
                     <div class="hs-eyebrow">Interview in progress</div>
                     <h1 class="hs-live-title">Live voice interview</h1>
                 </div>
-                <div class="hs-progress-copy">Question {current} of {total}</div>
             </div>
             <div class="hs-meta-row">
                 <span class="hs-chip accent">Live voice</span>
                 <span class="hs-chip">{html.escape(language)}</span>
                 <span class="hs-chip">Personalized questions</span>
+                <span class="hs-chip">3D interviewer</span>
             </div>
         </section>
         """,

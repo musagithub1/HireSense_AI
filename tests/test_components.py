@@ -10,6 +10,7 @@ def test_webcam_never_substitutes_invalid_scores() -> None:
     for value in (None, {}, {"status": "ready", "stress_score": "not-a-number"}):
         reading = webcam_component.normalize_emotion_reading(value)
         assert reading["stress_score"] is None
+        assert reading["confident_score"] is None
         assert reading["calm_score"] is None
         assert reading["state"] == "unavailable"
 
@@ -24,9 +25,79 @@ def test_webcam_accepts_only_ready_model_reading() -> None:
         }
     )
     assert reading["stress_score"] == 0.78
+    assert abs(reading["confident_score"] - 0.22) < 1e-12
     assert abs(reading["calm_score"] - 0.22) < 1e-12
-    assert reading["state"] == "stressed"
+    assert reading["state"] == "stressed_like"
     assert webcam_component.reading_is_usable(reading)
+
+
+def test_facial_support_requires_repeated_high_quality_checkpoints() -> None:
+    one_reading = [
+        {
+            "stress_level": 0.82,
+            "source": "trained_facial_model",
+            "sample_count": 20,
+        }
+    ]
+    assert webcam_component.interviewer_support_state(one_reading) == "neutral"
+
+    repeated = [
+        *one_reading,
+        {
+            "stress_level": 0.76,
+            "source": "trained_facial_model",
+            "sample_count": 34,
+        },
+    ]
+    assert (
+        webcam_component.interviewer_support_state(repeated)
+        == "stress_signal"
+    )
+
+    low_sample = [
+        *one_reading,
+        {
+            "stress_level": 0.91,
+            "source": "trained_facial_model",
+            "sample_count": 2,
+        },
+    ]
+    assert webcam_component.interviewer_support_state(low_sample) == "neutral"
+
+
+def test_facial_summary_reports_expression_checkpoints_not_confidence() -> None:
+    summary = webcam_component.summarize_facial_expression_timeline(
+        [
+            {
+                "stress_level": 0.18,
+                "source": "trained_facial_model",
+                "sample_count": 15,
+            },
+            {
+                "stress_level": 0.35,
+                "source": "trained_facial_model",
+                "sample_count": 28,
+            },
+            {
+                "stress_level": 0.52,
+                "source": "trained_facial_model",
+                "sample_count": 41,
+            },
+            {
+                "stress_level": 0.92,
+                "source": "developer_override",
+                "sample_count": 1,
+            },
+        ]
+    )
+
+    assert summary is not None
+    assert summary["checkpoint_count"] == 3
+    assert summary["confident_like_count"] == 2
+    assert summary["uncertain_count"] == 1
+    assert summary["stressed_like_count"] == 0
+    assert summary["label"] == "Mostly confident-like expressions"
+    assert "internal confidence" in summary["disclaimer"]
 
 
 def test_voice_result_validation() -> None:

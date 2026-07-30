@@ -1,19 +1,25 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 
-export type InterviewState =
-  | "ready"
-  | "listening"
-  | "processing"
-  | "speaking"
-  | "paused"
-  | "error"
-  | "offline";
+import {
+  MayaAvatar3D,
+  type MayaState,
+  type MayaViseme,
+} from "./MayaAvatar3D";
+
+export type InterviewState = MayaState;
 
 type InterviewAvatarProps = {
   interviewState: InterviewState;
   interviewerName?: string;
   allowInterrupt?: boolean;
+  supportMode?: boolean;
+  spokenText?: string;
   onInterrupt?: () => void;
+};
+
+type VisemeDetail = {
+  viseme?: MayaViseme;
+  intensity?: number;
 };
 
 const STATE_COPY: Record<
@@ -50,197 +56,157 @@ const STATE_COPY: Record<
   },
 };
 
+function StaticAvatarFallback({
+  interviewerName,
+}: {
+  interviewerName: string;
+}) {
+  return (
+    <svg
+      className="interviewer-fallback"
+      viewBox="0 0 240 280"
+      role="img"
+      aria-label={`Portrait of ${interviewerName}`}
+    >
+      <defs>
+        <linearGradient id="fallback-jacket" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#26375f" />
+          <stop offset="100%" stopColor="#111a35" />
+        </linearGradient>
+        <radialGradient id="fallback-skin" cx="42%" cy="28%" r="72%">
+          <stop offset="0%" stopColor="#f0c0aa" />
+          <stop offset="100%" stopColor="#d28d78" />
+        </radialGradient>
+      </defs>
+      <path
+        d="M22 280c5-48 39-74 80-80h36c41 6 75 32 80 80H22Z"
+        fill="url(#fallback-jacket)"
+      />
+      <path d="m91 206 29 42 29-42-14-9h-30l-14 9Z" fill="#f0efff" />
+      <path
+        d="M63 94c0-55 24-86 58-86 41 0 65 35 62 88l-7 91c-19 21-93 21-113-2V94Z"
+        fill="#21182b"
+      />
+      <path
+        d="M78 88c3-42 22-62 44-62 30 0 50 27 49 68l-3 40c-3 39-21 61-46 61-27 0-45-25-47-64l3-43Z"
+        fill="url(#fallback-skin)"
+      />
+      <path
+        d="M78 90c2-46 20-69 48-69 26 0 45 18 50 52-18-4-32-16-40-35-14 25-33 40-58 52Z"
+        fill="#21182b"
+      />
+      <ellipse cx="103" cy="116" rx="9" ry="6" fill="#fffaf5" />
+      <ellipse cx="142" cy="116" rx="9" ry="6" fill="#fffaf5" />
+      <circle cx="104" cy="116" r="3.8" fill="#5b3f32" />
+      <circle cx="141" cy="116" r="3.8" fill="#5b3f32" />
+      <path
+        d="M93 101c8-5 16-5 23-1M130 100c8-4 16-3 22 2"
+        fill="none"
+        stroke="#3c2430"
+        strokeLinecap="round"
+        strokeWidth="3.4"
+      />
+      <path
+        d="M122 119c0 9-2 18-5 25 4 3 9 3 13 0"
+        fill="none"
+        stroke="#bd7767"
+        strokeLinecap="round"
+        strokeWidth="2.3"
+      />
+      <path
+        className="fallback-mouth"
+        d="M108 158c9 4 19 4 29 0-6 10-22 11-29 0Z"
+        fill="#8f4a57"
+      />
+    </svg>
+  );
+}
+
 export default function InterviewAvatar({
   interviewState,
   interviewerName = "Maya",
   allowInterrupt = true,
+  supportMode = false,
+  spokenText = "",
   onInterrupt,
 }: InterviewAvatarProps) {
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const avatarRef = useRef<MayaAvatar3D | null>(null);
+  const [usingFallback, setUsingFallback] = useState(false);
   const stateCopy = STATE_COPY[interviewState] ?? STATE_COPY.ready;
   const canInterrupt = allowInterrupt && interviewState === "speaking";
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return undefined;
+
+    try {
+      avatarRef.current = new MayaAvatar3D({
+        canvas,
+        onUnavailable: () => {
+          avatarRef.current?.destroy();
+          avatarRef.current = null;
+          setUsingFallback(true);
+        },
+      });
+    } catch {
+      avatarRef.current = null;
+      setUsingFallback(true);
+    }
+
+    return () => {
+      avatarRef.current?.destroy();
+      avatarRef.current = null;
+    };
+  }, []);
+
+  useEffect(() => {
+    avatarRef.current?.setState(interviewState);
+  }, [interviewState]);
+
+  useEffect(() => {
+    avatarRef.current?.setSupportMode(supportMode);
+  }, [supportMode]);
+
+  useEffect(() => {
+    const handleViseme = (event: Event) => {
+      const detail = (event as CustomEvent<VisemeDetail>).detail ?? {};
+      avatarRef.current?.setViseme(detail);
+    };
+    window.addEventListener("hiresense:maya-viseme", handleViseme);
+    return () =>
+      window.removeEventListener("hiresense:maya-viseme", handleViseme);
+  }, []);
 
   return (
     <section
       className="interviewer-card"
       data-state={interviewState}
-      aria-label={`${interviewerName}, HireSense AI interviewer. ${stateCopy.label}.`}
+      data-support={supportMode ? "true" : "false"}
+      aria-label={`${interviewerName}, HireSense 3D AI interviewer. ${stateCopy.label}.`}
     >
-      <div className="interviewer-visual" aria-hidden="true">
-        <div className="avatar-orbit avatar-orbit-one" />
-        <div className="avatar-orbit avatar-orbit-two" />
-        <div className="avatar-signal-ring" />
-
-        <svg
-          className="interviewer-svg"
-          viewBox="0 0 280 300"
-          role="img"
-          aria-label={`Animated portrait of ${interviewerName}`}
-        >
-          <defs>
-            <linearGradient id="avatar-jacket" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#202a4a" />
-              <stop offset="100%" stopColor="#11182f" />
-            </linearGradient>
-            <linearGradient id="avatar-shirt" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#f5f3ff" />
-              <stop offset="100%" stopColor="#c4b5fd" />
-            </linearGradient>
-            <linearGradient id="avatar-hair" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#251b31" />
-              <stop offset="100%" stopColor="#130e20" />
-            </linearGradient>
-            <radialGradient id="avatar-skin" cx="42%" cy="30%" r="72%">
-              <stop offset="0%" stopColor="#f5c9b5" />
-              <stop offset="100%" stopColor="#d9977f" />
-            </radialGradient>
-            <filter id="avatar-shadow" x="-30%" y="-30%" width="160%" height="180%">
-              <feDropShadow
-                dx="0"
-                dy="10"
-                stdDeviation="10"
-                floodColor="#050812"
-                floodOpacity=".28"
-              />
-            </filter>
-          </defs>
-
-          <g className="avatar-body" filter="url(#avatar-shadow)">
-            <path
-              className="avatar-shoulders"
-              d="M31 300c6-52 38-78 82-87h54c44 9 76 35 82 87H31Z"
-              fill="url(#avatar-jacket)"
-            />
-            <path
-              d="m107 218 33 50 33-50-17-11h-32l-17 11Z"
-              fill="url(#avatar-shirt)"
-            />
-            <path
-              d="m105 218 35 50-20 32H72c5-37 17-62 33-82Z"
-              fill="#18213d"
-            />
-            <path
-              d="m175 218-35 50 20 32h48c-5-37-17-62-33-82Z"
-              fill="#18213d"
-            />
-          </g>
-
-          <g className="avatar-head">
-            <path
-              className="avatar-hair-back"
-              d="M75 104c0-58 29-92 67-92 45 0 71 37 68 93l-8 93c-22 22-104 23-126-2l-1-92Z"
-              fill="url(#avatar-hair)"
-            />
-            <path
-              className="avatar-neck"
-              d="M119 178h43l5 42c-17 16-37 16-54 0l6-42Z"
-              fill="#d99a83"
-            />
-            <ellipse cx="79" cy="123" rx="13" ry="21" fill="#dea088" />
-            <ellipse cx="204" cy="123" rx="13" ry="21" fill="#dea088" />
-            <path
-              className="avatar-face"
-              d="M88 94c3-45 27-66 54-66 34 0 58 29 56 72l-3 44c-3 41-25 65-54 65-31 0-52-27-54-68l1-47Z"
-              fill="url(#avatar-skin)"
-            />
-            <path
-              d="M88 95c3-48 24-73 58-73 29 0 52 19 58 56-20-4-38-18-47-38-16 27-39 43-69 55Z"
-              fill="url(#avatar-hair)"
-            />
-            <path
-              d="M91 92c-3 28-3 65 7 92-19-19-28-49-22-85 5-35 22-62 50-73-21 17-32 38-35 66Z"
-              fill="#1a1325"
-            />
-            <path
-              d="M197 82c9 34 5 76-4 105 19-18 26-54 19-89-6-32-24-58-52-68 20 15 32 31 37 52Z"
-              fill="#171022"
-            />
-
-            <path
-              className="avatar-brow avatar-brow-left"
-              d="M104 109c9-6 20-6 29-1"
-              fill="none"
-              stroke="#4a2930"
-              strokeLinecap="round"
-              strokeWidth="4"
-            />
-            <path
-              className="avatar-brow avatar-brow-right"
-              d="M151 108c9-5 20-4 27 2"
-              fill="none"
-              stroke="#4a2930"
-              strokeLinecap="round"
-              strokeWidth="4"
-            />
-
-            <g className="avatar-eyes">
-              <ellipse cx="119" cy="125" rx="11" ry="8" fill="#fffaf8" />
-              <ellipse cx="166" cy="125" rx="11" ry="8" fill="#fffaf8" />
-              <circle className="avatar-pupil avatar-pupil-left" cx="121" cy="125" r="4.6" fill="#473a52" />
-              <circle className="avatar-pupil avatar-pupil-right" cx="164" cy="125" r="4.6" fill="#473a52" />
-              <circle cx="122.4" cy="123.5" r="1.4" fill="#ffffff" />
-              <circle cx="165.4" cy="123.5" r="1.4" fill="#ffffff" />
-              <path
-                className="avatar-eyelid avatar-eyelid-left"
-                d="M107 124c7-9 18-10 25 0-8 5-17 5-25 0Z"
-                fill="#e5ad98"
-              />
-              <path
-                className="avatar-eyelid avatar-eyelid-right"
-                d="M153 124c7-9 18-9 25 1-8 5-17 5-25-1Z"
-                fill="#e5ad98"
-              />
-            </g>
-
-            <path
-              d="M141 127c-1 11-3 22-7 31 5 4 11 4 16 0"
-              fill="none"
-              stroke="#bd7767"
-              strokeLinecap="round"
-              strokeWidth="2.6"
-            />
-            <ellipse cx="106" cy="153" rx="12" ry="6" fill="#e58d86" opacity=".17" />
-            <ellipse cx="178" cy="153" rx="12" ry="6" fill="#e58d86" opacity=".17" />
-
-            <g className="avatar-mouth">
-              <path
-                className="avatar-mouth-fill"
-                d="M124 174c10 4 22 4 34 0-6 16-27 17-34 0Z"
-                fill="#6f3044"
-              />
-              <path
-                className="avatar-teeth"
-                d="M127 176c9 2 19 2 28 0-6 6-21 7-28 0Z"
-                fill="#fff8f4"
-              />
-              <path
-                className="avatar-mouth-line"
-                d="M124 174c10 4 22 4 34 0"
-                fill="none"
-                stroke="#8f4a57"
-                strokeLinecap="round"
-                strokeWidth="2.4"
-              />
-            </g>
-          </g>
-
-          <g className="avatar-thinking-dots">
-            <circle cx="204" cy="46" r="5" />
-            <circle cx="220" cy="34" r="5" />
-            <circle cx="238" cy="25" r="5" />
-          </g>
-
-          <g className="avatar-wave">
-            <rect x="92" y="278" width="5" height="8" rx="2.5" />
-            <rect x="103" y="273" width="5" height="18" rx="2.5" />
-            <rect x="114" y="267" width="5" height="30" rx="2.5" />
-            <rect x="125" y="271" width="5" height="22" rx="2.5" />
-            <rect x="136" y="264" width="5" height="36" rx="2.5" />
-            <rect x="147" y="270" width="5" height="24" rx="2.5" />
-            <rect x="158" y="266" width="5" height="32" rx="2.5" />
-            <rect x="169" y="273" width="5" height="18" rx="2.5" />
-            <rect x="180" y="278" width="5" height="8" rx="2.5" />
-          </g>
-        </svg>
+      <div className="interviewer-visual">
+        <div className="avatar-orbit avatar-orbit-one" aria-hidden="true" />
+        <div className="avatar-orbit avatar-orbit-two" aria-hidden="true" />
+        <div className="avatar-signal-ring" aria-hidden="true" />
+        <canvas
+          ref={canvasRef}
+          className={`maya-3d-canvas${usingFallback ? " hidden" : ""}`}
+          data-avatar-engine="threejs"
+          data-spoken-text-length={spokenText.length}
+          aria-hidden="true"
+        />
+        {usingFallback ? (
+          <StaticAvatarFallback interviewerName={interviewerName} />
+        ) : null}
+        <span className="avatar-depth-label" aria-hidden="true">
+          3D
+        </span>
+        <div className="avatar-wave" aria-hidden="true">
+          {Array.from({ length: 9 }, (_, index) => (
+            <span key={index} />
+          ))}
+        </div>
       </div>
 
       <div className="interviewer-copy">

@@ -5,8 +5,8 @@
 The live interview keeps one Streamlit component instance for the full session:
 
 1. HireSense selects the current interview stage and generates one question.
-2. Maya, the local animated HireSense AI interviewer, enters Speaking while
-   browser speech synthesis reads the current question aloud.
+2. Maya, the local 3D HireSense AI interviewer, enters Speaking while browser
+   speech synthesis reads the current question aloud.
 3. Browser speech recognition streams interim and final transcript text.
 4. The candidate may correct the transcript before submission.
 5. Adaptive voice activity detection normally submits about 1.9 seconds after the
@@ -39,25 +39,36 @@ Maya briefly acknowledges the previous response before moving forward. The
 stage plan controls the gradual increase in complexity, while a follow-up
 stays tied to evidence missing from the candidate's latest answer.
 
-## Animated interviewer
+## 3D interviewer
 
-`voice_input/frontend/src/InterviewAvatar.tsx` contains the interviewer as an
-inline animated SVG. It does not call an avatar service, download video, inspect
-the candidate, or add network latency.
+`voice_input/frontend/src/MayaAvatar3D.ts` builds Maya locally from lightweight
+Three.js geometry. `InterviewAvatar.tsx` connects the WebGL scene to the live
+interview and provides an accessible 2D fallback if WebGL initialization fails
+or the browser loses its rendering context. The app does not call an avatar
+service, download video, or fetch a third-party character model.
 
 The voice lifecycle drives the avatar directly:
 
-- Speech start: Speaking animation and waveform
+- Speech start: Speaking animation, waveform, and lip motion
+- Speech word boundary: best-effort A, E, I, O, and U mouth shapes
+- Browsers without reliable boundaries: procedural jaw motion while speaking
 - Speech end: Ready, followed by Listening
-- Candidate microphone activity: Listening pulse and subtle nod
-- Answer submission: Thinking while Streamlit prepares the next turn
+- Candidate microphone activity: Listening pulse, direct gaze, and restrained nod
+- Answer submission: Thoughtful gaze while Streamlit prepares the next turn
 - Pause and resume: preserved speech and transcript state
 - Playback error: written-question fallback with continued answer controls
 - Offline: connection-recovery state
+- Repeated opt-in stressed-like checkpoints: a subtly warmer expression while
+  wording becomes calmer, without changing question difficulty
 
 During Speaking, **Interrupt interviewer** cancels the current utterance and
 starts the microphone. The control is optional at the Python component boundary
 and is enabled for live mode only.
+
+The scene uses only an upper body, conservative geometry counts, capped pixel
+density, no shadows, and no external textures. The production JavaScript bundle
+is cached with the rest of the Streamlit component. Reduced-motion preferences
+disable nonessential movement.
 
 ## Visible states
 
@@ -111,6 +122,42 @@ Typed fallback answers do not receive a speaking-delivery score. The model
 does not inspect pitch, accent, gender, identity, facial appearance, or
 emotion. It must not be used for hiring, ranking, screening, or psychological
 judgment.
+
+## Viva Defense facial-expression coaching
+
+Camera coaching is separate from the speaking-delivery and evidence models.
+It runs only after the candidate explicitly enables it.
+
+1. Tiny Face Detector locates one face in the browser video.
+2. The detected area is cropped, converted to 48 by 48 grayscale, and scaled
+   to values between 0 and 1.
+3. The converted Viva Defense TensorFlow.js GraphModel produces one output
+   toward its stressed-like training class.
+4. HireSense applies a nine-sample median to reduce visible flicker.
+5. One genuine checkpoint is recorded when each answer is submitted.
+
+The camera feed, images, and face crops never leave the browser and are never
+recorded. Only the bounded numeric checkpoint and model metadata reach
+Streamlit. Missing camera, face, or model data stays unavailable.
+
+The output classes come from this dataset mapping:
+
+| FER2013 source labels | HireSense display label |
+|---|---|
+| Happy, Neutral | Confident-like |
+| Fear, Anger, Sadness | Stressed-like |
+| Surprise, Disgust | Excluded from training |
+
+The project reports about 85.1% test accuracy and 0.9349 ROC AUC on its
+FER2013-derived holdout set. It has not established that these classes measure
+a candidate's internal confidence or stress. It has no weight in evidence
+scoring.
+
+After two consecutive stressed-like answer checkpoints, each backed by at
+least six face samples and a model output of at least 0.70, Maya may use a
+calmer acknowledgment and clearer single-part wording. The stage, planned
+difficulty, competency, and follow-up decision remain unchanged. A
+confident-like checkpoint never makes the interview artificially harder.
 
 ## Evidence scoring
 

@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HireSense emotion detector</title>
-    <script type="module" crossorigin src="./assets/index-D3Yr9EWX.js"></script>
+    <title>HireSense Viva Defense facial signal</title>
+    <script type="module" crossorigin src="./assets/index-BH-TXL9b.js"></script>
     <link rel="stylesheet" crossorigin href="./assets/index-B5zYpDbr.css">
   </head>
   <body>
@@ -21,21 +21,21 @@
       <section class="reading" aria-live="polite">
         <div class="reading-header">
           <div>
-            <p class="eyebrow">Live facial signal</p>
+            <p class="eyebrow">Viva Defense facial signal</p>
             <h2 id="state-label">Initializing</h2>
           </div>
           <span id="model-badge" class="badge badge-loading">Loading model</span>
         </div>
 
         <div class="score-row">
-          <span>Calm</span>
+          <span>Confident-like</span>
           <strong id="score-label">No reading</strong>
-          <span>Stressed</span>
+          <span>Stressed-like</span>
         </div>
         <div
           class="score-track"
           role="progressbar"
-          aria-label="Estimated stress score"
+          aria-label="Viva Defense stressed-class model output"
           aria-valuemin="0"
           aria-valuemax="100"
           aria-valuenow="0"
@@ -46,7 +46,9 @@
           Loading the trained model and face detector.
         </p>
         <p class="disclaimer">
-          Practice signal only. This is not a medical or hiring assessment.
+          Frames stay on this device. No images or video are saved. This
+          expression signal is not a measure of inner confidence or a hiring
+          assessment.
         </p>
       </section>
     </main>

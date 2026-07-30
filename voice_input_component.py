@@ -122,6 +122,7 @@ def render_voice_input(
     tts_enabled: bool = False,
     interviewer_name: str = "Maya",
     allow_interrupt: bool = False,
+    support_mode: bool = False,
 ) -> dict | None:
     """Render speech recognition and return a submitted transcript directly."""
     if mode not in {"standard", "live", "speaker"}:
@@ -140,6 +141,7 @@ def render_voice_input(
         tts_enabled=bool(tts_enabled or mode in {"live", "speaker"}),
         interviewer_name=str(interviewer_name).strip()[:60] or "Maya",
         allow_interrupt=bool(allow_interrupt and mode == "live"),
+        support_mode=bool(support_mode and mode == "live"),
         default=None,
         key=key,
     )

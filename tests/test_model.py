@@ -2,12 +2,18 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 import math
 from pathlib import Path
 
+import webcam_component
+
 ROOT = Path(__file__).parents[1]
 MODEL_DIR = ROOT / "static" / "emotion_model"
+SOURCE_MODEL_SHA256 = (
+    "5c2800f0613272e0c7b99ef894db8027b7a40a386bea04e212f7c132aa6fe61c"
+)
 
 
 def test_graph_model_manifest_and_signature() -> None:
@@ -47,7 +53,20 @@ def test_weight_shards_are_complete() -> None:
 
 
 def test_source_model_and_browser_assets_are_packaged() -> None:
-    assert (ROOT / "models" / "viva_defense_final.keras").stat().st_size > 1_000_000
+    source_model = ROOT / "models" / "viva_defense_final.keras"
+    assert source_model.stat().st_size > 1_000_000
+    assert hashlib.sha256(source_model.read_bytes()).hexdigest() == (
+        SOURCE_MODEL_SHA256
+    )
     assert (
         ROOT / "static" / "face_models" / "tiny_face_detector_model.bin"
     ).stat().st_size > 100_000
+
+
+def test_viva_defense_metrics_are_named_accurately() -> None:
+    assert webcam_component.MODEL_NAME == "Viva Defense CNN"
+    assert webcam_component.MODEL_TEST_ACCURACY == 0.851
+    assert webcam_component.MODEL_ROC_AUC == 0.9349
+    assert webcam_component.MODEL_TEST_ACCURACY != (
+        webcam_component.MODEL_ROC_AUC
+    )

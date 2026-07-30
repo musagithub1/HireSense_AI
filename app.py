@@ -221,6 +221,8 @@ def init_session_state():
         "interview_complete": False,
         "tts_enabled": True,
         "webcam_enabled": False,
+        "facial_signal_consent": False,
+        "facial_support_questions": [],
         "voice_input_enabled": True,
         "current_stress_level": None,
         "emotion_reading": None,
@@ -331,6 +333,24 @@ def record_current_stress(question_num: int) -> bool:
         }
     )
     return True
+
+
+def _facial_interviewer_state(question_num: int) -> str:
+    """Return a consented tone hint without changing interview difficulty."""
+    if not st.session_state.get("facial_signal_consent", False):
+        return "neutral"
+
+    state = webcam.interviewer_support_state(
+        st.session_state.get("interview_stress_timeline", [])
+    )
+    if state == "stress_signal":
+        used_questions = st.session_state.setdefault(
+            "facial_support_questions",
+            [],
+        )
+        if question_num not in used_questions:
+            used_questions.append(question_num)
+    return state
 
 
 def get_ui_text(key: str) -> str:
@@ -513,6 +533,9 @@ def _record_metrics(qa_pairs: list[dict], duration: str) -> dict:
     delivery_summary = confidence_model.summarize_interview_delivery(
         st.session_state.get("interview_history", [])
     )
+    facial_summary = webcam.summarize_facial_expression_timeline(
+        st.session_state.get("interview_stress_timeline", [])
+    )
     stress_values = [
         float(item["stress_level"])
         for item in st.session_state.get("interview_stress_timeline", [])
@@ -536,6 +559,10 @@ def _record_metrics(qa_pairs: list[dict], duration: str) -> dict:
         ),
         "questions_answered": len(qa_pairs),
         "delivery_confidence": delivery_summary,
+        "facial_expression_summary": facial_summary,
+        "facial_support_questions": list(
+            st.session_state.get("facial_support_questions", [])
+        ),
     }
 
 
@@ -1718,6 +1745,9 @@ def _render_legacy_interview_setup():
 
 def _enforce_live_voice_product_defaults() -> None:
     """Keep the public product on one predictable live voice path."""
+    facial_signal_consent = bool(
+        st.session_state.get("facial_signal_consent", False)
+    )
     st.session_state.update(
         {
             "page": "interview",
@@ -1730,7 +1760,7 @@ def _enforce_live_voice_product_defaults() -> None:
             "max_total_followups": interview_flow.MAX_TOTAL_FOLLOWUPS,
             "tts_enabled": True,
             "voice_input_enabled": True,
-            "webcam_enabled": False,
+            "webcam_enabled": facial_signal_consent,
             "video_recording_enabled": False,
             "copilot_enabled": False,
             "coding_mode_enabled": False,
@@ -1770,6 +1800,7 @@ def _begin_live_voice_interview() -> None:
             "_latency_session_id": uuid4().hex,
             "latency_samples": [],
             "interview_stress_timeline": [],
+            "facial_support_questions": [],
             "current_question_num": 1,
             "interview_complete": False,
             "interview_start_time": time.time(),
@@ -1962,13 +1993,50 @@ def render_interview_setup() -> None:
                 key="save_live_voice_language",
             )
 
+    with st.container(border=True):
+        st.markdown("### Optional camera coaching")
+        st.session_state["facial_signal_consent"] = st.checkbox(
+            "Use my Viva Defense facial-expression model",
+            key="live_voice_facial_signal_consent",
+            value=bool(
+                st.session_state.get("facial_signal_consent", False)
+            ),
+            help=(
+                "The camera feed and model run in your browser. HireSense records "
+                "only one numeric expression checkpoint after each answer."
+            ),
+        )
+        st.session_state["webcam_enabled"] = st.session_state[
+            "facial_signal_consent"
+        ]
+        st.caption(
+            "Frames stay on your device and are not recorded or uploaded. "
+            "The signal may soften Maya's wording after repeated stressed-like "
+            "expressions, but it never changes your question difficulty or score."
+        )
+
+        if st.session_state["facial_signal_consent"]:
+            with st.expander("Check camera and Viva Defense model", expanded=True):
+                emotion_reading = webcam.render_webcam_emotion_detector(
+                    key="setup_viva_defense_detector",
+                    default=st.session_state.get("emotion_reading"),
+                )
+                st.session_state["emotion_reading"] = emotion_reading
+                if webcam.reading_is_usable(emotion_reading):
+                    st.success("Camera and Viva Defense model are ready.")
+                elif emotion_reading.get("status") == "error":
+                    st.warning(
+                        "Camera coaching is unavailable. You can still complete "
+                        "the live voice interview."
+                    )
+
     can_start = bool(
         st.session_state.get("interview_resume_text")
         and st.session_state.get("interview_jd_text")
     )
     st.caption(
         "Natural interview stages · Adaptive follow-ups · Gradually increasing "
-        "difficulty · Transcript-based feedback"
+        "difficulty · Transcript and optional camera coaching"
     )
     if not can_start:
         st.info(
@@ -2012,7 +2080,7 @@ def render_live_voice_session():
         )
 
     if st.session_state.get("webcam_enabled", False):
-        with st.expander("Optional practice-only facial signal", expanded=False):
+        with st.expander("Viva Defense camera coaching", expanded=False):
             emotion_reading = webcam.render_webcam_emotion_detector(
                 key="live_voice_emotion_detector",
                 default=st.session_state.get("emotion_reading"),
@@ -2025,8 +2093,9 @@ def render_live_voice_session():
             else:
                 st.session_state["current_stress_level"] = None
             st.caption(
-                "This experimental signal is excluded from evidence scoring and "
-                "is not a confidence measurement."
+                "Frames stay on this device and are never recorded. The model "
+                "estimates confident-like versus stressed-like expressions; it "
+                "does not know how confident you actually feel."
             )
 
     if st.session_state.get("interview_complete"):
@@ -2035,6 +2104,11 @@ def render_live_voice_session():
 
     if st.session_state.get("awaiting_followup", False):
         with st.spinner("HireSense is preparing a targeted follow-up..."):
+            st.session_state["current_emotional_state"] = (
+                _facial_interviewer_state(
+                    st.session_state.get("current_question_num", 1)
+                )
+            )
             history = st.session_state["interview_history"]
             if len(history) >= 2:
                 original_question = history[-2]["content"]
@@ -2114,10 +2188,12 @@ def render_live_voice_session():
 
     elif st.session_state.get("awaiting_question", True):
         with st.spinner("HireSense is preparing your next question..."):
-            # Question selection remains answer- and role-based. The optional
-            # facial practice signal never changes interview difficulty.
-            st.session_state["current_emotional_state"] = "neutral"
             question_number = st.session_state["current_question_num"]
+            # Facial coaching can soften wording after repeated stressed-like
+            # checkpoints. The planned phase and difficulty remain unchanged.
+            st.session_state["current_emotional_state"] = (
+                _facial_interviewer_state(question_number)
+            )
             prefetched = _resolve_prefetched_base_question(question_number)
 
             if (
@@ -2242,6 +2318,10 @@ def render_live_voice_session():
             tts_speed=1.0,
             question_revision=st.session_state.get("current_question_revision", 0),
             question_label=visible_label,
+            support_mode=(
+                st.session_state.get("current_emotional_state")
+                == "stress_signal"
+            ),
         )
 
         if voice_result:
@@ -3244,6 +3324,7 @@ def _reset_live_voice_interview() -> None:
             "interview_complete": False,
             "interview_history": [],
             "interview_stress_timeline": [],
+            "facial_support_questions": [],
             "current_question_num": 0,
             "interview_report": None,
             "evidence_assessment": None,
@@ -3361,6 +3442,60 @@ def render_interview_results() -> None:
             for item in delivery_summary.get("opportunities", []):
                 st.markdown(f"- {item}")
         st.caption(delivery_summary["disclaimer"])
+
+    facial_summary = webcam.summarize_facial_expression_timeline(
+        st.session_state.get("interview_stress_timeline", [])
+    )
+    if facial_summary:
+        st.markdown("### Viva Defense facial-expression coaching")
+        st.info(facial_summary["label"])
+        facial_col1, facial_col2, facial_col3 = st.columns(3)
+        facial_col1.metric(
+            "Confident-like",
+            facial_summary["confident_like_count"],
+        )
+        facial_col2.metric(
+            "Uncertain",
+            facial_summary["uncertain_count"],
+        )
+        facial_col3.metric(
+            "Stressed-like",
+            facial_summary["stressed_like_count"],
+        )
+        support_questions = st.session_state.get(
+            "facial_support_questions",
+            [],
+        )
+        if support_questions:
+            st.caption(
+                "Maya used calmer wording after repeated stressed-like "
+                f"checkpoints on {len(support_questions)} question"
+                f"{'s' if len(support_questions) != 1 else ''}. The planned "
+                "competency and difficulty did not change."
+            )
+        st.caption(
+            f"{facial_summary['checkpoint_count']} question-level checkpoints. "
+            "Frames were processed in the browser and were not saved."
+        )
+        with st.expander("How to interpret this model"):
+            st.markdown(
+                "Viva Defense was trained on FER2013-derived expression groups: "
+                "**Happy + Neutral → Confident-like** and "
+                "**Fear + Anger + Sadness → Stressed-like**. Its reported test "
+                "accuracy is about **85.1%**, while its reported ROC AUC is "
+                "**0.9349**. These are different metrics."
+            )
+            st.caption(facial_summary["disclaimer"])
+            st.markdown(
+                "[View the Viva Defense model repository]"
+                f"({webcam.MODEL_SOURCE_URL})"
+            )
+    elif st.session_state.get("facial_signal_consent", False):
+        st.markdown("### Viva Defense facial-expression coaching")
+        st.warning(
+            "No usable facial checkpoints were captured. Your answer feedback "
+            "is still available and was not affected."
+        )
 
     with st.expander("View interview transcript", expanded=False):
         for entry in st.session_state.get("interview_history", []):
