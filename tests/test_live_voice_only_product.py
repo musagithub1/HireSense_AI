@@ -150,3 +150,33 @@ def test_starting_interview_saves_resume_text_and_private_pdf(
     assert session_state["resume_storage_status"] == (
         "text_and_private_pdf_saved"
     )
+
+
+def test_live_voice_control_actions_stop_before_answer_handling(monkeypatch) -> None:
+    session_state = {"interview_complete": False}
+    calls: list[str] = []
+    monkeypatch.setattr(app.st, "session_state", session_state)
+    monkeypatch.setattr(
+        app,
+        "_cancel_question_prefetch",
+        lambda: calls.append("cancel"),
+    )
+    monkeypatch.setattr(
+        app,
+        "save_to_question_bank",
+        lambda: calls.append("save"),
+    )
+    monkeypatch.setattr(app.st, "rerun", lambda: calls.append("rerun"))
+
+    assert app._handle_live_voice_control_action("end") is True
+    assert session_state["interview_complete"] is True
+    assert calls == ["cancel", "save", "rerun"]
+
+    monkeypatch.setattr(
+        app,
+        "_rephrase_current_question",
+        lambda: calls.append("rephrase"),
+    )
+    assert app._handle_live_voice_control_action("rephrase") is True
+    assert calls[-2:] == ["rephrase", "rerun"]
+    assert app._handle_live_voice_control_action("answer") is False

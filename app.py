@@ -1144,6 +1144,23 @@ def _advance_after_answer(answer: str, *, answered_followup: bool) -> dict:
     return decision
 
 
+def _handle_live_voice_control_action(action: str) -> bool:
+    """Handle non-answer controls without falling through to answer handling."""
+    if action == "end":
+        st.session_state["interview_complete"] = True
+        _cancel_question_prefetch()
+        save_to_question_bank()
+        st.rerun()
+        return True
+
+    if action == "rephrase":
+        _rephrase_current_question()
+        st.rerun()
+        return True
+
+    return False
+
+
 def _rephrase_current_question() -> dict:
     """Apply the accessibility rephrase action to the current question."""
     current = st.session_state.get("current_question_text", "")
@@ -2328,15 +2345,8 @@ def render_live_voice_session():
             submission_id = voice_result["submission_id"]
             if submission_id != st.session_state.get("_last_live_voice_submission"):
                 st.session_state["_last_live_voice_submission"] = submission_id
-                if voice_result["action"] == "end":
-                    st.session_state["interview_complete"] = True
-                    _cancel_question_prefetch()
-                    save_to_question_bank()
-                    st.rerun()
-
-                if voice_result["action"] == "rephrase":
-                    _rephrase_current_question()
-                    st.rerun()
+                if _handle_live_voice_control_action(voice_result["action"]):
+                    return
 
                 answer_text = voice_result["answer"]
                 latency = voice_result.get("latency") or {}
