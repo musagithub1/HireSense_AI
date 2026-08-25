@@ -1,0 +1,13 @@
+# Energy levels and transitions
+
+This short chemistry explainer answers: **How does energy levels and transitions work?**
+
+Energy levels and transitions becomes clear when we connect particles, structure, and change.
+
+The episode uses continuous animated transformations and captions rather than voiceover.
+
+## Learning outcome
+Understand energy levels and transitions by linking structure to observable behavior.
+
+## Source
+This episode is generated from the Chemistry Explainer Series curriculum and should be reviewed by a chemistry educator before public release.

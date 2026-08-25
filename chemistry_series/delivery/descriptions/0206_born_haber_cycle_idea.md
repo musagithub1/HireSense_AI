@@ -1,0 +1,13 @@
+# Born-Haber cycle idea
+
+This short chemistry explainer answers: **How does born-haber cycle idea work?**
+
+Born-Haber cycle idea becomes clear when we connect particles, structure, and change.
+
+The episode uses continuous animated transformations and captions rather than voiceover.
+
+## Learning outcome
+Understand born-haber cycle idea by linking structure to observable behavior.
+
+## Source
+This episode is generated from the Chemistry Explainer Series curriculum and should be reviewed by a chemistry educator before public release.

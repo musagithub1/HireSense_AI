@@ -1,0 +1,23 @@
+1
+00:00:00,000 --> 00:00:06,000
+How does work and heat work?
+
+2
+00:00:06,000 --> 00:00:17,000
+Start with the idea: Work and heat.
+
+3
+00:00:17,000 --> 00:00:28,000
+The key is how chemical parts relate.
+
+4
+00:00:28,000 --> 00:00:39,000
+That relationship creates what we observe.
+
+5
+00:00:39,000 --> 00:00:50,000
+Use the pattern to predict a new case.
+
+6
+00:00:50,000 --> 00:01:00,000
+Understand work and heat by linking structure to observable behavior.

@@ -1,0 +1,13 @@
+# Atomic theory as a changing model
+
+This short chemistry explainer answers: **How does atomic theory as a changing model work?**
+
+Atomic theory as a changing model becomes clear when we connect particles, structure, and change.
+
+The episode uses continuous animated transformations and captions rather than voiceover.
+
+## Learning outcome
+Understand atomic theory as a changing model by linking structure to observable behavior.
+
+## Source
+This episode is generated from the Chemistry Explainer Series curriculum and should be reviewed by a chemistry educator before public release.

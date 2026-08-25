@@ -1,0 +1,6002 @@
+[
+  {
+    "number": 1,
+    "module": "01_chemistry_foundations",
+    "title": "What chemistry studies",
+    "slug": "what-chemistry-studies"
+  },
+  {
+    "number": 2,
+    "module": "01_chemistry_foundations",
+    "title": "Macroscopic, microscopic, and symbolic views",
+    "slug": "macroscopic-microscopic-and-symbolic-views"
+  },
+  {
+    "number": 3,
+    "module": "01_chemistry_foundations",
+    "title": "Matter as particles in motion",
+    "slug": "matter-as-particles-in-motion"
+  },
+  {
+    "number": 4,
+    "module": "01_chemistry_foundations",
+    "title": "Physical versus chemical properties",
+    "slug": "physical-versus-chemical-properties"
+  },
+  {
+    "number": 5,
+    "module": "01_chemistry_foundations",
+    "title": "Physical versus chemical changes",
+    "slug": "physical-versus-chemical-changes"
+  },
+  {
+    "number": 6,
+    "module": "01_chemistry_foundations",
+    "title": "Elements, compounds, and mixtures",
+    "slug": "elements-compounds-and-mixtures"
+  },
+  {
+    "number": 7,
+    "module": "01_chemistry_foundations",
+    "title": "Homogeneous and heterogeneous mixtures",
+    "slug": "homogeneous-and-heterogeneous-mixtures"
+  },
+  {
+    "number": 8,
+    "module": "01_chemistry_foundations",
+    "title": "Separating mixtures by physical properties",
+    "slug": "separating-mixtures-by-physical-properties"
+  },
+  {
+    "number": 9,
+    "module": "01_chemistry_foundations",
+    "title": "Filtration and particle size",
+    "slug": "filtration-and-particle-size"
+  },
+  {
+    "number": 10,
+    "module": "01_chemistry_foundations",
+    "title": "Distillation and boiling point",
+    "slug": "distillation-and-boiling-point"
+  },
+  {
+    "number": 11,
+    "module": "01_chemistry_foundations",
+    "title": "Chromatography and molecular attraction",
+    "slug": "chromatography-and-molecular-attraction"
+  },
+  {
+    "number": 12,
+    "module": "01_chemistry_foundations",
+    "title": "Crystallization and solubility",
+    "slug": "crystallization-and-solubility"
+  },
+  {
+    "number": 13,
+    "module": "01_chemistry_foundations",
+    "title": "Sublimation as a separation method",
+    "slug": "sublimation-as-a-separation-method"
+  },
+  {
+    "number": 14,
+    "module": "01_chemistry_foundations",
+    "title": "Centrifugation and density",
+    "slug": "centrifugation-and-density"
+  },
+  {
+    "number": 15,
+    "module": "01_chemistry_foundations",
+    "title": "Decanting and sedimentation",
+    "slug": "decanting-and-sedimentation"
+  },
+  {
+    "number": 16,
+    "module": "01_chemistry_foundations",
+    "title": "Why models help chemists",
+    "slug": "why-models-help-chemists"
+  },
+  {
+    "number": 17,
+    "module": "01_chemistry_foundations",
+    "title": "Evidence and explanation in chemistry",
+    "slug": "evidence-and-explanation-in-chemistry"
+  },
+  {
+    "number": 18,
+    "module": "01_chemistry_foundations",
+    "title": "Conservation of mass",
+    "slug": "conservation-of-mass"
+  },
+  {
+    "number": 19,
+    "module": "01_chemistry_foundations",
+    "title": "Conservation of energy",
+    "slug": "conservation-of-energy"
+  },
+  {
+    "number": 20,
+    "module": "01_chemistry_foundations",
+    "title": "Scale in chemistry",
+    "slug": "scale-in-chemistry"
+  },
+  {
+    "number": 21,
+    "module": "01_chemistry_foundations",
+    "title": "Chemical symbols as shorthand",
+    "slug": "chemical-symbols-as-shorthand"
+  },
+  {
+    "number": 22,
+    "module": "01_chemistry_foundations",
+    "title": "Reading a chemical formula",
+    "slug": "reading-a-chemical-formula"
+  },
+  {
+    "number": 23,
+    "module": "01_chemistry_foundations",
+    "title": "Reading a chemical equation",
+    "slug": "reading-a-chemical-equation"
+  },
+  {
+    "number": 24,
+    "module": "01_chemistry_foundations",
+    "title": "The meaning of a coefficient",
+    "slug": "the-meaning-of-a-coefficient"
+  },
+  {
+    "number": 25,
+    "module": "01_chemistry_foundations",
+    "title": "The meaning of a subscript",
+    "slug": "the-meaning-of-a-subscript"
+  },
+  {
+    "number": 26,
+    "module": "01_chemistry_foundations",
+    "title": "States of matter in equations",
+    "slug": "states-of-matter-in-equations"
+  },
+  {
+    "number": 27,
+    "module": "01_chemistry_foundations",
+    "title": "Energy diagrams as chemical stories",
+    "slug": "energy-diagrams-as-chemical-stories"
+  },
+  {
+    "number": 28,
+    "module": "01_chemistry_foundations",
+    "title": "Chemical systems and surroundings",
+    "slug": "chemical-systems-and-surroundings"
+  },
+  {
+    "number": 29,
+    "module": "01_chemistry_foundations",
+    "title": "Open, closed, and isolated systems",
+    "slug": "open-closed-and-isolated-systems"
+  },
+  {
+    "number": 30,
+    "module": "01_chemistry_foundations",
+    "title": "The role of measurement",
+    "slug": "the-role-of-measurement"
+  },
+  {
+    "number": 31,
+    "module": "01_chemistry_foundations",
+    "title": "Units as a language",
+    "slug": "units-as-a-language"
+  },
+  {
+    "number": 32,
+    "module": "01_chemistry_foundations",
+    "title": "Significant figures as information",
+    "slug": "significant-figures-as-information"
+  },
+  {
+    "number": 33,
+    "module": "01_chemistry_foundations",
+    "title": "Dimensional analysis",
+    "slug": "dimensional-analysis"
+  },
+  {
+    "number": 34,
+    "module": "01_chemistry_foundations",
+    "title": "Estimating before calculating",
+    "slug": "estimating-before-calculating"
+  },
+  {
+    "number": 35,
+    "module": "01_chemistry_foundations",
+    "title": "Orders of magnitude in chemistry",
+    "slug": "orders-of-magnitude-in-chemistry"
+  },
+  {
+    "number": 36,
+    "module": "01_chemistry_foundations",
+    "title": "Chemistry in cooking",
+    "slug": "chemistry-in-cooking"
+  },
+  {
+    "number": 37,
+    "module": "01_chemistry_foundations",
+    "title": "Chemistry in medicine",
+    "slug": "chemistry-in-medicine"
+  },
+  {
+    "number": 38,
+    "module": "01_chemistry_foundations",
+    "title": "Chemistry in materials",
+    "slug": "chemistry-in-materials"
+  },
+  {
+    "number": 39,
+    "module": "01_chemistry_foundations",
+    "title": "Chemistry and sustainability",
+    "slug": "chemistry-and-sustainability"
+  },
+  {
+    "number": 40,
+    "module": "01_chemistry_foundations",
+    "title": "How to think like a chemist",
+    "slug": "how-to-think-like-a-chemist"
+  },
+  {
+    "number": 41,
+    "module": "02_measurement_and_math",
+    "title": "SI base units in chemistry",
+    "slug": "si-base-units-in-chemistry"
+  },
+  {
+    "number": 42,
+    "module": "02_measurement_and_math",
+    "title": "Derived units and density",
+    "slug": "derived-units-and-density"
+  },
+  {
+    "number": 43,
+    "module": "02_measurement_and_math",
+    "title": "Reading a graduated cylinder",
+    "slug": "reading-a-graduated-cylinder"
+  },
+  {
+    "number": 44,
+    "module": "02_measurement_and_math",
+    "title": "Meniscus and parallax",
+    "slug": "meniscus-and-parallax"
+  },
+  {
+    "number": 45,
+    "module": "02_measurement_and_math",
+    "title": "Mass versus weight",
+    "slug": "mass-versus-weight"
+  },
+  {
+    "number": 46,
+    "module": "02_measurement_and_math",
+    "title": "Temperature scales",
+    "slug": "temperature-scales"
+  },
+  {
+    "number": 47,
+    "module": "02_measurement_and_math",
+    "title": "Kelvin and absolute temperature",
+    "slug": "kelvin-and-absolute-temperature"
+  },
+  {
+    "number": 48,
+    "module": "02_measurement_and_math",
+    "title": "Converting temperature units",
+    "slug": "converting-temperature-units"
+  },
+  {
+    "number": 49,
+    "module": "02_measurement_and_math",
+    "title": "Precision versus accuracy",
+    "slug": "precision-versus-accuracy"
+  },
+  {
+    "number": 50,
+    "module": "02_measurement_and_math",
+    "title": "Random versus systematic error",
+    "slug": "random-versus-systematic-error"
+  },
+  {
+    "number": 51,
+    "module": "02_measurement_and_math",
+    "title": "Percent error",
+    "slug": "percent-error"
+  },
+  {
+    "number": 52,
+    "module": "02_measurement_and_math",
+    "title": "Percent difference",
+    "slug": "percent-difference"
+  },
+  {
+    "number": 53,
+    "module": "02_measurement_and_math",
+    "title": "Significant figures in multiplication",
+    "slug": "significant-figures-in-multiplication"
+  },
+  {
+    "number": 54,
+    "module": "02_measurement_and_math",
+    "title": "Significant figures in addition",
+    "slug": "significant-figures-in-addition"
+  },
+  {
+    "number": 55,
+    "module": "02_measurement_and_math",
+    "title": "Exact versus measured numbers",
+    "slug": "exact-versus-measured-numbers"
+  },
+  {
+    "number": 56,
+    "module": "02_measurement_and_math",
+    "title": "Scientific notation",
+    "slug": "scientific-notation"
+  },
+  {
+    "number": 57,
+    "module": "02_measurement_and_math",
+    "title": "Logarithms in chemistry",
+    "slug": "logarithms-in-chemistry"
+  },
+  {
+    "number": 58,
+    "module": "02_measurement_and_math",
+    "title": "Antilogarithms and powers of ten",
+    "slug": "antilogarithms-and-powers-of-ten"
+  },
+  {
+    "number": 59,
+    "module": "02_measurement_and_math",
+    "title": "Ratios and proportions",
+    "slug": "ratios-and-proportions"
+  },
+  {
+    "number": 60,
+    "module": "02_measurement_and_math",
+    "title": "Solving one-step chemical equations",
+    "slug": "solving-one-step-chemical-equations"
+  },
+  {
+    "number": 61,
+    "module": "02_measurement_and_math",
+    "title": "Rearranging formulas",
+    "slug": "rearranging-formulas"
+  },
+  {
+    "number": 62,
+    "module": "02_measurement_and_math",
+    "title": "Graphing experimental data",
+    "slug": "graphing-experimental-data"
+  },
+  {
+    "number": 63,
+    "module": "02_measurement_and_math",
+    "title": "Slope as a rate",
+    "slug": "slope-as-a-rate"
+  },
+  {
+    "number": 64,
+    "module": "02_measurement_and_math",
+    "title": "Intercept and meaning",
+    "slug": "intercept-and-meaning"
+  },
+  {
+    "number": 65,
+    "module": "02_measurement_and_math",
+    "title": "Linearization of data",
+    "slug": "linearization-of-data"
+  },
+  {
+    "number": 66,
+    "module": "02_measurement_and_math",
+    "title": "Reading a calibration curve",
+    "slug": "reading-a-calibration-curve"
+  },
+  {
+    "number": 67,
+    "module": "02_measurement_and_math",
+    "title": "Uncertainty propagation basics",
+    "slug": "uncertainty-propagation-basics"
+  },
+  {
+    "number": 68,
+    "module": "02_measurement_and_math",
+    "title": "Mean and median",
+    "slug": "mean-and-median"
+  },
+  {
+    "number": 69,
+    "module": "02_measurement_and_math",
+    "title": "Standard deviation concept",
+    "slug": "standard-deviation-concept"
+  },
+  {
+    "number": 70,
+    "module": "02_measurement_and_math",
+    "title": "Outliers and data quality",
+    "slug": "outliers-and-data-quality"
+  },
+  {
+    "number": 71,
+    "module": "02_measurement_and_math",
+    "title": "Dimensional analysis for recipes",
+    "slug": "dimensional-analysis-for-recipes"
+  },
+  {
+    "number": 72,
+    "module": "02_measurement_and_math",
+    "title": "Density problem strategy",
+    "slug": "density-problem-strategy"
+  },
+  {
+    "number": 73,
+    "module": "02_measurement_and_math",
+    "title": "Molarity calculation strategy",
+    "slug": "molarity-calculation-strategy"
+  },
+  {
+    "number": 74,
+    "module": "02_measurement_and_math",
+    "title": "Dilution calculation strategy",
+    "slug": "dilution-calculation-strategy"
+  },
+  {
+    "number": 75,
+    "module": "02_measurement_and_math",
+    "title": "Temperature conversion practice",
+    "slug": "temperature-conversion-practice"
+  },
+  {
+    "number": 76,
+    "module": "02_measurement_and_math",
+    "title": "Pressure unit conversions",
+    "slug": "pressure-unit-conversions"
+  },
+  {
+    "number": 77,
+    "module": "02_measurement_and_math",
+    "title": "Energy unit conversions",
+    "slug": "energy-unit-conversions"
+  },
+  {
+    "number": 78,
+    "module": "02_measurement_and_math",
+    "title": "Chemistry with percentages",
+    "slug": "chemistry-with-percentages"
+  },
+  {
+    "number": 79,
+    "module": "02_measurement_and_math",
+    "title": "Checking units in an answer",
+    "slug": "checking-units-in-an-answer"
+  },
+  {
+    "number": 80,
+    "module": "02_measurement_and_math",
+    "title": "Checking whether an answer is reasonable",
+    "slug": "checking-whether-an-answer-is-reasonable"
+  },
+  {
+    "number": 81,
+    "module": "03_atomic_theory",
+    "title": "Democritus and the atom idea",
+    "slug": "democritus-and-the-atom-idea"
+  },
+  {
+    "number": 82,
+    "module": "03_atomic_theory",
+    "title": "Dalton's atomic theory",
+    "slug": "dalton-s-atomic-theory"
+  },
+  {
+    "number": 83,
+    "module": "03_atomic_theory",
+    "title": "Cathode rays and electrons",
+    "slug": "cathode-rays-and-electrons"
+  },
+  {
+    "number": 84,
+    "module": "03_atomic_theory",
+    "title": "Millikan's oil-drop experiment",
+    "slug": "millikan-s-oil-drop-experiment"
+  },
+  {
+    "number": 85,
+    "module": "03_atomic_theory",
+    "title": "Rutherford's gold foil experiment",
+    "slug": "rutherford-s-gold-foil-experiment"
+  },
+  {
+    "number": 86,
+    "module": "03_atomic_theory",
+    "title": "The nuclear atom",
+    "slug": "the-nuclear-atom"
+  },
+  {
+    "number": 87,
+    "module": "03_atomic_theory",
+    "title": "Protons, neutrons, and electrons",
+    "slug": "protons-neutrons-and-electrons"
+  },
+  {
+    "number": 88,
+    "module": "03_atomic_theory",
+    "title": "Atomic number",
+    "slug": "atomic-number"
+  },
+  {
+    "number": 89,
+    "module": "03_atomic_theory",
+    "title": "Mass number",
+    "slug": "mass-number"
+  },
+  {
+    "number": 90,
+    "module": "03_atomic_theory",
+    "title": "Isotopes",
+    "slug": "isotopes"
+  },
+  {
+    "number": 91,
+    "module": "03_atomic_theory",
+    "title": "Writing isotope symbols",
+    "slug": "writing-isotope-symbols"
+  },
+  {
+    "number": 92,
+    "module": "03_atomic_theory",
+    "title": "Average atomic mass",
+    "slug": "average-atomic-mass"
+  },
+  {
+    "number": 93,
+    "module": "03_atomic_theory",
+    "title": "Calculating weighted averages",
+    "slug": "calculating-weighted-averages"
+  },
+  {
+    "number": 94,
+    "module": "03_atomic_theory",
+    "title": "Cations and anions",
+    "slug": "cations-and-anions"
+  },
+  {
+    "number": 95,
+    "module": "03_atomic_theory",
+    "title": "Ions and electron count",
+    "slug": "ions-and-electron-count"
+  },
+  {
+    "number": 96,
+    "module": "03_atomic_theory",
+    "title": "Monatomic ions",
+    "slug": "monatomic-ions"
+  },
+  {
+    "number": 97,
+    "module": "03_atomic_theory",
+    "title": "Polyatomic ions",
+    "slug": "polyatomic-ions"
+  },
+  {
+    "number": 98,
+    "module": "03_atomic_theory",
+    "title": "Atomic mass units",
+    "slug": "atomic-mass-units"
+  },
+  {
+    "number": 99,
+    "module": "03_atomic_theory",
+    "title": "The mole as a counting unit",
+    "slug": "the-mole-as-a-counting-unit"
+  },
+  {
+    "number": 100,
+    "module": "03_atomic_theory",
+    "title": "Avogadro's number",
+    "slug": "avogadro-s-number"
+  },
+  {
+    "number": 101,
+    "module": "03_atomic_theory",
+    "title": "Molar mass from the periodic table",
+    "slug": "molar-mass-from-the-periodic-table"
+  },
+  {
+    "number": 102,
+    "module": "03_atomic_theory",
+    "title": "Atoms to moles",
+    "slug": "atoms-to-moles"
+  },
+  {
+    "number": 103,
+    "module": "03_atomic_theory",
+    "title": "Moles to particles",
+    "slug": "moles-to-particles"
+  },
+  {
+    "number": 104,
+    "module": "03_atomic_theory",
+    "title": "Mass to moles",
+    "slug": "mass-to-moles"
+  },
+  {
+    "number": 105,
+    "module": "03_atomic_theory",
+    "title": "Moles to mass",
+    "slug": "moles-to-mass"
+  },
+  {
+    "number": 106,
+    "module": "03_atomic_theory",
+    "title": "Isotope abundance spectra",
+    "slug": "isotope-abundance-spectra"
+  },
+  {
+    "number": 107,
+    "module": "03_atomic_theory",
+    "title": "Why isotopes have the same chemistry",
+    "slug": "why-isotopes-have-the-same-chemistry"
+  },
+  {
+    "number": 108,
+    "module": "03_atomic_theory",
+    "title": "Radioisotopes in tracing",
+    "slug": "radioisotopes-in-tracing"
+  },
+  {
+    "number": 109,
+    "module": "03_atomic_theory",
+    "title": "Nuclear versus chemical change",
+    "slug": "nuclear-versus-chemical-change"
+  },
+  {
+    "number": 110,
+    "module": "03_atomic_theory",
+    "title": "Atomic notation practice",
+    "slug": "atomic-notation-practice"
+  },
+  {
+    "number": 111,
+    "module": "03_atomic_theory",
+    "title": "Counting subatomic particles",
+    "slug": "counting-subatomic-particles"
+  },
+  {
+    "number": 112,
+    "module": "03_atomic_theory",
+    "title": "Neutral atoms and charge balance",
+    "slug": "neutral-atoms-and-charge-balance"
+  },
+  {
+    "number": 113,
+    "module": "03_atomic_theory",
+    "title": "Ion formation patterns",
+    "slug": "ion-formation-patterns"
+  },
+  {
+    "number": 114,
+    "module": "03_atomic_theory",
+    "title": "Why nuclei are small",
+    "slug": "why-nuclei-are-small"
+  },
+  {
+    "number": 115,
+    "module": "03_atomic_theory",
+    "title": "Nuclear force overview",
+    "slug": "nuclear-force-overview"
+  },
+  {
+    "number": 116,
+    "module": "03_atomic_theory",
+    "title": "Mass defect concept",
+    "slug": "mass-defect-concept"
+  },
+  {
+    "number": 117,
+    "module": "03_atomic_theory",
+    "title": "Binding energy concept",
+    "slug": "binding-energy-concept"
+  },
+  {
+    "number": 118,
+    "module": "03_atomic_theory",
+    "title": "Atomic theory as a changing model",
+    "slug": "atomic-theory-as-a-changing-model"
+  },
+  {
+    "number": 119,
+    "module": "03_atomic_theory",
+    "title": "What an atomic number tells you",
+    "slug": "what-an-atomic-number-tells-you"
+  },
+  {
+    "number": 120,
+    "module": "03_atomic_theory",
+    "title": "What a mass number tells you",
+    "slug": "what-a-mass-number-tells-you"
+  },
+  {
+    "number": 121,
+    "module": "04_quantum_and_electronic_structure",
+    "title": "Light as electromagnetic radiation",
+    "slug": "light-as-electromagnetic-radiation"
+  },
+  {
+    "number": 122,
+    "module": "04_quantum_and_electronic_structure",
+    "title": "Wavelength and frequency",
+    "slug": "wavelength-and-frequency"
+  },
+  {
+    "number": 123,
+    "module": "04_quantum_and_electronic_structure",
+    "title": "The speed of light relationship",
+    "slug": "the-speed-of-light-relationship"
+  },
+  {
+    "number": 124,
+    "module": "04_quantum_and_electronic_structure",
+    "title": "Photon energy",
+    "slug": "photon-energy"
+  },
+  {
+    "number": 125,
+    "module": "04_quantum_and_electronic_structure",
+    "title": "The electromagnetic spectrum",
+    "slug": "the-electromagnetic-spectrum"
+  },
+  {
+    "number": 126,
+    "module": "04_quantum_and_electronic_structure",
+    "title": "Blackbody radiation",
+    "slug": "blackbody-radiation"
+  },
+  {
+    "number": 127,
+    "module": "04_quantum_and_electronic_structure",
+    "title": "The photoelectric effect",
+    "slug": "the-photoelectric-effect"
+  },
+  {
+    "number": 128,
+    "module": "04_quantum_and_electronic_structure",
+    "title": "Bohr's model",
+    "slug": "bohr-s-model"
+  },
+  {
+    "number": 129,
+    "module": "04_quantum_and_electronic_structure",
+    "title": "Hydrogen emission lines",
+    "slug": "hydrogen-emission-lines"
+  },
+  {
+    "number": 130,
+    "module": "04_quantum_and_electronic_structure",
+    "title": "Energy levels and transitions",
+    "slug": "energy-levels-and-transitions"
+  },
+  {
+    "number": 131,
+    "module": "04_quantum_and_electronic_structure",
+    "title": "Why Bohr's model is limited",
+    "slug": "why-bohr-s-model-is-limited"
+  },
+  {
+    "number": 132,
+    "module": "04_quantum_and_electronic_structure",
+    "title": "Matter waves",
+    "slug": "matter-waves"
+  },
+  {
+    "number": 133,
+    "module": "04_quantum_and_electronic_structure",
+    "title": "The uncertainty principle",
+    "slug": "the-uncertainty-principle"
+  },
+  {
+    "number": 134,
+    "module": "04_quantum_and_electronic_structure",
+    "title": "Quantum numbers",
+    "slug": "quantum-numbers"
+  },
+  {
+    "number": 135,
+    "module": "04_quantum_and_electronic_structure",
+    "title": "Principal quantum number",
+    "slug": "principal-quantum-number"
+  },
+  {
+    "number": 136,
+    "module": "04_quantum_and_electronic_structure",
+    "title": "Angular momentum quantum number",
+    "slug": "angular-momentum-quantum-number"
+  },
+  {
+    "number": 137,
+    "module": "04_quantum_and_electronic_structure",
+    "title": "Magnetic quantum number",
+    "slug": "magnetic-quantum-number"
+  },
+  {
+    "number": 138,
+    "module": "04_quantum_and_electronic_structure",
+    "title": "Spin quantum number",
+    "slug": "spin-quantum-number"
+  },
+  {
+    "number": 139,
+    "module": "04_quantum_and_electronic_structure",
+    "title": "Atomic orbitals",
+    "slug": "atomic-orbitals"
+  },
+  {
+    "number": 140,
+    "module": "04_quantum_and_electronic_structure",
+    "title": "s orbitals",
+    "slug": "s-orbitals"
+  },
+  {
+    "number": 141,
+    "module": "04_quantum_and_electronic_structure",
+    "title": "p orbitals",
+    "slug": "p-orbitals"
+  },
+  {
+    "number": 142,
+    "module": "04_quantum_and_electronic_structure",
+    "title": "d orbitals",
+    "slug": "d-orbitals"
+  },
+  {
+    "number": 143,
+    "module": "04_quantum_and_electronic_structure",
+    "title": "f orbitals",
+    "slug": "f-orbitals"
+  },
+  {
+    "number": 144,
+    "module": "04_quantum_and_electronic_structure",
+    "title": "Orbital shapes",
+    "slug": "orbital-shapes"
+  },
+  {
+    "number": 145,
+    "module": "04_quantum_and_electronic_structure",
+    "title": "Nodes in orbitals",
+    "slug": "nodes-in-orbitals"
+  },
+  {
+    "number": 146,
+    "module": "04_quantum_and_electronic_structure",
+    "title": "Electron spin",
+    "slug": "electron-spin"
+  },
+  {
+    "number": 147,
+    "module": "04_quantum_and_electronic_structure",
+    "title": "Pauli exclusion principle",
+    "slug": "pauli-exclusion-principle"
+  },
+  {
+    "number": 148,
+    "module": "04_quantum_and_electronic_structure",
+    "title": "Aufbau principle",
+    "slug": "aufbau-principle"
+  },
+  {
+    "number": 149,
+    "module": "04_quantum_and_electronic_structure",
+    "title": "Hund's rule",
+    "slug": "hund-s-rule"
+  },
+  {
+    "number": 150,
+    "module": "04_quantum_and_electronic_structure",
+    "title": "Writing electron configurations",
+    "slug": "writing-electron-configurations"
+  },
+  {
+    "number": 151,
+    "module": "04_quantum_and_electronic_structure",
+    "title": "Noble-gas shorthand",
+    "slug": "noble-gas-shorthand"
+  },
+  {
+    "number": 152,
+    "module": "04_quantum_and_electronic_structure",
+    "title": "Exceptions in transition metals",
+    "slug": "exceptions-in-transition-metals"
+  },
+  {
+    "number": 153,
+    "module": "04_quantum_and_electronic_structure",
+    "title": "Valence electrons",
+    "slug": "valence-electrons"
+  },
+  {
+    "number": 154,
+    "module": "04_quantum_and_electronic_structure",
+    "title": "Core electrons",
+    "slug": "core-electrons"
+  },
+  {
+    "number": 155,
+    "module": "04_quantum_and_electronic_structure",
+    "title": "Paramagnetism",
+    "slug": "paramagnetism"
+  },
+  {
+    "number": 156,
+    "module": "04_quantum_and_electronic_structure",
+    "title": "Diamagnetism",
+    "slug": "diamagnetism"
+  },
+  {
+    "number": 157,
+    "module": "04_quantum_and_electronic_structure",
+    "title": "Electron configurations of ions",
+    "slug": "electron-configurations-of-ions"
+  },
+  {
+    "number": 158,
+    "module": "04_quantum_and_electronic_structure",
+    "title": "Ground state versus excited state",
+    "slug": "ground-state-versus-excited-state"
+  },
+  {
+    "number": 159,
+    "module": "04_quantum_and_electronic_structure",
+    "title": "Spectra as fingerprints",
+    "slug": "spectra-as-fingerprints"
+  },
+  {
+    "number": 160,
+    "module": "04_quantum_and_electronic_structure",
+    "title": "Quantum ideas in modern chemistry",
+    "slug": "quantum-ideas-in-modern-chemistry"
+  },
+  {
+    "number": 161,
+    "module": "05_periodicity",
+    "title": "Reading the periodic table",
+    "slug": "reading-the-periodic-table"
+  },
+  {
+    "number": 162,
+    "module": "05_periodicity",
+    "title": "Periods and groups",
+    "slug": "periods-and-groups"
+  },
+  {
+    "number": 163,
+    "module": "05_periodicity",
+    "title": "Metals, nonmetals, and metalloids",
+    "slug": "metals-nonmetals-and-metalloids"
+  },
+  {
+    "number": 164,
+    "module": "05_periodicity",
+    "title": "Main-group families",
+    "slug": "main-group-families"
+  },
+  {
+    "number": 165,
+    "module": "05_periodicity",
+    "title": "Alkali metals",
+    "slug": "alkali-metals"
+  },
+  {
+    "number": 166,
+    "module": "05_periodicity",
+    "title": "Alkaline earth metals",
+    "slug": "alkaline-earth-metals"
+  },
+  {
+    "number": 167,
+    "module": "05_periodicity",
+    "title": "Chalcogens",
+    "slug": "chalcogens"
+  },
+  {
+    "number": 168,
+    "module": "05_periodicity",
+    "title": "Halogens",
+    "slug": "halogens"
+  },
+  {
+    "number": 169,
+    "module": "05_periodicity",
+    "title": "Noble gases",
+    "slug": "noble-gases"
+  },
+  {
+    "number": 170,
+    "module": "05_periodicity",
+    "title": "Transition metals",
+    "slug": "transition-metals"
+  },
+  {
+    "number": 171,
+    "module": "05_periodicity",
+    "title": "Lanthanides",
+    "slug": "lanthanides"
+  },
+  {
+    "number": 172,
+    "module": "05_periodicity",
+    "title": "Actinides",
+    "slug": "actinides"
+  },
+  {
+    "number": 173,
+    "module": "05_periodicity",
+    "title": "Atomic radius",
+    "slug": "atomic-radius"
+  },
+  {
+    "number": 174,
+    "module": "05_periodicity",
+    "title": "Why atomic radius changes across a period",
+    "slug": "why-atomic-radius-changes-across-a-period"
+  },
+  {
+    "number": 175,
+    "module": "05_periodicity",
+    "title": "Why atomic radius changes down a group",
+    "slug": "why-atomic-radius-changes-down-a-group"
+  },
+  {
+    "number": 176,
+    "module": "05_periodicity",
+    "title": "Ionic radius",
+    "slug": "ionic-radius"
+  },
+  {
+    "number": 177,
+    "module": "05_periodicity",
+    "title": "Cation size versus atom size",
+    "slug": "cation-size-versus-atom-size"
+  },
+  {
+    "number": 178,
+    "module": "05_periodicity",
+    "title": "Anion size versus atom size",
+    "slug": "anion-size-versus-atom-size"
+  },
+  {
+    "number": 179,
+    "module": "05_periodicity",
+    "title": "Ionization energy",
+    "slug": "ionization-energy"
+  },
+  {
+    "number": 180,
+    "module": "05_periodicity",
+    "title": "Successive ionization energies",
+    "slug": "successive-ionization-energies"
+  },
+  {
+    "number": 181,
+    "module": "05_periodicity",
+    "title": "Electron affinity",
+    "slug": "electron-affinity"
+  },
+  {
+    "number": 182,
+    "module": "05_periodicity",
+    "title": "Electronegativity",
+    "slug": "electronegativity"
+  },
+  {
+    "number": 183,
+    "module": "05_periodicity",
+    "title": "Metallic character",
+    "slug": "metallic-character"
+  },
+  {
+    "number": 184,
+    "module": "05_periodicity",
+    "title": "Shielding effect",
+    "slug": "shielding-effect"
+  },
+  {
+    "number": 185,
+    "module": "05_periodicity",
+    "title": "Effective nuclear charge",
+    "slug": "effective-nuclear-charge"
+  },
+  {
+    "number": 186,
+    "module": "05_periodicity",
+    "title": "Periodic trends as competing effects",
+    "slug": "periodic-trends-as-competing-effects"
+  },
+  {
+    "number": 187,
+    "module": "05_periodicity",
+    "title": "Predicting common ion charges",
+    "slug": "predicting-common-ion-charges"
+  },
+  {
+    "number": 188,
+    "module": "05_periodicity",
+    "title": "Isoelectronic series",
+    "slug": "isoelectronic-series"
+  },
+  {
+    "number": 189,
+    "module": "05_periodicity",
+    "title": "Reactivity of alkali metals",
+    "slug": "reactivity-of-alkali-metals"
+  },
+  {
+    "number": 190,
+    "module": "05_periodicity",
+    "title": "Reactivity of halogens",
+    "slug": "reactivity-of-halogens"
+  },
+  {
+    "number": 191,
+    "module": "05_periodicity",
+    "title": "Why noble gases are unreactive",
+    "slug": "why-noble-gases-are-unreactive"
+  },
+  {
+    "number": 192,
+    "module": "05_periodicity",
+    "title": "Oxidation states and periodicity",
+    "slug": "oxidation-states-and-periodicity"
+  },
+  {
+    "number": 193,
+    "module": "05_periodicity",
+    "title": "Diagonal relationships",
+    "slug": "diagonal-relationships"
+  },
+  {
+    "number": 194,
+    "module": "05_periodicity",
+    "title": "Periodic trends in oxides",
+    "slug": "periodic-trends-in-oxides"
+  },
+  {
+    "number": 195,
+    "module": "05_periodicity",
+    "title": "Acidic and basic oxides",
+    "slug": "acidic-and-basic-oxides"
+  },
+  {
+    "number": 196,
+    "module": "05_periodicity",
+    "title": "Hydrogen's unusual position",
+    "slug": "hydrogen-s-unusual-position"
+  },
+  {
+    "number": 197,
+    "module": "05_periodicity",
+    "title": "Metals as electron donors",
+    "slug": "metals-as-electron-donors"
+  },
+  {
+    "number": 198,
+    "module": "05_periodicity",
+    "title": "Nonmetals as electron acceptors",
+    "slug": "nonmetals-as-electron-acceptors"
+  },
+  {
+    "number": 199,
+    "module": "05_periodicity",
+    "title": "Limits of simple periodic trends",
+    "slug": "limits-of-simple-periodic-trends"
+  },
+  {
+    "number": 200,
+    "module": "05_periodicity",
+    "title": "The periodic table as a map",
+    "slug": "the-periodic-table-as-a-map"
+  },
+  {
+    "number": 201,
+    "module": "06_chemical_bonding",
+    "title": "Why atoms form bonds",
+    "slug": "why-atoms-form-bonds"
+  },
+  {
+    "number": 202,
+    "module": "06_chemical_bonding",
+    "title": "Ionic bonding",
+    "slug": "ionic-bonding"
+  },
+  {
+    "number": 203,
+    "module": "06_chemical_bonding",
+    "title": "Covalent bonding",
+    "slug": "covalent-bonding"
+  },
+  {
+    "number": 204,
+    "module": "06_chemical_bonding",
+    "title": "Metallic bonding",
+    "slug": "metallic-bonding"
+  },
+  {
+    "number": 205,
+    "module": "06_chemical_bonding",
+    "title": "Lattice energy",
+    "slug": "lattice-energy"
+  },
+  {
+    "number": 206,
+    "module": "06_chemical_bonding",
+    "title": "Born-Haber cycle idea",
+    "slug": "born-haber-cycle-idea"
+  },
+  {
+    "number": 207,
+    "module": "06_chemical_bonding",
+    "title": "Bond energy",
+    "slug": "bond-energy"
+  },
+  {
+    "number": 208,
+    "module": "06_chemical_bonding",
+    "title": "Bond length",
+    "slug": "bond-length"
+  },
+  {
+    "number": 209,
+    "module": "06_chemical_bonding",
+    "title": "Bond order",
+    "slug": "bond-order"
+  },
+  {
+    "number": 210,
+    "module": "06_chemical_bonding",
+    "title": "Polar covalent bonds",
+    "slug": "polar-covalent-bonds"
+  },
+  {
+    "number": 211,
+    "module": "06_chemical_bonding",
+    "title": "Electronegativity difference",
+    "slug": "electronegativity-difference"
+  },
+  {
+    "number": 212,
+    "module": "06_chemical_bonding",
+    "title": "Dipole moments",
+    "slug": "dipole-moments"
+  },
+  {
+    "number": 213,
+    "module": "06_chemical_bonding",
+    "title": "Drawing Lewis symbols",
+    "slug": "drawing-lewis-symbols"
+  },
+  {
+    "number": 214,
+    "module": "06_chemical_bonding",
+    "title": "Lewis structures for ions",
+    "slug": "lewis-structures-for-ions"
+  },
+  {
+    "number": 215,
+    "module": "06_chemical_bonding",
+    "title": "Octet rule",
+    "slug": "octet-rule"
+  },
+  {
+    "number": 216,
+    "module": "06_chemical_bonding",
+    "title": "Incomplete octets",
+    "slug": "incomplete-octets"
+  },
+  {
+    "number": 217,
+    "module": "06_chemical_bonding",
+    "title": "Expanded valence shells",
+    "slug": "expanded-valence-shells"
+  },
+  {
+    "number": 218,
+    "module": "06_chemical_bonding",
+    "title": "Odd-electron species",
+    "slug": "odd-electron-species"
+  },
+  {
+    "number": 219,
+    "module": "06_chemical_bonding",
+    "title": "Formal charge",
+    "slug": "formal-charge"
+  },
+  {
+    "number": 220,
+    "module": "06_chemical_bonding",
+    "title": "Choosing the best Lewis structure",
+    "slug": "choosing-the-best-lewis-structure"
+  },
+  {
+    "number": 221,
+    "module": "06_chemical_bonding",
+    "title": "Resonance structures",
+    "slug": "resonance-structures"
+  },
+  {
+    "number": 222,
+    "module": "06_chemical_bonding",
+    "title": "Resonance hybrid",
+    "slug": "resonance-hybrid"
+  },
+  {
+    "number": 223,
+    "module": "06_chemical_bonding",
+    "title": "Coordinate covalent bonds",
+    "slug": "coordinate-covalent-bonds"
+  },
+  {
+    "number": 224,
+    "module": "06_chemical_bonding",
+    "title": "Electron-deficient molecules",
+    "slug": "electron-deficient-molecules"
+  },
+  {
+    "number": 225,
+    "module": "06_chemical_bonding",
+    "title": "Bond polarity arrows",
+    "slug": "bond-polarity-arrows"
+  },
+  {
+    "number": 226,
+    "module": "06_chemical_bonding",
+    "title": "Ionic compounds and formulas",
+    "slug": "ionic-compounds-and-formulas"
+  },
+  {
+    "number": 227,
+    "module": "06_chemical_bonding",
+    "title": "Properties of ionic solids",
+    "slug": "properties-of-ionic-solids"
+  },
+  {
+    "number": 228,
+    "module": "06_chemical_bonding",
+    "title": "Properties of molecular substances",
+    "slug": "properties-of-molecular-substances"
+  },
+  {
+    "number": 229,
+    "module": "06_chemical_bonding",
+    "title": "Properties of metals",
+    "slug": "properties-of-metals"
+  },
+  {
+    "number": 230,
+    "module": "06_chemical_bonding",
+    "title": "Network covalent solids",
+    "slug": "network-covalent-solids"
+  },
+  {
+    "number": 231,
+    "module": "06_chemical_bonding",
+    "title": "Bonding and conductivity",
+    "slug": "bonding-and-conductivity"
+  },
+  {
+    "number": 232,
+    "module": "06_chemical_bonding",
+    "title": "Bonding and melting point",
+    "slug": "bonding-and-melting-point"
+  },
+  {
+    "number": 233,
+    "module": "06_chemical_bonding",
+    "title": "Bonding models compared",
+    "slug": "bonding-models-compared"
+  },
+  {
+    "number": 234,
+    "module": "06_chemical_bonding",
+    "title": "Limitations of the octet rule",
+    "slug": "limitations-of-the-octet-rule"
+  },
+  {
+    "number": 235,
+    "module": "06_chemical_bonding",
+    "title": "Chemical bonds as energy changes",
+    "slug": "chemical-bonds-as-energy-changes"
+  },
+  {
+    "number": 236,
+    "module": "06_chemical_bonding",
+    "title": "Breaking and forming bonds",
+    "slug": "breaking-and-forming-bonds"
+  },
+  {
+    "number": 237,
+    "module": "06_chemical_bonding",
+    "title": "Bonding in hydrogen",
+    "slug": "bonding-in-hydrogen"
+  },
+  {
+    "number": 238,
+    "module": "06_chemical_bonding",
+    "title": "Bonding in oxygen",
+    "slug": "bonding-in-oxygen"
+  },
+  {
+    "number": 239,
+    "module": "06_chemical_bonding",
+    "title": "Bonding in nitrogen",
+    "slug": "bonding-in-nitrogen"
+  },
+  {
+    "number": 240,
+    "module": "06_chemical_bonding",
+    "title": "Bonding as electron redistribution",
+    "slug": "bonding-as-electron-redistribution"
+  },
+  {
+    "number": 241,
+    "module": "07_shape_polarity_and_forces",
+    "title": "VSEPR theory",
+    "slug": "vsepr-theory"
+  },
+  {
+    "number": 242,
+    "module": "07_shape_polarity_and_forces",
+    "title": "Electron domains",
+    "slug": "electron-domains"
+  },
+  {
+    "number": 243,
+    "module": "07_shape_polarity_and_forces",
+    "title": "Linear molecular geometry",
+    "slug": "linear-molecular-geometry"
+  },
+  {
+    "number": 244,
+    "module": "07_shape_polarity_and_forces",
+    "title": "Trigonal planar geometry",
+    "slug": "trigonal-planar-geometry"
+  },
+  {
+    "number": 245,
+    "module": "07_shape_polarity_and_forces",
+    "title": "Tetrahedral geometry",
+    "slug": "tetrahedral-geometry"
+  },
+  {
+    "number": 246,
+    "module": "07_shape_polarity_and_forces",
+    "title": "Trigonal pyramidal geometry",
+    "slug": "trigonal-pyramidal-geometry"
+  },
+  {
+    "number": 247,
+    "module": "07_shape_polarity_and_forces",
+    "title": "Bent molecular geometry",
+    "slug": "bent-molecular-geometry"
+  },
+  {
+    "number": 248,
+    "module": "07_shape_polarity_and_forces",
+    "title": "Trigonal bipyramidal geometry",
+    "slug": "trigonal-bipyramidal-geometry"
+  },
+  {
+    "number": 249,
+    "module": "07_shape_polarity_and_forces",
+    "title": "Seesaw geometry",
+    "slug": "seesaw-geometry"
+  },
+  {
+    "number": 250,
+    "module": "07_shape_polarity_and_forces",
+    "title": "T-shaped geometry",
+    "slug": "t-shaped-geometry"
+  },
+  {
+    "number": 251,
+    "module": "07_shape_polarity_and_forces",
+    "title": "Linear from five domains",
+    "slug": "linear-from-five-domains"
+  },
+  {
+    "number": 252,
+    "module": "07_shape_polarity_and_forces",
+    "title": "Octahedral geometry",
+    "slug": "octahedral-geometry"
+  },
+  {
+    "number": 253,
+    "module": "07_shape_polarity_and_forces",
+    "title": "Square pyramidal geometry",
+    "slug": "square-pyramidal-geometry"
+  },
+  {
+    "number": 254,
+    "module": "07_shape_polarity_and_forces",
+    "title": "Square planar geometry",
+    "slug": "square-planar-geometry"
+  },
+  {
+    "number": 255,
+    "module": "07_shape_polarity_and_forces",
+    "title": "Lone pairs and bond angles",
+    "slug": "lone-pairs-and-bond-angles"
+  },
+  {
+    "number": 256,
+    "module": "07_shape_polarity_and_forces",
+    "title": "Molecular shape versus electron geometry",
+    "slug": "molecular-shape-versus-electron-geometry"
+  },
+  {
+    "number": 257,
+    "module": "07_shape_polarity_and_forces",
+    "title": "Molecular polarity",
+    "slug": "molecular-polarity"
+  },
+  {
+    "number": 258,
+    "module": "07_shape_polarity_and_forces",
+    "title": "Symmetry and dipole cancellation",
+    "slug": "symmetry-and-dipole-cancellation"
+  },
+  {
+    "number": 259,
+    "module": "07_shape_polarity_and_forces",
+    "title": "Intermolecular forces",
+    "slug": "intermolecular-forces"
+  },
+  {
+    "number": 260,
+    "module": "07_shape_polarity_and_forces",
+    "title": "London dispersion forces",
+    "slug": "london-dispersion-forces"
+  },
+  {
+    "number": 261,
+    "module": "07_shape_polarity_and_forces",
+    "title": "Dipole-dipole forces",
+    "slug": "dipole-dipole-forces"
+  },
+  {
+    "number": 262,
+    "module": "07_shape_polarity_and_forces",
+    "title": "Hydrogen bonding",
+    "slug": "hydrogen-bonding"
+  },
+  {
+    "number": 263,
+    "module": "07_shape_polarity_and_forces",
+    "title": "Ion-dipole forces",
+    "slug": "ion-dipole-forces"
+  },
+  {
+    "number": 264,
+    "module": "07_shape_polarity_and_forces",
+    "title": "Comparing intermolecular forces",
+    "slug": "comparing-intermolecular-forces"
+  },
+  {
+    "number": 265,
+    "module": "07_shape_polarity_and_forces",
+    "title": "Boiling point and attraction",
+    "slug": "boiling-point-and-attraction"
+  },
+  {
+    "number": 266,
+    "module": "07_shape_polarity_and_forces",
+    "title": "Surface tension",
+    "slug": "surface-tension"
+  },
+  {
+    "number": 267,
+    "module": "07_shape_polarity_and_forces",
+    "title": "Viscosity",
+    "slug": "viscosity"
+  },
+  {
+    "number": 268,
+    "module": "07_shape_polarity_and_forces",
+    "title": "Capillary action",
+    "slug": "capillary-action"
+  },
+  {
+    "number": 269,
+    "module": "07_shape_polarity_and_forces",
+    "title": "Vapor pressure",
+    "slug": "vapor-pressure"
+  },
+  {
+    "number": 270,
+    "module": "07_shape_polarity_and_forces",
+    "title": "Volatility",
+    "slug": "volatility"
+  },
+  {
+    "number": 271,
+    "module": "07_shape_polarity_and_forces",
+    "title": "Solubility and polarity",
+    "slug": "solubility-and-polarity"
+  },
+  {
+    "number": 272,
+    "module": "07_shape_polarity_and_forces",
+    "title": "Like dissolves like",
+    "slug": "like-dissolves-like"
+  },
+  {
+    "number": 273,
+    "module": "07_shape_polarity_and_forces",
+    "title": "Hydrophobic and hydrophilic groups",
+    "slug": "hydrophobic-and-hydrophilic-groups"
+  },
+  {
+    "number": 274,
+    "module": "07_shape_polarity_and_forces",
+    "title": "Molecular shape and smell",
+    "slug": "molecular-shape-and-smell"
+  },
+  {
+    "number": 275,
+    "module": "07_shape_polarity_and_forces",
+    "title": "Forces between biomolecules",
+    "slug": "forces-between-biomolecules"
+  },
+  {
+    "number": 276,
+    "module": "07_shape_polarity_and_forces",
+    "title": "Why water is unusual",
+    "slug": "why-water-is-unusual"
+  },
+  {
+    "number": 277,
+    "module": "07_shape_polarity_and_forces",
+    "title": "Ice and liquid water",
+    "slug": "ice-and-liquid-water"
+  },
+  {
+    "number": 278,
+    "module": "07_shape_polarity_and_forces",
+    "title": "Intermolecular forces in proteins",
+    "slug": "intermolecular-forces-in-proteins"
+  },
+  {
+    "number": 279,
+    "module": "07_shape_polarity_and_forces",
+    "title": "Predicting physical properties",
+    "slug": "predicting-physical-properties"
+  },
+  {
+    "number": 280,
+    "module": "07_shape_polarity_and_forces",
+    "title": "A force-based view of matter",
+    "slug": "a-force-based-view-of-matter"
+  },
+  {
+    "number": 281,
+    "module": "08_formulas_and_nomenclature",
+    "title": "Naming ionic compounds",
+    "slug": "naming-ionic-compounds"
+  },
+  {
+    "number": 282,
+    "module": "08_formulas_and_nomenclature",
+    "title": "Naming cations with fixed charge",
+    "slug": "naming-cations-with-fixed-charge"
+  },
+  {
+    "number": 283,
+    "module": "08_formulas_and_nomenclature",
+    "title": "Naming variable-charge metals",
+    "slug": "naming-variable-charge-metals"
+  },
+  {
+    "number": 284,
+    "module": "08_formulas_and_nomenclature",
+    "title": "Naming ionic compounds with polyatomic ions",
+    "slug": "naming-ionic-compounds-with-polyatomic-ions"
+  },
+  {
+    "number": 285,
+    "module": "08_formulas_and_nomenclature",
+    "title": "Naming binary molecular compounds",
+    "slug": "naming-binary-molecular-compounds"
+  },
+  {
+    "number": 286,
+    "module": "08_formulas_and_nomenclature",
+    "title": "Prefixes for molecular compounds",
+    "slug": "prefixes-for-molecular-compounds"
+  },
+  {
+    "number": 287,
+    "module": "08_formulas_and_nomenclature",
+    "title": "Naming acids",
+    "slug": "naming-acids"
+  },
+  {
+    "number": 288,
+    "module": "08_formulas_and_nomenclature",
+    "title": "Naming binary acids",
+    "slug": "naming-binary-acids"
+  },
+  {
+    "number": 289,
+    "module": "08_formulas_and_nomenclature",
+    "title": "Naming oxyacids",
+    "slug": "naming-oxyacids"
+  },
+  {
+    "number": 290,
+    "module": "08_formulas_and_nomenclature",
+    "title": "Naming bases",
+    "slug": "naming-bases"
+  },
+  {
+    "number": 291,
+    "module": "08_formulas_and_nomenclature",
+    "title": "Naming hydrates",
+    "slug": "naming-hydrates"
+  },
+  {
+    "number": 292,
+    "module": "08_formulas_and_nomenclature",
+    "title": "Naming simple hydrocarbons",
+    "slug": "naming-simple-hydrocarbons"
+  },
+  {
+    "number": 293,
+    "module": "08_formulas_and_nomenclature",
+    "title": "Naming alkanes",
+    "slug": "naming-alkanes"
+  },
+  {
+    "number": 294,
+    "module": "08_formulas_and_nomenclature",
+    "title": "Naming alkenes",
+    "slug": "naming-alkenes"
+  },
+  {
+    "number": 295,
+    "module": "08_formulas_and_nomenclature",
+    "title": "Naming alkynes",
+    "slug": "naming-alkynes"
+  },
+  {
+    "number": 296,
+    "module": "08_formulas_and_nomenclature",
+    "title": "Naming alcohols",
+    "slug": "naming-alcohols"
+  },
+  {
+    "number": 297,
+    "module": "08_formulas_and_nomenclature",
+    "title": "Naming ethers",
+    "slug": "naming-ethers"
+  },
+  {
+    "number": 298,
+    "module": "08_formulas_and_nomenclature",
+    "title": "Naming aldehydes",
+    "slug": "naming-aldehydes"
+  },
+  {
+    "number": 299,
+    "module": "08_formulas_and_nomenclature",
+    "title": "Naming ketones",
+    "slug": "naming-ketones"
+  },
+  {
+    "number": 300,
+    "module": "08_formulas_and_nomenclature",
+    "title": "Naming carboxylic acids",
+    "slug": "naming-carboxylic-acids"
+  },
+  {
+    "number": 301,
+    "module": "08_formulas_and_nomenclature",
+    "title": "Naming esters",
+    "slug": "naming-esters"
+  },
+  {
+    "number": 302,
+    "module": "08_formulas_and_nomenclature",
+    "title": "Naming amines",
+    "slug": "naming-amines"
+  },
+  {
+    "number": 303,
+    "module": "08_formulas_and_nomenclature",
+    "title": "Naming amides",
+    "slug": "naming-amides"
+  },
+  {
+    "number": 304,
+    "module": "08_formulas_and_nomenclature",
+    "title": "Naming aromatic compounds",
+    "slug": "naming-aromatic-compounds"
+  },
+  {
+    "number": 305,
+    "module": "08_formulas_and_nomenclature",
+    "title": "Writing formulas from names",
+    "slug": "writing-formulas-from-names"
+  },
+  {
+    "number": 306,
+    "module": "08_formulas_and_nomenclature",
+    "title": "Formula mass",
+    "slug": "formula-mass"
+  },
+  {
+    "number": 307,
+    "module": "08_formulas_and_nomenclature",
+    "title": "Empirical formulas",
+    "slug": "empirical-formulas"
+  },
+  {
+    "number": 308,
+    "module": "08_formulas_and_nomenclature",
+    "title": "Molecular formulas",
+    "slug": "molecular-formulas"
+  },
+  {
+    "number": 309,
+    "module": "08_formulas_and_nomenclature",
+    "title": "Combustion analysis",
+    "slug": "combustion-analysis"
+  },
+  {
+    "number": 310,
+    "module": "08_formulas_and_nomenclature",
+    "title": "Percent composition",
+    "slug": "percent-composition"
+  },
+  {
+    "number": 311,
+    "module": "08_formulas_and_nomenclature",
+    "title": "Oxidation-state naming",
+    "slug": "oxidation-state-naming"
+  },
+  {
+    "number": 312,
+    "module": "08_formulas_and_nomenclature",
+    "title": "Common ions reference strategy",
+    "slug": "common-ions-reference-strategy"
+  },
+  {
+    "number": 313,
+    "module": "08_formulas_and_nomenclature",
+    "title": "Charge balance in formulas",
+    "slug": "charge-balance-in-formulas"
+  },
+  {
+    "number": 314,
+    "module": "08_formulas_and_nomenclature",
+    "title": "Structural versus molecular formulas",
+    "slug": "structural-versus-molecular-formulas"
+  },
+  {
+    "number": 315,
+    "module": "08_formulas_and_nomenclature",
+    "title": "Condensed structural formulas",
+    "slug": "condensed-structural-formulas"
+  },
+  {
+    "number": 316,
+    "module": "08_formulas_and_nomenclature",
+    "title": "Line-angle notation",
+    "slug": "line-angle-notation"
+  },
+  {
+    "number": 317,
+    "module": "08_formulas_and_nomenclature",
+    "title": "Stereochemical descriptors overview",
+    "slug": "stereochemical-descriptors-overview"
+  },
+  {
+    "number": 318,
+    "module": "08_formulas_and_nomenclature",
+    "title": "IUPAC names versus common names",
+    "slug": "iupac-names-versus-common-names"
+  },
+  {
+    "number": 319,
+    "module": "08_formulas_and_nomenclature",
+    "title": "Avoiding nomenclature traps",
+    "slug": "avoiding-nomenclature-traps"
+  },
+  {
+    "number": 320,
+    "module": "08_formulas_and_nomenclature",
+    "title": "Chemical language as a decoding skill",
+    "slug": "chemical-language-as-a-decoding-skill"
+  },
+  {
+    "number": 321,
+    "module": "09_stoichiometry_and_reactions",
+    "title": "Balancing chemical equations",
+    "slug": "balancing-chemical-equations"
+  },
+  {
+    "number": 322,
+    "module": "09_stoichiometry_and_reactions",
+    "title": "Why atoms must balance",
+    "slug": "why-atoms-must-balance"
+  },
+  {
+    "number": 323,
+    "module": "09_stoichiometry_and_reactions",
+    "title": "Coefficients versus subscripts",
+    "slug": "coefficients-versus-subscripts"
+  },
+  {
+    "number": 324,
+    "module": "09_stoichiometry_and_reactions",
+    "title": "Classifying reaction patterns",
+    "slug": "classifying-reaction-patterns"
+  },
+  {
+    "number": 325,
+    "module": "09_stoichiometry_and_reactions",
+    "title": "Synthesis reactions",
+    "slug": "synthesis-reactions"
+  },
+  {
+    "number": 326,
+    "module": "09_stoichiometry_and_reactions",
+    "title": "Decomposition reactions",
+    "slug": "decomposition-reactions"
+  },
+  {
+    "number": 327,
+    "module": "09_stoichiometry_and_reactions",
+    "title": "Single replacement",
+    "slug": "single-replacement"
+  },
+  {
+    "number": 328,
+    "module": "09_stoichiometry_and_reactions",
+    "title": "Double replacement",
+    "slug": "double-replacement"
+  },
+  {
+    "number": 329,
+    "module": "09_stoichiometry_and_reactions",
+    "title": "Combustion reactions",
+    "slug": "combustion-reactions"
+  },
+  {
+    "number": 330,
+    "module": "09_stoichiometry_and_reactions",
+    "title": "Acid-base neutralization",
+    "slug": "acid-base-neutralization"
+  },
+  {
+    "number": 331,
+    "module": "09_stoichiometry_and_reactions",
+    "title": "Precipitation reactions",
+    "slug": "precipitation-reactions"
+  },
+  {
+    "number": 332,
+    "module": "09_stoichiometry_and_reactions",
+    "title": "Gas-forming reactions",
+    "slug": "gas-forming-reactions"
+  },
+  {
+    "number": 333,
+    "module": "09_stoichiometry_and_reactions",
+    "title": "Net ionic equations",
+    "slug": "net-ionic-equations"
+  },
+  {
+    "number": 334,
+    "module": "09_stoichiometry_and_reactions",
+    "title": "Spectator ions",
+    "slug": "spectator-ions"
+  },
+  {
+    "number": 335,
+    "module": "09_stoichiometry_and_reactions",
+    "title": "Mole ratios",
+    "slug": "mole-ratios"
+  },
+  {
+    "number": 336,
+    "module": "09_stoichiometry_and_reactions",
+    "title": "Stoichiometry roadmap",
+    "slug": "stoichiometry-roadmap"
+  },
+  {
+    "number": 337,
+    "module": "09_stoichiometry_and_reactions",
+    "title": "Mass-to-mass calculations",
+    "slug": "mass-to-mass-calculations"
+  },
+  {
+    "number": 338,
+    "module": "09_stoichiometry_and_reactions",
+    "title": "Mole-to-mole calculations",
+    "slug": "mole-to-mole-calculations"
+  },
+  {
+    "number": 339,
+    "module": "09_stoichiometry_and_reactions",
+    "title": "Limiting reactant",
+    "slug": "limiting-reactant"
+  },
+  {
+    "number": 340,
+    "module": "09_stoichiometry_and_reactions",
+    "title": "Excess reactant",
+    "slug": "excess-reactant"
+  },
+  {
+    "number": 341,
+    "module": "09_stoichiometry_and_reactions",
+    "title": "Theoretical yield",
+    "slug": "theoretical-yield"
+  },
+  {
+    "number": 342,
+    "module": "09_stoichiometry_and_reactions",
+    "title": "Actual yield",
+    "slug": "actual-yield"
+  },
+  {
+    "number": 343,
+    "module": "09_stoichiometry_and_reactions",
+    "title": "Percent yield",
+    "slug": "percent-yield"
+  },
+  {
+    "number": 344,
+    "module": "09_stoichiometry_and_reactions",
+    "title": "Reaction stoichiometry with solutions",
+    "slug": "reaction-stoichiometry-with-solutions"
+  },
+  {
+    "number": 345,
+    "module": "09_stoichiometry_and_reactions",
+    "title": "Reaction stoichiometry with gases",
+    "slug": "reaction-stoichiometry-with-gases"
+  },
+  {
+    "number": 346,
+    "module": "09_stoichiometry_and_reactions",
+    "title": "Stoichiometry with purity",
+    "slug": "stoichiometry-with-purity"
+  },
+  {
+    "number": 347,
+    "module": "09_stoichiometry_and_reactions",
+    "title": "Sequential reactions",
+    "slug": "sequential-reactions"
+  },
+  {
+    "number": 348,
+    "module": "09_stoichiometry_and_reactions",
+    "title": "Overall reaction from steps",
+    "slug": "overall-reaction-from-steps"
+  },
+  {
+    "number": 349,
+    "module": "09_stoichiometry_and_reactions",
+    "title": "Redox reaction recognition",
+    "slug": "redox-reaction-recognition"
+  },
+  {
+    "number": 350,
+    "module": "09_stoichiometry_and_reactions",
+    "title": "Oxidation numbers",
+    "slug": "oxidation-numbers"
+  },
+  {
+    "number": 351,
+    "module": "09_stoichiometry_and_reactions",
+    "title": "Oxidation versus reduction",
+    "slug": "oxidation-versus-reduction"
+  },
+  {
+    "number": 352,
+    "module": "09_stoichiometry_and_reactions",
+    "title": "Disproportionation",
+    "slug": "disproportionation"
+  },
+  {
+    "number": 353,
+    "module": "09_stoichiometry_and_reactions",
+    "title": "Stoichiometric coefficients and scale",
+    "slug": "stoichiometric-coefficients-and-scale"
+  },
+  {
+    "number": 354,
+    "module": "09_stoichiometry_and_reactions",
+    "title": "Chemical equation interpretation",
+    "slug": "chemical-equation-interpretation"
+  },
+  {
+    "number": 355,
+    "module": "09_stoichiometry_and_reactions",
+    "title": "Combustion analysis workflow",
+    "slug": "combustion-analysis-workflow"
+  },
+  {
+    "number": 356,
+    "module": "09_stoichiometry_and_reactions",
+    "title": "Precipitation stoichiometry",
+    "slug": "precipitation-stoichiometry"
+  },
+  {
+    "number": 357,
+    "module": "09_stoichiometry_and_reactions",
+    "title": "Neutralization stoichiometry",
+    "slug": "neutralization-stoichiometry"
+  },
+  {
+    "number": 358,
+    "module": "09_stoichiometry_and_reactions",
+    "title": "Error sources in yield",
+    "slug": "error-sources-in-yield"
+  },
+  {
+    "number": 359,
+    "module": "09_stoichiometry_and_reactions",
+    "title": "Checking a balanced equation",
+    "slug": "checking-a-balanced-equation"
+  },
+  {
+    "number": 360,
+    "module": "09_stoichiometry_and_reactions",
+    "title": "Stoichiometry problem strategy",
+    "slug": "stoichiometry-problem-strategy"
+  },
+  {
+    "number": 361,
+    "module": "10_solutions",
+    "title": "What a solution is",
+    "slug": "what-a-solution-is"
+  },
+  {
+    "number": 362,
+    "module": "10_solutions",
+    "title": "Solute and solvent",
+    "slug": "solute-and-solvent"
+  },
+  {
+    "number": 363,
+    "module": "10_solutions",
+    "title": "Aqueous solutions",
+    "slug": "aqueous-solutions"
+  },
+  {
+    "number": 364,
+    "module": "10_solutions",
+    "title": "Electrolytes",
+    "slug": "electrolytes"
+  },
+  {
+    "number": 365,
+    "module": "10_solutions",
+    "title": "Strong versus weak electrolytes",
+    "slug": "strong-versus-weak-electrolytes"
+  },
+  {
+    "number": 366,
+    "module": "10_solutions",
+    "title": "Nonelectrolytes",
+    "slug": "nonelectrolytes"
+  },
+  {
+    "number": 367,
+    "module": "10_solutions",
+    "title": "Dissolution at the particle level",
+    "slug": "dissolution-at-the-particle-level"
+  },
+  {
+    "number": 368,
+    "module": "10_solutions",
+    "title": "Hydration shells",
+    "slug": "hydration-shells"
+  },
+  {
+    "number": 369,
+    "module": "10_solutions",
+    "title": "Solubility",
+    "slug": "solubility"
+  },
+  {
+    "number": 370,
+    "module": "10_solutions",
+    "title": "Solubility rules",
+    "slug": "solubility-rules"
+  },
+  {
+    "number": 371,
+    "module": "10_solutions",
+    "title": "Molarity",
+    "slug": "molarity"
+  },
+  {
+    "number": 372,
+    "module": "10_solutions",
+    "title": "Molality",
+    "slug": "molality"
+  },
+  {
+    "number": 373,
+    "module": "10_solutions",
+    "title": "Mole fraction",
+    "slug": "mole-fraction"
+  },
+  {
+    "number": 374,
+    "module": "10_solutions",
+    "title": "Mass percent",
+    "slug": "mass-percent"
+  },
+  {
+    "number": 375,
+    "module": "10_solutions",
+    "title": "Parts per million",
+    "slug": "parts-per-million"
+  },
+  {
+    "number": 376,
+    "module": "10_solutions",
+    "title": "Parts per billion",
+    "slug": "parts-per-billion"
+  },
+  {
+    "number": 377,
+    "module": "10_solutions",
+    "title": "Preparing a solution",
+    "slug": "preparing-a-solution"
+  },
+  {
+    "number": 378,
+    "module": "10_solutions",
+    "title": "Dilution",
+    "slug": "dilution"
+  },
+  {
+    "number": 379,
+    "module": "10_solutions",
+    "title": "Serial dilution",
+    "slug": "serial-dilution"
+  },
+  {
+    "number": 380,
+    "module": "10_solutions",
+    "title": "Mixing solutions",
+    "slug": "mixing-solutions"
+  },
+  {
+    "number": 381,
+    "module": "10_solutions",
+    "title": "Solution stoichiometry",
+    "slug": "solution-stoichiometry"
+  },
+  {
+    "number": 382,
+    "module": "10_solutions",
+    "title": "Precipitation from mixed solutions",
+    "slug": "precipitation-from-mixed-solutions"
+  },
+  {
+    "number": 383,
+    "module": "10_solutions",
+    "title": "Solubility and temperature",
+    "slug": "solubility-and-temperature"
+  },
+  {
+    "number": 384,
+    "module": "10_solutions",
+    "title": "Gas solubility",
+    "slug": "gas-solubility"
+  },
+  {
+    "number": 385,
+    "module": "10_solutions",
+    "title": "Henry's law",
+    "slug": "henry-s-law"
+  },
+  {
+    "number": 386,
+    "module": "10_solutions",
+    "title": "Saturated solutions",
+    "slug": "saturated-solutions"
+  },
+  {
+    "number": 387,
+    "module": "10_solutions",
+    "title": "Unsaturated solutions",
+    "slug": "unsaturated-solutions"
+  },
+  {
+    "number": 388,
+    "module": "10_solutions",
+    "title": "Supersaturated solutions",
+    "slug": "supersaturated-solutions"
+  },
+  {
+    "number": 389,
+    "module": "10_solutions",
+    "title": "Dynamic dissolution equilibrium",
+    "slug": "dynamic-dissolution-equilibrium"
+  },
+  {
+    "number": 390,
+    "module": "10_solutions",
+    "title": "Colligative properties",
+    "slug": "colligative-properties"
+  },
+  {
+    "number": 391,
+    "module": "10_solutions",
+    "title": "Boiling point elevation",
+    "slug": "boiling-point-elevation"
+  },
+  {
+    "number": 392,
+    "module": "10_solutions",
+    "title": "Freezing point depression",
+    "slug": "freezing-point-depression"
+  },
+  {
+    "number": 393,
+    "module": "10_solutions",
+    "title": "Osmotic pressure",
+    "slug": "osmotic-pressure"
+  },
+  {
+    "number": 394,
+    "module": "10_solutions",
+    "title": "Van't Hoff factor",
+    "slug": "van-t-hoff-factor"
+  },
+  {
+    "number": 395,
+    "module": "10_solutions",
+    "title": "Electrolyte particle counting",
+    "slug": "electrolyte-particle-counting"
+  },
+  {
+    "number": 396,
+    "module": "10_solutions",
+    "title": "Describing concentration correctly",
+    "slug": "describing-concentration-correctly"
+  },
+  {
+    "number": 397,
+    "module": "10_solutions",
+    "title": "Why salt dissolves in water",
+    "slug": "why-salt-dissolves-in-water"
+  },
+  {
+    "number": 398,
+    "module": "10_solutions",
+    "title": "Why oil and water separate",
+    "slug": "why-oil-and-water-separate"
+  },
+  {
+    "number": 399,
+    "module": "10_solutions",
+    "title": "Solutions in cells",
+    "slug": "solutions-in-cells"
+  },
+  {
+    "number": 400,
+    "module": "10_solutions",
+    "title": "Solutions in everyday products",
+    "slug": "solutions-in-everyday-products"
+  },
+  {
+    "number": 401,
+    "module": "11_gases",
+    "title": "Gas pressure",
+    "slug": "gas-pressure"
+  },
+  {
+    "number": 402,
+    "module": "11_gases",
+    "title": "Atmospheric pressure",
+    "slug": "atmospheric-pressure"
+  },
+  {
+    "number": 403,
+    "module": "11_gases",
+    "title": "Manometers",
+    "slug": "manometers"
+  },
+  {
+    "number": 404,
+    "module": "11_gases",
+    "title": "Barometers",
+    "slug": "barometers"
+  },
+  {
+    "number": 405,
+    "module": "11_gases",
+    "title": "Boyle's law",
+    "slug": "boyle-s-law"
+  },
+  {
+    "number": 406,
+    "module": "11_gases",
+    "title": "Charles's law",
+    "slug": "charles-s-law"
+  },
+  {
+    "number": 407,
+    "module": "11_gases",
+    "title": "Avogadro's law",
+    "slug": "avogadro-s-law"
+  },
+  {
+    "number": 408,
+    "module": "11_gases",
+    "title": "Combined gas law",
+    "slug": "combined-gas-law"
+  },
+  {
+    "number": 409,
+    "module": "11_gases",
+    "title": "Ideal gas law",
+    "slug": "ideal-gas-law"
+  },
+  {
+    "number": 410,
+    "module": "11_gases",
+    "title": "Gas density",
+    "slug": "gas-density"
+  },
+  {
+    "number": 411,
+    "module": "11_gases",
+    "title": "Molar mass of a gas",
+    "slug": "molar-mass-of-a-gas"
+  },
+  {
+    "number": 412,
+    "module": "11_gases",
+    "title": "Gas stoichiometry",
+    "slug": "gas-stoichiometry"
+  },
+  {
+    "number": 413,
+    "module": "11_gases",
+    "title": "Gas volume at STP",
+    "slug": "gas-volume-at-stp"
+  },
+  {
+    "number": 414,
+    "module": "11_gases",
+    "title": "Partial pressure",
+    "slug": "partial-pressure"
+  },
+  {
+    "number": 415,
+    "module": "11_gases",
+    "title": "Dalton's law",
+    "slug": "dalton-s-law"
+  },
+  {
+    "number": 416,
+    "module": "11_gases",
+    "title": "Mole fraction in gas mixtures",
+    "slug": "mole-fraction-in-gas-mixtures"
+  },
+  {
+    "number": 417,
+    "module": "11_gases",
+    "title": "Gas collection over water",
+    "slug": "gas-collection-over-water"
+  },
+  {
+    "number": 418,
+    "module": "11_gases",
+    "title": "Water vapor correction",
+    "slug": "water-vapor-correction"
+  },
+  {
+    "number": 419,
+    "module": "11_gases",
+    "title": "Kinetic molecular theory",
+    "slug": "kinetic-molecular-theory"
+  },
+  {
+    "number": 420,
+    "module": "11_gases",
+    "title": "Temperature and molecular speed",
+    "slug": "temperature-and-molecular-speed"
+  },
+  {
+    "number": 421,
+    "module": "11_gases",
+    "title": "Pressure at the particle level",
+    "slug": "pressure-at-the-particle-level"
+  },
+  {
+    "number": 422,
+    "module": "11_gases",
+    "title": "Volume at the particle level",
+    "slug": "volume-at-the-particle-level"
+  },
+  {
+    "number": 423,
+    "module": "11_gases",
+    "title": "Gas diffusion",
+    "slug": "gas-diffusion"
+  },
+  {
+    "number": 424,
+    "module": "11_gases",
+    "title": "Gas effusion",
+    "slug": "gas-effusion"
+  },
+  {
+    "number": 425,
+    "module": "11_gases",
+    "title": "Graham's law",
+    "slug": "graham-s-law"
+  },
+  {
+    "number": 426,
+    "module": "11_gases",
+    "title": "Real gases",
+    "slug": "real-gases"
+  },
+  {
+    "number": 427,
+    "module": "11_gases",
+    "title": "Why gases deviate",
+    "slug": "why-gases-deviate"
+  },
+  {
+    "number": 428,
+    "module": "11_gases",
+    "title": "Intermolecular attractions in gases",
+    "slug": "intermolecular-attractions-in-gases"
+  },
+  {
+    "number": 429,
+    "module": "11_gases",
+    "title": "Van der Waals equation",
+    "slug": "van-der-waals-equation"
+  },
+  {
+    "number": 430,
+    "module": "11_gases",
+    "title": "Critical temperature",
+    "slug": "critical-temperature"
+  },
+  {
+    "number": 431,
+    "module": "11_gases",
+    "title": "Critical pressure",
+    "slug": "critical-pressure"
+  },
+  {
+    "number": 432,
+    "module": "11_gases",
+    "title": "Liquefaction of gases",
+    "slug": "liquefaction-of-gases"
+  },
+  {
+    "number": 433,
+    "module": "11_gases",
+    "title": "Gas laws in breathing",
+    "slug": "gas-laws-in-breathing"
+  },
+  {
+    "number": 434,
+    "module": "11_gases",
+    "title": "Gas laws in weather",
+    "slug": "gas-laws-in-weather"
+  },
+  {
+    "number": 435,
+    "module": "11_gases",
+    "title": "Gas laws in engines",
+    "slug": "gas-laws-in-engines"
+  },
+  {
+    "number": 436,
+    "module": "11_gases",
+    "title": "Greenhouse gases",
+    "slug": "greenhouse-gases"
+  },
+  {
+    "number": 437,
+    "module": "11_gases",
+    "title": "Atmospheric composition",
+    "slug": "atmospheric-composition"
+  },
+  {
+    "number": 438,
+    "module": "11_gases",
+    "title": "Gas solubility and diving",
+    "slug": "gas-solubility-and-diving"
+  },
+  {
+    "number": 439,
+    "module": "11_gases",
+    "title": "Partial pressure in blood",
+    "slug": "partial-pressure-in-blood"
+  },
+  {
+    "number": 440,
+    "module": "11_gases",
+    "title": "Solving multistep gas problems",
+    "slug": "solving-multistep-gas-problems"
+  },
+  {
+    "number": 441,
+    "module": "12_liquids_and_solids",
+    "title": "Properties of liquids",
+    "slug": "properties-of-liquids"
+  },
+  {
+    "number": 442,
+    "module": "12_liquids_and_solids",
+    "title": "Cohesion and adhesion",
+    "slug": "cohesion-and-adhesion"
+  },
+  {
+    "number": 443,
+    "module": "12_liquids_and_solids",
+    "title": "Surface tension",
+    "slug": "surface-tension"
+  },
+  {
+    "number": 444,
+    "module": "12_liquids_and_solids",
+    "title": "Viscosity and temperature",
+    "slug": "viscosity-and-temperature"
+  },
+  {
+    "number": 445,
+    "module": "12_liquids_and_solids",
+    "title": "Vapor pressure",
+    "slug": "vapor-pressure"
+  },
+  {
+    "number": 446,
+    "module": "12_liquids_and_solids",
+    "title": "Boiling and external pressure",
+    "slug": "boiling-and-external-pressure"
+  },
+  {
+    "number": 447,
+    "module": "12_liquids_and_solids",
+    "title": "Heating curves",
+    "slug": "heating-curves"
+  },
+  {
+    "number": 448,
+    "module": "12_liquids_and_solids",
+    "title": "Cooling curves",
+    "slug": "cooling-curves"
+  },
+  {
+    "number": 449,
+    "module": "12_liquids_and_solids",
+    "title": "Phase diagrams",
+    "slug": "phase-diagrams"
+  },
+  {
+    "number": 450,
+    "module": "12_liquids_and_solids",
+    "title": "Triple point",
+    "slug": "triple-point"
+  },
+  {
+    "number": 451,
+    "module": "12_liquids_and_solids",
+    "title": "Critical point",
+    "slug": "critical-point"
+  },
+  {
+    "number": 452,
+    "module": "12_liquids_and_solids",
+    "title": "Fusion curves",
+    "slug": "fusion-curves"
+  },
+  {
+    "number": 453,
+    "module": "12_liquids_and_solids",
+    "title": "Sublimation curves",
+    "slug": "sublimation-curves"
+  },
+  {
+    "number": 454,
+    "module": "12_liquids_and_solids",
+    "title": "Dynamic phase equilibrium",
+    "slug": "dynamic-phase-equilibrium"
+  },
+  {
+    "number": 455,
+    "module": "12_liquids_and_solids",
+    "title": "Enthalpy of fusion",
+    "slug": "enthalpy-of-fusion"
+  },
+  {
+    "number": 456,
+    "module": "12_liquids_and_solids",
+    "title": "Enthalpy of vaporization",
+    "slug": "enthalpy-of-vaporization"
+  },
+  {
+    "number": 457,
+    "module": "12_liquids_and_solids",
+    "title": "Heating a substance calculation",
+    "slug": "heating-a-substance-calculation"
+  },
+  {
+    "number": 458,
+    "module": "12_liquids_and_solids",
+    "title": "Crystalline solids",
+    "slug": "crystalline-solids"
+  },
+  {
+    "number": 459,
+    "module": "12_liquids_and_solids",
+    "title": "Amorphous solids",
+    "slug": "amorphous-solids"
+  },
+  {
+    "number": 460,
+    "module": "12_liquids_and_solids",
+    "title": "Unit cells",
+    "slug": "unit-cells"
+  },
+  {
+    "number": 461,
+    "module": "12_liquids_and_solids",
+    "title": "Simple cubic packing",
+    "slug": "simple-cubic-packing"
+  },
+  {
+    "number": 462,
+    "module": "12_liquids_and_solids",
+    "title": "Body-centered cubic packing",
+    "slug": "body-centered-cubic-packing"
+  },
+  {
+    "number": 463,
+    "module": "12_liquids_and_solids",
+    "title": "Face-centered cubic packing",
+    "slug": "face-centered-cubic-packing"
+  },
+  {
+    "number": 464,
+    "module": "12_liquids_and_solids",
+    "title": "Close packing",
+    "slug": "close-packing"
+  },
+  {
+    "number": 465,
+    "module": "12_liquids_and_solids",
+    "title": "Coordination number",
+    "slug": "coordination-number"
+  },
+  {
+    "number": 466,
+    "module": "12_liquids_and_solids",
+    "title": "Packing efficiency",
+    "slug": "packing-efficiency"
+  },
+  {
+    "number": 467,
+    "module": "12_liquids_and_solids",
+    "title": "Density of a unit cell",
+    "slug": "density-of-a-unit-cell"
+  },
+  {
+    "number": 468,
+    "module": "12_liquids_and_solids",
+    "title": "Ionic crystal structures",
+    "slug": "ionic-crystal-structures"
+  },
+  {
+    "number": 469,
+    "module": "12_liquids_and_solids",
+    "title": "Covalent network solids",
+    "slug": "covalent-network-solids"
+  },
+  {
+    "number": 470,
+    "module": "12_liquids_and_solids",
+    "title": "Molecular solids",
+    "slug": "molecular-solids"
+  },
+  {
+    "number": 471,
+    "module": "12_liquids_and_solids",
+    "title": "Metallic solids",
+    "slug": "metallic-solids"
+  },
+  {
+    "number": 472,
+    "module": "12_liquids_and_solids",
+    "title": "Semiconductors",
+    "slug": "semiconductors"
+  },
+  {
+    "number": 473,
+    "module": "12_liquids_and_solids",
+    "title": "Band theory overview",
+    "slug": "band-theory-overview"
+  },
+  {
+    "number": 474,
+    "module": "12_liquids_and_solids",
+    "title": "Defects in crystals",
+    "slug": "defects-in-crystals"
+  },
+  {
+    "number": 475,
+    "module": "12_liquids_and_solids",
+    "title": "Doping a semiconductor",
+    "slug": "doping-a-semiconductor"
+  },
+  {
+    "number": 476,
+    "module": "12_liquids_and_solids",
+    "title": "Polymorphism",
+    "slug": "polymorphism"
+  },
+  {
+    "number": 477,
+    "module": "12_liquids_and_solids",
+    "title": "Solids and material properties",
+    "slug": "solids-and-material-properties"
+  },
+  {
+    "number": 478,
+    "module": "12_liquids_and_solids",
+    "title": "Phase changes in climate",
+    "slug": "phase-changes-in-climate"
+  },
+  {
+    "number": 479,
+    "module": "12_liquids_and_solids",
+    "title": "Why ice floats",
+    "slug": "why-ice-floats"
+  },
+  {
+    "number": 480,
+    "module": "12_liquids_and_solids",
+    "title": "Matter as a changing lattice",
+    "slug": "matter-as-a-changing-lattice"
+  },
+  {
+    "number": 481,
+    "module": "13_thermochemistry",
+    "title": "Energy in chemical systems",
+    "slug": "energy-in-chemical-systems"
+  },
+  {
+    "number": 482,
+    "module": "13_thermochemistry",
+    "title": "Kinetic and potential energy",
+    "slug": "kinetic-and-potential-energy"
+  },
+  {
+    "number": 483,
+    "module": "13_thermochemistry",
+    "title": "Internal energy",
+    "slug": "internal-energy"
+  },
+  {
+    "number": 484,
+    "module": "13_thermochemistry",
+    "title": "System and surroundings",
+    "slug": "system-and-surroundings"
+  },
+  {
+    "number": 485,
+    "module": "13_thermochemistry",
+    "title": "Heat versus temperature",
+    "slug": "heat-versus-temperature"
+  },
+  {
+    "number": 486,
+    "module": "13_thermochemistry",
+    "title": "Exothermic processes",
+    "slug": "exothermic-processes"
+  },
+  {
+    "number": 487,
+    "module": "13_thermochemistry",
+    "title": "Endothermic processes",
+    "slug": "endothermic-processes"
+  },
+  {
+    "number": 488,
+    "module": "13_thermochemistry",
+    "title": "The first law",
+    "slug": "the-first-law"
+  },
+  {
+    "number": 489,
+    "module": "13_thermochemistry",
+    "title": "Work and heat",
+    "slug": "work-and-heat"
+  },
+  {
+    "number": 490,
+    "module": "13_thermochemistry",
+    "title": "Pressure-volume work",
+    "slug": "pressure-volume-work"
+  },
+  {
+    "number": 491,
+    "module": "13_thermochemistry",
+    "title": "Enthalpy",
+    "slug": "enthalpy"
+  },
+  {
+    "number": 492,
+    "module": "13_thermochemistry",
+    "title": "Enthalpy change",
+    "slug": "enthalpy-change"
+  },
+  {
+    "number": 493,
+    "module": "13_thermochemistry",
+    "title": "Calorimetry",
+    "slug": "calorimetry"
+  },
+  {
+    "number": 494,
+    "module": "13_thermochemistry",
+    "title": "Specific heat capacity",
+    "slug": "specific-heat-capacity"
+  },
+  {
+    "number": 495,
+    "module": "13_thermochemistry",
+    "title": "Heat capacity",
+    "slug": "heat-capacity"
+  },
+  {
+    "number": 496,
+    "module": "13_thermochemistry",
+    "title": "Coffee-cup calorimetry",
+    "slug": "coffee-cup-calorimetry"
+  },
+  {
+    "number": 497,
+    "module": "13_thermochemistry",
+    "title": "Bomb calorimetry",
+    "slug": "bomb-calorimetry"
+  },
+  {
+    "number": 498,
+    "module": "13_thermochemistry",
+    "title": "Calorimetry calculations",
+    "slug": "calorimetry-calculations"
+  },
+  {
+    "number": 499,
+    "module": "13_thermochemistry",
+    "title": "Heating curves and energy",
+    "slug": "heating-curves-and-energy"
+  },
+  {
+    "number": 500,
+    "module": "13_thermochemistry",
+    "title": "Phase-change energy",
+    "slug": "phase-change-energy"
+  },
+  {
+    "number": 501,
+    "module": "13_thermochemistry",
+    "title": "Hess's law",
+    "slug": "hess-s-law"
+  },
+  {
+    "number": 502,
+    "module": "13_thermochemistry",
+    "title": "Enthalpy from formation data",
+    "slug": "enthalpy-from-formation-data"
+  },
+  {
+    "number": 503,
+    "module": "13_thermochemistry",
+    "title": "Standard enthalpy of formation",
+    "slug": "standard-enthalpy-of-formation"
+  },
+  {
+    "number": 504,
+    "module": "13_thermochemistry",
+    "title": "Bond enthalpy estimates",
+    "slug": "bond-enthalpy-estimates"
+  },
+  {
+    "number": 505,
+    "module": "13_thermochemistry",
+    "title": "Combustion enthalpy",
+    "slug": "combustion-enthalpy"
+  },
+  {
+    "number": 506,
+    "module": "13_thermochemistry",
+    "title": "Food energy",
+    "slug": "food-energy"
+  },
+  {
+    "number": 507,
+    "module": "13_thermochemistry",
+    "title": "Fuel energy",
+    "slug": "fuel-energy"
+  },
+  {
+    "number": 508,
+    "module": "13_thermochemistry",
+    "title": "Energy efficiency",
+    "slug": "energy-efficiency"
+  },
+  {
+    "number": 509,
+    "module": "13_thermochemistry",
+    "title": "Thermochemical equations",
+    "slug": "thermochemical-equations"
+  },
+  {
+    "number": 510,
+    "module": "13_thermochemistry",
+    "title": "State functions",
+    "slug": "state-functions"
+  },
+  {
+    "number": 511,
+    "module": "13_thermochemistry",
+    "title": "Path independence",
+    "slug": "path-independence"
+  },
+  {
+    "number": 512,
+    "module": "13_thermochemistry",
+    "title": "Energy diagrams",
+    "slug": "energy-diagrams"
+  },
+  {
+    "number": 513,
+    "module": "13_thermochemistry",
+    "title": "Reaction coordinate and heat",
+    "slug": "reaction-coordinate-and-heat"
+  },
+  {
+    "number": 514,
+    "module": "13_thermochemistry",
+    "title": "Thermal pollution",
+    "slug": "thermal-pollution"
+  },
+  {
+    "number": 515,
+    "module": "13_thermochemistry",
+    "title": "Energy in metabolism",
+    "slug": "energy-in-metabolism"
+  },
+  {
+    "number": 516,
+    "module": "13_thermochemistry",
+    "title": "Energy in batteries",
+    "slug": "energy-in-batteries"
+  },
+  {
+    "number": 517,
+    "module": "13_thermochemistry",
+    "title": "Energy and climate",
+    "slug": "energy-and-climate"
+  },
+  {
+    "number": 518,
+    "module": "13_thermochemistry",
+    "title": "Calorimeter error sources",
+    "slug": "calorimeter-error-sources"
+  },
+  {
+    "number": 519,
+    "module": "13_thermochemistry",
+    "title": "Reasoning about energy signs",
+    "slug": "reasoning-about-energy-signs"
+  },
+  {
+    "number": 520,
+    "module": "13_thermochemistry",
+    "title": "Thermochemistry problem strategy",
+    "slug": "thermochemistry-problem-strategy"
+  },
+  {
+    "number": 521,
+    "module": "14_thermodynamics",
+    "title": "The second law",
+    "slug": "the-second-law"
+  },
+  {
+    "number": 522,
+    "module": "14_thermodynamics",
+    "title": "Entropy as dispersal",
+    "slug": "entropy-as-dispersal"
+  },
+  {
+    "number": 523,
+    "module": "14_thermodynamics",
+    "title": "Microstates",
+    "slug": "microstates"
+  },
+  {
+    "number": 524,
+    "module": "14_thermodynamics",
+    "title": "Boltzmann's idea",
+    "slug": "boltzmann-s-idea"
+  },
+  {
+    "number": 525,
+    "module": "14_thermodynamics",
+    "title": "Entropy changes in phase changes",
+    "slug": "entropy-changes-in-phase-changes"
+  },
+  {
+    "number": 526,
+    "module": "14_thermodynamics",
+    "title": "Entropy and mixing",
+    "slug": "entropy-and-mixing"
+  },
+  {
+    "number": 527,
+    "module": "14_thermodynamics",
+    "title": "Entropy of reactions",
+    "slug": "entropy-of-reactions"
+  },
+  {
+    "number": 528,
+    "module": "14_thermodynamics",
+    "title": "Standard molar entropy",
+    "slug": "standard-molar-entropy"
+  },
+  {
+    "number": 529,
+    "module": "14_thermodynamics",
+    "title": "The third law",
+    "slug": "the-third-law"
+  },
+  {
+    "number": 530,
+    "module": "14_thermodynamics",
+    "title": "Spontaneous processes",
+    "slug": "spontaneous-processes"
+  },
+  {
+    "number": 531,
+    "module": "14_thermodynamics",
+    "title": "Spontaneous does not mean fast",
+    "slug": "spontaneous-does-not-mean-fast"
+  },
+  {
+    "number": 532,
+    "module": "14_thermodynamics",
+    "title": "Free energy",
+    "slug": "free-energy"
+  },
+  {
+    "number": 533,
+    "module": "14_thermodynamics",
+    "title": "Gibbs free energy",
+    "slug": "gibbs-free-energy"
+  },
+  {
+    "number": 534,
+    "module": "14_thermodynamics",
+    "title": "Free-energy sign conventions",
+    "slug": "free-energy-sign-conventions"
+  },
+  {
+    "number": 535,
+    "module": "14_thermodynamics",
+    "title": "Free energy from enthalpy and entropy",
+    "slug": "free-energy-from-enthalpy-and-entropy"
+  },
+  {
+    "number": 536,
+    "module": "14_thermodynamics",
+    "title": "Free energy and temperature",
+    "slug": "free-energy-and-temperature"
+  },
+  {
+    "number": 537,
+    "module": "14_thermodynamics",
+    "title": "Free energy and equilibrium",
+    "slug": "free-energy-and-equilibrium"
+  },
+  {
+    "number": 538,
+    "module": "14_thermodynamics",
+    "title": "Chemical potential",
+    "slug": "chemical-potential"
+  },
+  {
+    "number": 539,
+    "module": "14_thermodynamics",
+    "title": "Standard free-energy change",
+    "slug": "standard-free-energy-change"
+  },
+  {
+    "number": 540,
+    "module": "14_thermodynamics",
+    "title": "Free energy of formation",
+    "slug": "free-energy-of-formation"
+  },
+  {
+    "number": 541,
+    "module": "14_thermodynamics",
+    "title": "Reaction direction",
+    "slug": "reaction-direction"
+  },
+  {
+    "number": 542,
+    "module": "14_thermodynamics",
+    "title": "Coupled reactions",
+    "slug": "coupled-reactions"
+  },
+  {
+    "number": 543,
+    "module": "14_thermodynamics",
+    "title": "Energy coupling in cells",
+    "slug": "energy-coupling-in-cells"
+  },
+  {
+    "number": 544,
+    "module": "14_thermodynamics",
+    "title": "Equilibrium as minimum free energy",
+    "slug": "equilibrium-as-minimum-free-energy"
+  },
+  {
+    "number": 545,
+    "module": "14_thermodynamics",
+    "title": "Reversible and irreversible processes",
+    "slug": "reversible-and-irreversible-processes"
+  },
+  {
+    "number": 546,
+    "module": "14_thermodynamics",
+    "title": "Heat engines",
+    "slug": "heat-engines"
+  },
+  {
+    "number": 547,
+    "module": "14_thermodynamics",
+    "title": "Efficiency limits",
+    "slug": "efficiency-limits"
+  },
+  {
+    "number": 548,
+    "module": "14_thermodynamics",
+    "title": "Carnot cycle concept",
+    "slug": "carnot-cycle-concept"
+  },
+  {
+    "number": 549,
+    "module": "14_thermodynamics",
+    "title": "Refrigerators and heat pumps",
+    "slug": "refrigerators-and-heat-pumps"
+  },
+  {
+    "number": 550,
+    "module": "14_thermodynamics",
+    "title": "Thermodynamics of dissolving",
+    "slug": "thermodynamics-of-dissolving"
+  },
+  {
+    "number": 551,
+    "module": "14_thermodynamics",
+    "title": "Thermodynamics of folding",
+    "slug": "thermodynamics-of-folding"
+  },
+  {
+    "number": 552,
+    "module": "14_thermodynamics",
+    "title": "Thermodynamics of membranes",
+    "slug": "thermodynamics-of-membranes"
+  },
+  {
+    "number": 553,
+    "module": "14_thermodynamics",
+    "title": "Thermodynamics of phase separation",
+    "slug": "thermodynamics-of-phase-separation"
+  },
+  {
+    "number": 554,
+    "module": "14_thermodynamics",
+    "title": "Thermodynamics and solubility",
+    "slug": "thermodynamics-and-solubility"
+  },
+  {
+    "number": 555,
+    "module": "14_thermodynamics",
+    "title": "Thermodynamics of batteries",
+    "slug": "thermodynamics-of-batteries"
+  },
+  {
+    "number": 556,
+    "module": "14_thermodynamics",
+    "title": "Thermodynamics of life",
+    "slug": "thermodynamics-of-life"
+  },
+  {
+    "number": 557,
+    "module": "14_thermodynamics",
+    "title": "Entropy and information",
+    "slug": "entropy-and-information"
+  },
+  {
+    "number": 558,
+    "module": "14_thermodynamics",
+    "title": "Why order can emerge locally",
+    "slug": "why-order-can-emerge-locally"
+  },
+  {
+    "number": 559,
+    "module": "14_thermodynamics",
+    "title": "Free energy as a driving force",
+    "slug": "free-energy-as-a-driving-force"
+  },
+  {
+    "number": 560,
+    "module": "14_thermodynamics",
+    "title": "Thermodynamics synthesis",
+    "slug": "thermodynamics-synthesis"
+  },
+  {
+    "number": 561,
+    "module": "15_kinetics",
+    "title": "Reaction rate",
+    "slug": "reaction-rate"
+  },
+  {
+    "number": 562,
+    "module": "15_kinetics",
+    "title": "Average rate",
+    "slug": "average-rate"
+  },
+  {
+    "number": 563,
+    "module": "15_kinetics",
+    "title": "Instantaneous rate",
+    "slug": "instantaneous-rate"
+  },
+  {
+    "number": 564,
+    "module": "15_kinetics",
+    "title": "Rate from concentration data",
+    "slug": "rate-from-concentration-data"
+  },
+  {
+    "number": 565,
+    "module": "15_kinetics",
+    "title": "Rate laws",
+    "slug": "rate-laws"
+  },
+  {
+    "number": 566,
+    "module": "15_kinetics",
+    "title": "Reaction order",
+    "slug": "reaction-order"
+  },
+  {
+    "number": 567,
+    "module": "15_kinetics",
+    "title": "Zero-order reactions",
+    "slug": "zero-order-reactions"
+  },
+  {
+    "number": 568,
+    "module": "15_kinetics",
+    "title": "First-order reactions",
+    "slug": "first-order-reactions"
+  },
+  {
+    "number": 569,
+    "module": "15_kinetics",
+    "title": "Second-order reactions",
+    "slug": "second-order-reactions"
+  },
+  {
+    "number": 570,
+    "module": "15_kinetics",
+    "title": "Integrated rate laws",
+    "slug": "integrated-rate-laws"
+  },
+  {
+    "number": 571,
+    "module": "15_kinetics",
+    "title": "Half-life",
+    "slug": "half-life"
+  },
+  {
+    "number": 572,
+    "module": "15_kinetics",
+    "title": "Half-life and order",
+    "slug": "half-life-and-order"
+  },
+  {
+    "number": 573,
+    "module": "15_kinetics",
+    "title": "Method of initial rates",
+    "slug": "method-of-initial-rates"
+  },
+  {
+    "number": 574,
+    "module": "15_kinetics",
+    "title": "Graphical order tests",
+    "slug": "graphical-order-tests"
+  },
+  {
+    "number": 575,
+    "module": "15_kinetics",
+    "title": "Rate constants",
+    "slug": "rate-constants"
+  },
+  {
+    "number": 576,
+    "module": "15_kinetics",
+    "title": "Temperature and rate",
+    "slug": "temperature-and-rate"
+  },
+  {
+    "number": 577,
+    "module": "15_kinetics",
+    "title": "Collision theory",
+    "slug": "collision-theory"
+  },
+  {
+    "number": 578,
+    "module": "15_kinetics",
+    "title": "Activation energy",
+    "slug": "activation-energy"
+  },
+  {
+    "number": 579,
+    "module": "15_kinetics",
+    "title": "Arrhenius equation",
+    "slug": "arrhenius-equation"
+  },
+  {
+    "number": 580,
+    "module": "15_kinetics",
+    "title": "Arrhenius plots",
+    "slug": "arrhenius-plots"
+  },
+  {
+    "number": 581,
+    "module": "15_kinetics",
+    "title": "Transition states",
+    "slug": "transition-states"
+  },
+  {
+    "number": 582,
+    "module": "15_kinetics",
+    "title": "Activated complexes",
+    "slug": "activated-complexes"
+  },
+  {
+    "number": 583,
+    "module": "15_kinetics",
+    "title": "Catalysts",
+    "slug": "catalysts"
+  },
+  {
+    "number": 584,
+    "module": "15_kinetics",
+    "title": "Homogeneous catalysis",
+    "slug": "homogeneous-catalysis"
+  },
+  {
+    "number": 585,
+    "module": "15_kinetics",
+    "title": "Heterogeneous catalysis",
+    "slug": "heterogeneous-catalysis"
+  },
+  {
+    "number": 586,
+    "module": "15_kinetics",
+    "title": "Enzymes as catalysts",
+    "slug": "enzymes-as-catalysts"
+  },
+  {
+    "number": 587,
+    "module": "15_kinetics",
+    "title": "Reaction mechanisms",
+    "slug": "reaction-mechanisms"
+  },
+  {
+    "number": 588,
+    "module": "15_kinetics",
+    "title": "Elementary steps",
+    "slug": "elementary-steps"
+  },
+  {
+    "number": 589,
+    "module": "15_kinetics",
+    "title": "Molecularity",
+    "slug": "molecularity"
+  },
+  {
+    "number": 590,
+    "module": "15_kinetics",
+    "title": "Rate-determining step",
+    "slug": "rate-determining-step"
+  },
+  {
+    "number": 591,
+    "module": "15_kinetics",
+    "title": "Intermediates",
+    "slug": "intermediates"
+  },
+  {
+    "number": 592,
+    "module": "15_kinetics",
+    "title": "Steady-state approximation",
+    "slug": "steady-state-approximation"
+  },
+  {
+    "number": 593,
+    "module": "15_kinetics",
+    "title": "Pre-equilibrium approximation",
+    "slug": "pre-equilibrium-approximation"
+  },
+  {
+    "number": 594,
+    "module": "15_kinetics",
+    "title": "Mechanism from a rate law",
+    "slug": "mechanism-from-a-rate-law"
+  },
+  {
+    "number": 595,
+    "module": "15_kinetics",
+    "title": "Rate law from a mechanism",
+    "slug": "rate-law-from-a-mechanism"
+  },
+  {
+    "number": 596,
+    "module": "15_kinetics",
+    "title": "Photochemical reactions",
+    "slug": "photochemical-reactions"
+  },
+  {
+    "number": 597,
+    "module": "15_kinetics",
+    "title": "Diffusion-controlled reactions",
+    "slug": "diffusion-controlled-reactions"
+  },
+  {
+    "number": 598,
+    "module": "15_kinetics",
+    "title": "Surface area and rate",
+    "slug": "surface-area-and-rate"
+  },
+  {
+    "number": 599,
+    "module": "15_kinetics",
+    "title": "Kinetics in everyday life",
+    "slug": "kinetics-in-everyday-life"
+  },
+  {
+    "number": 600,
+    "module": "15_kinetics",
+    "title": "Kinetics problem strategy",
+    "slug": "kinetics-problem-strategy"
+  },
+  {
+    "number": 601,
+    "module": "16_equilibrium",
+    "title": "Dynamic equilibrium",
+    "slug": "dynamic-equilibrium"
+  },
+  {
+    "number": 602,
+    "module": "16_equilibrium",
+    "title": "Equilibrium at the particle level",
+    "slug": "equilibrium-at-the-particle-level"
+  },
+  {
+    "number": 603,
+    "module": "16_equilibrium",
+    "title": "Equilibrium constants",
+    "slug": "equilibrium-constants"
+  },
+  {
+    "number": 604,
+    "module": "16_equilibrium",
+    "title": "Writing K expressions",
+    "slug": "writing-k-expressions"
+  },
+  {
+    "number": 605,
+    "module": "16_equilibrium",
+    "title": "Kc versus Kp",
+    "slug": "kc-versus-kp"
+  },
+  {
+    "number": 606,
+    "module": "16_equilibrium",
+    "title": "Homogeneous equilibrium",
+    "slug": "homogeneous-equilibrium"
+  },
+  {
+    "number": 607,
+    "module": "16_equilibrium",
+    "title": "Heterogeneous equilibrium",
+    "slug": "heterogeneous-equilibrium"
+  },
+  {
+    "number": 608,
+    "module": "16_equilibrium",
+    "title": "Reaction quotient",
+    "slug": "reaction-quotient"
+  },
+  {
+    "number": 609,
+    "module": "16_equilibrium",
+    "title": "Predicting reaction direction",
+    "slug": "predicting-reaction-direction"
+  },
+  {
+    "number": 610,
+    "module": "16_equilibrium",
+    "title": "ICE tables",
+    "slug": "ice-tables"
+  },
+  {
+    "number": 611,
+    "module": "16_equilibrium",
+    "title": "Solving equilibrium with change",
+    "slug": "solving-equilibrium-with-change"
+  },
+  {
+    "number": 612,
+    "module": "16_equilibrium",
+    "title": "Small-x approximation",
+    "slug": "small-x-approximation"
+  },
+  {
+    "number": 613,
+    "module": "16_equilibrium",
+    "title": "Quadratic equilibrium problems",
+    "slug": "quadratic-equilibrium-problems"
+  },
+  {
+    "number": 614,
+    "module": "16_equilibrium",
+    "title": "Le Ch\u00e2telier's principle",
+    "slug": "le-ch\u00e2telier-s-principle"
+  },
+  {
+    "number": 615,
+    "module": "16_equilibrium",
+    "title": "Concentration stress",
+    "slug": "concentration-stress"
+  },
+  {
+    "number": 616,
+    "module": "16_equilibrium",
+    "title": "Pressure stress",
+    "slug": "pressure-stress"
+  },
+  {
+    "number": 617,
+    "module": "16_equilibrium",
+    "title": "Volume stress",
+    "slug": "volume-stress"
+  },
+  {
+    "number": 618,
+    "module": "16_equilibrium",
+    "title": "Temperature stress",
+    "slug": "temperature-stress"
+  },
+  {
+    "number": 619,
+    "module": "16_equilibrium",
+    "title": "Catalysts and equilibrium",
+    "slug": "catalysts-and-equilibrium"
+  },
+  {
+    "number": 620,
+    "module": "16_equilibrium",
+    "title": "Inert gases and equilibrium",
+    "slug": "inert-gases-and-equilibrium"
+  },
+  {
+    "number": 621,
+    "module": "16_equilibrium",
+    "title": "Adding solids and liquids",
+    "slug": "adding-solids-and-liquids"
+  },
+  {
+    "number": 622,
+    "module": "16_equilibrium",
+    "title": "Equilibrium and free energy",
+    "slug": "equilibrium-and-free-energy"
+  },
+  {
+    "number": 623,
+    "module": "16_equilibrium",
+    "title": "Equilibrium and rate",
+    "slug": "equilibrium-and-rate"
+  },
+  {
+    "number": 624,
+    "module": "16_equilibrium",
+    "title": "Multiple equilibria",
+    "slug": "multiple-equilibria"
+  },
+  {
+    "number": 625,
+    "module": "16_equilibrium",
+    "title": "Coupled equilibria",
+    "slug": "coupled-equilibria"
+  },
+  {
+    "number": 626,
+    "module": "16_equilibrium",
+    "title": "Equilibrium in solution",
+    "slug": "equilibrium-in-solution"
+  },
+  {
+    "number": 627,
+    "module": "16_equilibrium",
+    "title": "Complex-ion equilibria",
+    "slug": "complex-ion-equilibria"
+  },
+  {
+    "number": 628,
+    "module": "16_equilibrium",
+    "title": "Gas-phase equilibrium",
+    "slug": "gas-phase-equilibrium"
+  },
+  {
+    "number": 629,
+    "module": "16_equilibrium",
+    "title": "Industrial equilibrium",
+    "slug": "industrial-equilibrium"
+  },
+  {
+    "number": 630,
+    "module": "16_equilibrium",
+    "title": "Haber process equilibrium",
+    "slug": "haber-process-equilibrium"
+  },
+  {
+    "number": 631,
+    "module": "16_equilibrium",
+    "title": "Contact process equilibrium",
+    "slug": "contact-process-equilibrium"
+  },
+  {
+    "number": 632,
+    "module": "16_equilibrium",
+    "title": "Equilibrium and color",
+    "slug": "equilibrium-and-color"
+  },
+  {
+    "number": 633,
+    "module": "16_equilibrium",
+    "title": "Equilibrium and solubility",
+    "slug": "equilibrium-and-solubility"
+  },
+  {
+    "number": 634,
+    "module": "16_equilibrium",
+    "title": "Equilibrium and acid-base chemistry",
+    "slug": "equilibrium-and-acid-base-chemistry"
+  },
+  {
+    "number": 635,
+    "module": "16_equilibrium",
+    "title": "Equilibrium approximations",
+    "slug": "equilibrium-approximations"
+  },
+  {
+    "number": 636,
+    "module": "16_equilibrium",
+    "title": "Common equilibrium mistakes",
+    "slug": "common-equilibrium-mistakes"
+  },
+  {
+    "number": 637,
+    "module": "16_equilibrium",
+    "title": "Equilibrium graph reading",
+    "slug": "equilibrium-graph-reading"
+  },
+  {
+    "number": 638,
+    "module": "16_equilibrium",
+    "title": "Disturbance and response",
+    "slug": "disturbance-and-response"
+  },
+  {
+    "number": 639,
+    "module": "16_equilibrium",
+    "title": "Equilibrium problem strategy",
+    "slug": "equilibrium-problem-strategy"
+  },
+  {
+    "number": 640,
+    "module": "16_equilibrium",
+    "title": "Equilibrium as balance",
+    "slug": "equilibrium-as-balance"
+  },
+  {
+    "number": 641,
+    "module": "17_acids_and_bases",
+    "title": "Arrhenius acids and bases",
+    "slug": "arrhenius-acids-and-bases"
+  },
+  {
+    "number": 642,
+    "module": "17_acids_and_bases",
+    "title": "Br\u00f8nsted-Lowry acids and bases",
+    "slug": "br\u00f8nsted-lowry-acids-and-bases"
+  },
+  {
+    "number": 643,
+    "module": "17_acids_and_bases",
+    "title": "Lewis acids and bases",
+    "slug": "lewis-acids-and-bases"
+  },
+  {
+    "number": 644,
+    "module": "17_acids_and_bases",
+    "title": "Conjugate acid-base pairs",
+    "slug": "conjugate-acid-base-pairs"
+  },
+  {
+    "number": 645,
+    "module": "17_acids_and_bases",
+    "title": "Amphiprotic species",
+    "slug": "amphiprotic-species"
+  },
+  {
+    "number": 646,
+    "module": "17_acids_and_bases",
+    "title": "Water autoionization",
+    "slug": "water-autoionization"
+  },
+  {
+    "number": 647,
+    "module": "17_acids_and_bases",
+    "title": "Kw",
+    "slug": "kw"
+  },
+  {
+    "number": 648,
+    "module": "17_acids_and_bases",
+    "title": "pH",
+    "slug": "ph"
+  },
+  {
+    "number": 649,
+    "module": "17_acids_and_bases",
+    "title": "pOH",
+    "slug": "poh"
+  },
+  {
+    "number": 650,
+    "module": "17_acids_and_bases",
+    "title": "Converting pH and concentration",
+    "slug": "converting-ph-and-concentration"
+  },
+  {
+    "number": 651,
+    "module": "17_acids_and_bases",
+    "title": "Strong acids",
+    "slug": "strong-acids"
+  },
+  {
+    "number": 652,
+    "module": "17_acids_and_bases",
+    "title": "Strong bases",
+    "slug": "strong-bases"
+  },
+  {
+    "number": 653,
+    "module": "17_acids_and_bases",
+    "title": "Weak acids",
+    "slug": "weak-acids"
+  },
+  {
+    "number": 654,
+    "module": "17_acids_and_bases",
+    "title": "Weak bases",
+    "slug": "weak-bases"
+  },
+  {
+    "number": 655,
+    "module": "17_acids_and_bases",
+    "title": "Ka",
+    "slug": "ka"
+  },
+  {
+    "number": 656,
+    "module": "17_acids_and_bases",
+    "title": "Kb",
+    "slug": "kb"
+  },
+  {
+    "number": 657,
+    "module": "17_acids_and_bases",
+    "title": "pKa",
+    "slug": "pka"
+  },
+  {
+    "number": 658,
+    "module": "17_acids_and_bases",
+    "title": "pKb",
+    "slug": "pkb"
+  },
+  {
+    "number": 659,
+    "module": "17_acids_and_bases",
+    "title": "Percent ionization",
+    "slug": "percent-ionization"
+  },
+  {
+    "number": 660,
+    "module": "17_acids_and_bases",
+    "title": "Acid strength and structure",
+    "slug": "acid-strength-and-structure"
+  },
+  {
+    "number": 661,
+    "module": "17_acids_and_bases",
+    "title": "Base strength and structure",
+    "slug": "base-strength-and-structure"
+  },
+  {
+    "number": 662,
+    "module": "17_acids_and_bases",
+    "title": "Polyprotic acids",
+    "slug": "polyprotic-acids"
+  },
+  {
+    "number": 663,
+    "module": "17_acids_and_bases",
+    "title": "Amphiprotic pH",
+    "slug": "amphiprotic-ph"
+  },
+  {
+    "number": 664,
+    "module": "17_acids_and_bases",
+    "title": "Common-ion effect",
+    "slug": "common-ion-effect"
+  },
+  {
+    "number": 665,
+    "module": "17_acids_and_bases",
+    "title": "Buffers",
+    "slug": "buffers"
+  },
+  {
+    "number": 666,
+    "module": "17_acids_and_bases",
+    "title": "Henderson-Hasselbalch equation",
+    "slug": "henderson-hasselbalch-equation"
+  },
+  {
+    "number": 667,
+    "module": "17_acids_and_bases",
+    "title": "Buffer capacity",
+    "slug": "buffer-capacity"
+  },
+  {
+    "number": 668,
+    "module": "17_acids_and_bases",
+    "title": "Buffer design",
+    "slug": "buffer-design"
+  },
+  {
+    "number": 669,
+    "module": "17_acids_and_bases",
+    "title": "Buffer failure",
+    "slug": "buffer-failure"
+  },
+  {
+    "number": 670,
+    "module": "17_acids_and_bases",
+    "title": "Acid-base titrations",
+    "slug": "acid-base-titrations"
+  },
+  {
+    "number": 671,
+    "module": "17_acids_and_bases",
+    "title": "Titration curves",
+    "slug": "titration-curves"
+  },
+  {
+    "number": 672,
+    "module": "17_acids_and_bases",
+    "title": "Equivalence point",
+    "slug": "equivalence-point"
+  },
+  {
+    "number": 673,
+    "module": "17_acids_and_bases",
+    "title": "Half-equivalence point",
+    "slug": "half-equivalence-point"
+  },
+  {
+    "number": 674,
+    "module": "17_acids_and_bases",
+    "title": "Indicators",
+    "slug": "indicators"
+  },
+  {
+    "number": 675,
+    "module": "17_acids_and_bases",
+    "title": "Strong acid-strong base titration",
+    "slug": "strong-acid-strong-base-titration"
+  },
+  {
+    "number": 676,
+    "module": "17_acids_and_bases",
+    "title": "Weak acid-strong base titration",
+    "slug": "weak-acid-strong-base-titration"
+  },
+  {
+    "number": 677,
+    "module": "17_acids_and_bases",
+    "title": "Strong acid-weak base titration",
+    "slug": "strong-acid-weak-base-titration"
+  },
+  {
+    "number": 678,
+    "module": "17_acids_and_bases",
+    "title": "Polyprotic titration",
+    "slug": "polyprotic-titration"
+  },
+  {
+    "number": 679,
+    "module": "17_acids_and_bases",
+    "title": "Acid-base problem strategy",
+    "slug": "acid-base-problem-strategy"
+  },
+  {
+    "number": 680,
+    "module": "17_acids_and_bases",
+    "title": "Acid-base chemistry in life",
+    "slug": "acid-base-chemistry-in-life"
+  },
+  {
+    "number": 681,
+    "module": "18_solubility_and_complexation",
+    "title": "Solubility equilibria",
+    "slug": "solubility-equilibria"
+  },
+  {
+    "number": 682,
+    "module": "18_solubility_and_complexation",
+    "title": "Ksp",
+    "slug": "ksp"
+  },
+  {
+    "number": 683,
+    "module": "18_solubility_and_complexation",
+    "title": "Writing Ksp expressions",
+    "slug": "writing-ksp-expressions"
+  },
+  {
+    "number": 684,
+    "module": "18_solubility_and_complexation",
+    "title": "Molar solubility",
+    "slug": "molar-solubility"
+  },
+  {
+    "number": 685,
+    "module": "18_solubility_and_complexation",
+    "title": "Ksp and precipitation",
+    "slug": "ksp-and-precipitation"
+  },
+  {
+    "number": 686,
+    "module": "18_solubility_and_complexation",
+    "title": "Ion product Qsp",
+    "slug": "ion-product-qsp"
+  },
+  {
+    "number": 687,
+    "module": "18_solubility_and_complexation",
+    "title": "Selective precipitation",
+    "slug": "selective-precipitation"
+  },
+  {
+    "number": 688,
+    "module": "18_solubility_and_complexation",
+    "title": "Common-ion effect on solubility",
+    "slug": "common-ion-effect-on-solubility"
+  },
+  {
+    "number": 689,
+    "module": "18_solubility_and_complexation",
+    "title": "pH and solubility",
+    "slug": "ph-and-solubility"
+  },
+  {
+    "number": 690,
+    "module": "18_solubility_and_complexation",
+    "title": "Solubility of hydroxides",
+    "slug": "solubility-of-hydroxides"
+  },
+  {
+    "number": 691,
+    "module": "18_solubility_and_complexation",
+    "title": "Solubility of carbonates",
+    "slug": "solubility-of-carbonates"
+  },
+  {
+    "number": 692,
+    "module": "18_solubility_and_complexation",
+    "title": "Solubility of sulfides",
+    "slug": "solubility-of-sulfides"
+  },
+  {
+    "number": 693,
+    "module": "18_solubility_and_complexation",
+    "title": "Complex-ion formation",
+    "slug": "complex-ion-formation"
+  },
+  {
+    "number": 694,
+    "module": "18_solubility_and_complexation",
+    "title": "Formation constants",
+    "slug": "formation-constants"
+  },
+  {
+    "number": 695,
+    "module": "18_solubility_and_complexation",
+    "title": "Overall equilibrium constants",
+    "slug": "overall-equilibrium-constants"
+  },
+  {
+    "number": 696,
+    "module": "18_solubility_and_complexation",
+    "title": "Amphoterism and solubility",
+    "slug": "amphoterism-and-solubility"
+  },
+  {
+    "number": 697,
+    "module": "18_solubility_and_complexation",
+    "title": "Chelation",
+    "slug": "chelation"
+  },
+  {
+    "number": 698,
+    "module": "18_solubility_and_complexation",
+    "title": "EDTA complexes",
+    "slug": "edta-complexes"
+  },
+  {
+    "number": 699,
+    "module": "18_solubility_and_complexation",
+    "title": "Hard and soft metal ions",
+    "slug": "hard-and-soft-metal-ions"
+  },
+  {
+    "number": 700,
+    "module": "18_solubility_and_complexation",
+    "title": "Coordination number",
+    "slug": "coordination-number"
+  },
+  {
+    "number": 701,
+    "module": "18_solubility_and_complexation",
+    "title": "Ligands",
+    "slug": "ligands"
+  },
+  {
+    "number": 702,
+    "module": "18_solubility_and_complexation",
+    "title": "Monodentate ligands",
+    "slug": "monodentate-ligands"
+  },
+  {
+    "number": 703,
+    "module": "18_solubility_and_complexation",
+    "title": "Bidentate ligands",
+    "slug": "bidentate-ligands"
+  },
+  {
+    "number": 704,
+    "module": "18_solubility_and_complexation",
+    "title": "Polydentate ligands",
+    "slug": "polydentate-ligands"
+  },
+  {
+    "number": 705,
+    "module": "18_solubility_and_complexation",
+    "title": "Geometric isomers in complexes",
+    "slug": "geometric-isomers-in-complexes"
+  },
+  {
+    "number": 706,
+    "module": "18_solubility_and_complexation",
+    "title": "Color in coordination compounds",
+    "slug": "color-in-coordination-compounds"
+  },
+  {
+    "number": 707,
+    "module": "18_solubility_and_complexation",
+    "title": "Magnetism in complexes",
+    "slug": "magnetism-in-complexes"
+  },
+  {
+    "number": 708,
+    "module": "18_solubility_and_complexation",
+    "title": "Crystal-field splitting",
+    "slug": "crystal-field-splitting"
+  },
+  {
+    "number": 709,
+    "module": "18_solubility_and_complexation",
+    "title": "Tetrahedral versus octahedral fields",
+    "slug": "tetrahedral-versus-octahedral-fields"
+  },
+  {
+    "number": 710,
+    "module": "18_solubility_and_complexation",
+    "title": "High-spin and low-spin",
+    "slug": "high-spin-and-low-spin"
+  },
+  {
+    "number": 711,
+    "module": "18_solubility_and_complexation",
+    "title": "Complexometric titration",
+    "slug": "complexometric-titration"
+  },
+  {
+    "number": 712,
+    "module": "18_solubility_and_complexation",
+    "title": "Metal ion buffering",
+    "slug": "metal-ion-buffering"
+  },
+  {
+    "number": 713,
+    "module": "18_solubility_and_complexation",
+    "title": "Water hardness",
+    "slug": "water-hardness"
+  },
+  {
+    "number": 714,
+    "module": "18_solubility_and_complexation",
+    "title": "Scale and precipitation",
+    "slug": "scale-and-precipitation"
+  },
+  {
+    "number": 715,
+    "module": "18_solubility_and_complexation",
+    "title": "Mineral weathering",
+    "slug": "mineral-weathering"
+  },
+  {
+    "number": 716,
+    "module": "18_solubility_and_complexation",
+    "title": "Biomineralization",
+    "slug": "biomineralization"
+  },
+  {
+    "number": 717,
+    "module": "18_solubility_and_complexation",
+    "title": "Metal transport in biology",
+    "slug": "metal-transport-in-biology"
+  },
+  {
+    "number": 718,
+    "module": "18_solubility_and_complexation",
+    "title": "Solubility problem strategy",
+    "slug": "solubility-problem-strategy"
+  },
+  {
+    "number": 719,
+    "module": "18_solubility_and_complexation",
+    "title": "Equilibrium networks",
+    "slug": "equilibrium-networks"
+  },
+  {
+    "number": 720,
+    "module": "18_solubility_and_complexation",
+    "title": "From ions to minerals",
+    "slug": "from-ions-to-minerals"
+  },
+  {
+    "number": 721,
+    "module": "19_redox_and_electrochemistry",
+    "title": "Oxidation and reduction",
+    "slug": "oxidation-and-reduction"
+  },
+  {
+    "number": 722,
+    "module": "19_redox_and_electrochemistry",
+    "title": "Oxidation numbers",
+    "slug": "oxidation-numbers"
+  },
+  {
+    "number": 723,
+    "module": "19_redox_and_electrochemistry",
+    "title": "Assigning oxidation states",
+    "slug": "assigning-oxidation-states"
+  },
+  {
+    "number": 724,
+    "module": "19_redox_and_electrochemistry",
+    "title": "Redox agents",
+    "slug": "redox-agents"
+  },
+  {
+    "number": 725,
+    "module": "19_redox_and_electrochemistry",
+    "title": "Oxidizing agents",
+    "slug": "oxidizing-agents"
+  },
+  {
+    "number": 726,
+    "module": "19_redox_and_electrochemistry",
+    "title": "Reducing agents",
+    "slug": "reducing-agents"
+  },
+  {
+    "number": 727,
+    "module": "19_redox_and_electrochemistry",
+    "title": "Balancing redox in acid",
+    "slug": "balancing-redox-in-acid"
+  },
+  {
+    "number": 728,
+    "module": "19_redox_and_electrochemistry",
+    "title": "Balancing redox in base",
+    "slug": "balancing-redox-in-base"
+  },
+  {
+    "number": 729,
+    "module": "19_redox_and_electrochemistry",
+    "title": "Half-reaction method",
+    "slug": "half-reaction-method"
+  },
+  {
+    "number": 730,
+    "module": "19_redox_and_electrochemistry",
+    "title": "Galvanic cells",
+    "slug": "galvanic-cells"
+  },
+  {
+    "number": 731,
+    "module": "19_redox_and_electrochemistry",
+    "title": "Voltaic cells",
+    "slug": "voltaic-cells"
+  },
+  {
+    "number": 732,
+    "module": "19_redox_and_electrochemistry",
+    "title": "Anode and cathode",
+    "slug": "anode-and-cathode"
+  },
+  {
+    "number": 733,
+    "module": "19_redox_and_electrochemistry",
+    "title": "Electron flow in a wire",
+    "slug": "electron-flow-in-a-wire"
+  },
+  {
+    "number": 734,
+    "module": "19_redox_and_electrochemistry",
+    "title": "Ion flow through a salt bridge",
+    "slug": "ion-flow-through-a-salt-bridge"
+  },
+  {
+    "number": 735,
+    "module": "19_redox_and_electrochemistry",
+    "title": "Cell notation",
+    "slug": "cell-notation"
+  },
+  {
+    "number": 736,
+    "module": "19_redox_and_electrochemistry",
+    "title": "Standard reduction potentials",
+    "slug": "standard-reduction-potentials"
+  },
+  {
+    "number": 737,
+    "module": "19_redox_and_electrochemistry",
+    "title": "Predicting spontaneity",
+    "slug": "predicting-spontaneity"
+  },
+  {
+    "number": 738,
+    "module": "19_redox_and_electrochemistry",
+    "title": "Standard cell potential",
+    "slug": "standard-cell-potential"
+  },
+  {
+    "number": 739,
+    "module": "19_redox_and_electrochemistry",
+    "title": "Free energy and cell potential",
+    "slug": "free-energy-and-cell-potential"
+  },
+  {
+    "number": 740,
+    "module": "19_redox_and_electrochemistry",
+    "title": "Nernst equation",
+    "slug": "nernst-equation"
+  },
+  {
+    "number": 741,
+    "module": "19_redox_and_electrochemistry",
+    "title": "Concentration cells",
+    "slug": "concentration-cells"
+  },
+  {
+    "number": 742,
+    "module": "19_redox_and_electrochemistry",
+    "title": "Electrolytic cells",
+    "slug": "electrolytic-cells"
+  },
+  {
+    "number": 743,
+    "module": "19_redox_and_electrochemistry",
+    "title": "Electrolysis",
+    "slug": "electrolysis"
+  },
+  {
+    "number": 744,
+    "module": "19_redox_and_electrochemistry",
+    "title": "Faraday's law",
+    "slug": "faraday-s-law"
+  },
+  {
+    "number": 745,
+    "module": "19_redox_and_electrochemistry",
+    "title": "Electroplating",
+    "slug": "electroplating"
+  },
+  {
+    "number": 746,
+    "module": "19_redox_and_electrochemistry",
+    "title": "Molten-salt electrolysis",
+    "slug": "molten-salt-electrolysis"
+  },
+  {
+    "number": 747,
+    "module": "19_redox_and_electrochemistry",
+    "title": "Aqueous electrolysis",
+    "slug": "aqueous-electrolysis"
+  },
+  {
+    "number": 748,
+    "module": "19_redox_and_electrochemistry",
+    "title": "Overpotential",
+    "slug": "overpotential"
+  },
+  {
+    "number": 749,
+    "module": "19_redox_and_electrochemistry",
+    "title": "Batteries",
+    "slug": "batteries"
+  },
+  {
+    "number": 750,
+    "module": "19_redox_and_electrochemistry",
+    "title": "Alkaline batteries",
+    "slug": "alkaline-batteries"
+  },
+  {
+    "number": 751,
+    "module": "19_redox_and_electrochemistry",
+    "title": "Lead-acid batteries",
+    "slug": "lead-acid-batteries"
+  },
+  {
+    "number": 752,
+    "module": "19_redox_and_electrochemistry",
+    "title": "Lithium-ion batteries",
+    "slug": "lithium-ion-batteries"
+  },
+  {
+    "number": 753,
+    "module": "19_redox_and_electrochemistry",
+    "title": "Fuel cells",
+    "slug": "fuel-cells"
+  },
+  {
+    "number": 754,
+    "module": "19_redox_and_electrochemistry",
+    "title": "Hydrogen fuel cells",
+    "slug": "hydrogen-fuel-cells"
+  },
+  {
+    "number": 755,
+    "module": "19_redox_and_electrochemistry",
+    "title": "Corrosion",
+    "slug": "corrosion"
+  },
+  {
+    "number": 756,
+    "module": "19_redox_and_electrochemistry",
+    "title": "Galvanic corrosion",
+    "slug": "galvanic-corrosion"
+  },
+  {
+    "number": 757,
+    "module": "19_redox_and_electrochemistry",
+    "title": "Cathodic protection",
+    "slug": "cathodic-protection"
+  },
+  {
+    "number": 758,
+    "module": "19_redox_and_electrochemistry",
+    "title": "Redox titrations",
+    "slug": "redox-titrations"
+  },
+  {
+    "number": 759,
+    "module": "19_redox_and_electrochemistry",
+    "title": "Electrochemical sensors",
+    "slug": "electrochemical-sensors"
+  },
+  {
+    "number": 760,
+    "module": "19_redox_and_electrochemistry",
+    "title": "Electrochemistry problem strategy",
+    "slug": "electrochemistry-problem-strategy"
+  },
+  {
+    "number": 761,
+    "module": "20_inorganic_chemistry",
+    "title": "Inorganic chemistry scope",
+    "slug": "inorganic-chemistry-scope"
+  },
+  {
+    "number": 762,
+    "module": "20_inorganic_chemistry",
+    "title": "Hydrogen chemistry",
+    "slug": "hydrogen-chemistry"
+  },
+  {
+    "number": 763,
+    "module": "20_inorganic_chemistry",
+    "title": "Hydrides",
+    "slug": "hydrides"
+  },
+  {
+    "number": 764,
+    "module": "20_inorganic_chemistry",
+    "title": "Alkali-metal compounds",
+    "slug": "alkali-metal-compounds"
+  },
+  {
+    "number": 765,
+    "module": "20_inorganic_chemistry",
+    "title": "Alkaline-earth compounds",
+    "slug": "alkaline-earth-compounds"
+  },
+  {
+    "number": 766,
+    "module": "20_inorganic_chemistry",
+    "title": "Group 13 chemistry",
+    "slug": "group-13-chemistry"
+  },
+  {
+    "number": 767,
+    "module": "20_inorganic_chemistry",
+    "title": "Boranes",
+    "slug": "boranes"
+  },
+  {
+    "number": 768,
+    "module": "20_inorganic_chemistry",
+    "title": "Aluminum chemistry",
+    "slug": "aluminum-chemistry"
+  },
+  {
+    "number": 769,
+    "module": "20_inorganic_chemistry",
+    "title": "Carbon allotropes",
+    "slug": "carbon-allotropes"
+  },
+  {
+    "number": 770,
+    "module": "20_inorganic_chemistry",
+    "title": "Silicon and silicates",
+    "slug": "silicon-and-silicates"
+  },
+  {
+    "number": 771,
+    "module": "20_inorganic_chemistry",
+    "title": "Group 15 trends",
+    "slug": "group-15-trends"
+  },
+  {
+    "number": 772,
+    "module": "20_inorganic_chemistry",
+    "title": "Ammonia chemistry",
+    "slug": "ammonia-chemistry"
+  },
+  {
+    "number": 773,
+    "module": "20_inorganic_chemistry",
+    "title": "Nitrogen oxides",
+    "slug": "nitrogen-oxides"
+  },
+  {
+    "number": 774,
+    "module": "20_inorganic_chemistry",
+    "title": "Phosphorus chemistry",
+    "slug": "phosphorus-chemistry"
+  },
+  {
+    "number": 775,
+    "module": "20_inorganic_chemistry",
+    "title": "Group 16 trends",
+    "slug": "group-16-trends"
+  },
+  {
+    "number": 776,
+    "module": "20_inorganic_chemistry",
+    "title": "Sulfur oxides",
+    "slug": "sulfur-oxides"
+  },
+  {
+    "number": 777,
+    "module": "20_inorganic_chemistry",
+    "title": "Sulfuric acid",
+    "slug": "sulfuric-acid"
+  },
+  {
+    "number": 778,
+    "module": "20_inorganic_chemistry",
+    "title": "Oxygen allotropes",
+    "slug": "oxygen-allotropes"
+  },
+  {
+    "number": 779,
+    "module": "20_inorganic_chemistry",
+    "title": "Group 17 trends",
+    "slug": "group-17-trends"
+  },
+  {
+    "number": 780,
+    "module": "20_inorganic_chemistry",
+    "title": "Interhalogen compounds",
+    "slug": "interhalogen-compounds"
+  },
+  {
+    "number": 781,
+    "module": "20_inorganic_chemistry",
+    "title": "Noble-gas compounds",
+    "slug": "noble-gas-compounds"
+  },
+  {
+    "number": 782,
+    "module": "20_inorganic_chemistry",
+    "title": "Transition-metal chemistry",
+    "slug": "transition-metal-chemistry"
+  },
+  {
+    "number": 783,
+    "module": "20_inorganic_chemistry",
+    "title": "Transition-metal oxidation states",
+    "slug": "transition-metal-oxidation-states"
+  },
+  {
+    "number": 784,
+    "module": "20_inorganic_chemistry",
+    "title": "Coordination compounds",
+    "slug": "coordination-compounds"
+  },
+  {
+    "number": 785,
+    "module": "20_inorganic_chemistry",
+    "title": "Ligand substitution",
+    "slug": "ligand-substitution"
+  },
+  {
+    "number": 786,
+    "module": "20_inorganic_chemistry",
+    "title": "Trans effect overview",
+    "slug": "trans-effect-overview"
+  },
+  {
+    "number": 787,
+    "module": "20_inorganic_chemistry",
+    "title": "Organometallic compounds",
+    "slug": "organometallic-compounds"
+  },
+  {
+    "number": 788,
+    "module": "20_inorganic_chemistry",
+    "title": "Metal carbonyls",
+    "slug": "metal-carbonyls"
+  },
+  {
+    "number": 789,
+    "module": "20_inorganic_chemistry",
+    "title": "Metals in catalysis",
+    "slug": "metals-in-catalysis"
+  },
+  {
+    "number": 790,
+    "module": "20_inorganic_chemistry",
+    "title": "Lanthanide contraction",
+    "slug": "lanthanide-contraction"
+  },
+  {
+    "number": 791,
+    "module": "20_inorganic_chemistry",
+    "title": "Lanthanide chemistry",
+    "slug": "lanthanide-chemistry"
+  },
+  {
+    "number": 792,
+    "module": "20_inorganic_chemistry",
+    "title": "Actinide chemistry",
+    "slug": "actinide-chemistry"
+  },
+  {
+    "number": 793,
+    "module": "20_inorganic_chemistry",
+    "title": "f-block magnetism",
+    "slug": "f-block-magnetism"
+  },
+  {
+    "number": 794,
+    "module": "20_inorganic_chemistry",
+    "title": "Bioinorganic metal centers",
+    "slug": "bioinorganic-metal-centers"
+  },
+  {
+    "number": 795,
+    "module": "20_inorganic_chemistry",
+    "title": "Iron in hemoglobin",
+    "slug": "iron-in-hemoglobin"
+  },
+  {
+    "number": 796,
+    "module": "20_inorganic_chemistry",
+    "title": "Copper proteins",
+    "slug": "copper-proteins"
+  },
+  {
+    "number": 797,
+    "module": "20_inorganic_chemistry",
+    "title": "Zinc enzymes",
+    "slug": "zinc-enzymes"
+  },
+  {
+    "number": 798,
+    "module": "20_inorganic_chemistry",
+    "title": "Inorganic pigments",
+    "slug": "inorganic-pigments"
+  },
+  {
+    "number": 799,
+    "module": "20_inorganic_chemistry",
+    "title": "Inorganic acids and bases",
+    "slug": "inorganic-acids-and-bases"
+  },
+  {
+    "number": 800,
+    "module": "20_inorganic_chemistry",
+    "title": "Periodic trends in inorganic reactions",
+    "slug": "periodic-trends-in-inorganic-reactions"
+  },
+  {
+    "number": 801,
+    "module": "21_organic_foundations",
+    "title": "Why carbon forms so many compounds",
+    "slug": "why-carbon-forms-so-many-compounds"
+  },
+  {
+    "number": 802,
+    "module": "21_organic_foundations",
+    "title": "Carbon hybridization",
+    "slug": "carbon-hybridization"
+  },
+  {
+    "number": 803,
+    "module": "21_organic_foundations",
+    "title": "sp3 carbon",
+    "slug": "sp3-carbon"
+  },
+  {
+    "number": 804,
+    "module": "21_organic_foundations",
+    "title": "sp2 carbon",
+    "slug": "sp2-carbon"
+  },
+  {
+    "number": 805,
+    "module": "21_organic_foundations",
+    "title": "sp carbon",
+    "slug": "sp-carbon"
+  },
+  {
+    "number": 806,
+    "module": "21_organic_foundations",
+    "title": "Sigma bonds",
+    "slug": "sigma-bonds"
+  },
+  {
+    "number": 807,
+    "module": "21_organic_foundations",
+    "title": "Pi bonds",
+    "slug": "pi-bonds"
+  },
+  {
+    "number": 808,
+    "module": "21_organic_foundations",
+    "title": "Constitutional isomers",
+    "slug": "constitutional-isomers"
+  },
+  {
+    "number": 809,
+    "module": "21_organic_foundations",
+    "title": "Stereoisomers",
+    "slug": "stereoisomers"
+  },
+  {
+    "number": 810,
+    "module": "21_organic_foundations",
+    "title": "Conformations",
+    "slug": "conformations"
+  },
+  {
+    "number": 811,
+    "module": "21_organic_foundations",
+    "title": "Newman projections",
+    "slug": "newman-projections"
+  },
+  {
+    "number": 812,
+    "module": "21_organic_foundations",
+    "title": "Cyclohexane chairs",
+    "slug": "cyclohexane-chairs"
+  },
+  {
+    "number": 813,
+    "module": "21_organic_foundations",
+    "title": "Axial and equatorial positions",
+    "slug": "axial-and-equatorial-positions"
+  },
+  {
+    "number": 814,
+    "module": "21_organic_foundations",
+    "title": "Cis-trans isomerism",
+    "slug": "cis-trans-isomerism"
+  },
+  {
+    "number": 815,
+    "module": "21_organic_foundations",
+    "title": "E-Z notation",
+    "slug": "e-z-notation"
+  },
+  {
+    "number": 816,
+    "module": "21_organic_foundations",
+    "title": "R-S configuration",
+    "slug": "r-s-configuration"
+  },
+  {
+    "number": 817,
+    "module": "21_organic_foundations",
+    "title": "Chirality",
+    "slug": "chirality"
+  },
+  {
+    "number": 818,
+    "module": "21_organic_foundations",
+    "title": "Enantiomers",
+    "slug": "enantiomers"
+  },
+  {
+    "number": 819,
+    "module": "21_organic_foundations",
+    "title": "Diastereomers",
+    "slug": "diastereomers"
+  },
+  {
+    "number": 820,
+    "module": "21_organic_foundations",
+    "title": "Meso compounds",
+    "slug": "meso-compounds"
+  },
+  {
+    "number": 821,
+    "module": "21_organic_foundations",
+    "title": "Racemates",
+    "slug": "racemates"
+  },
+  {
+    "number": 822,
+    "module": "21_organic_foundations",
+    "title": "Optical activity",
+    "slug": "optical-activity"
+  },
+  {
+    "number": 823,
+    "module": "21_organic_foundations",
+    "title": "Acid-base ideas in organic chemistry",
+    "slug": "acid-base-ideas-in-organic-chemistry"
+  },
+  {
+    "number": 824,
+    "module": "21_organic_foundations",
+    "title": "Resonance in organic molecules",
+    "slug": "resonance-in-organic-molecules"
+  },
+  {
+    "number": 825,
+    "module": "21_organic_foundations",
+    "title": "Inductive effects",
+    "slug": "inductive-effects"
+  },
+  {
+    "number": 826,
+    "module": "21_organic_foundations",
+    "title": "Hyperconjugation",
+    "slug": "hyperconjugation"
+  },
+  {
+    "number": 827,
+    "module": "21_organic_foundations",
+    "title": "Aromaticity",
+    "slug": "aromaticity"
+  },
+  {
+    "number": 828,
+    "module": "21_organic_foundations",
+    "title": "H\u00fcckel's rule",
+    "slug": "h\u00fcckel-s-rule"
+  },
+  {
+    "number": 829,
+    "module": "21_organic_foundations",
+    "title": "Benzene structure",
+    "slug": "benzene-structure"
+  },
+  {
+    "number": 830,
+    "module": "21_organic_foundations",
+    "title": "Electrophiles",
+    "slug": "electrophiles"
+  },
+  {
+    "number": 831,
+    "module": "21_organic_foundations",
+    "title": "Nucleophiles",
+    "slug": "nucleophiles"
+  },
+  {
+    "number": 832,
+    "module": "21_organic_foundations",
+    "title": "Leaving groups",
+    "slug": "leaving-groups"
+  },
+  {
+    "number": 833,
+    "module": "21_organic_foundations",
+    "title": "Curved-arrow notation",
+    "slug": "curved-arrow-notation"
+  },
+  {
+    "number": 834,
+    "module": "21_organic_foundations",
+    "title": "Organic reaction families",
+    "slug": "organic-reaction-families"
+  },
+  {
+    "number": 835,
+    "module": "21_organic_foundations",
+    "title": "Functional groups as reactivity hubs",
+    "slug": "functional-groups-as-reactivity-hubs"
+  },
+  {
+    "number": 836,
+    "module": "21_organic_foundations",
+    "title": "Organic oxidation states",
+    "slug": "organic-oxidation-states"
+  },
+  {
+    "number": 837,
+    "module": "21_organic_foundations",
+    "title": "Spectroscopy as structure evidence",
+    "slug": "spectroscopy-as-structure-evidence"
+  },
+  {
+    "number": 838,
+    "module": "21_organic_foundations",
+    "title": "Organic solubility",
+    "slug": "organic-solubility"
+  },
+  {
+    "number": 839,
+    "module": "21_organic_foundations",
+    "title": "Organic boiling points",
+    "slug": "organic-boiling-points"
+  },
+  {
+    "number": 840,
+    "module": "21_organic_foundations",
+    "title": "Organic chemistry problem strategy",
+    "slug": "organic-chemistry-problem-strategy"
+  },
+  {
+    "number": 841,
+    "module": "22_organic_reactions_and_mechanisms",
+    "title": "Alkane radical halogenation",
+    "slug": "alkane-radical-halogenation"
+  },
+  {
+    "number": 842,
+    "module": "22_organic_reactions_and_mechanisms",
+    "title": "Alkene electrophilic addition",
+    "slug": "alkene-electrophilic-addition"
+  },
+  {
+    "number": 843,
+    "module": "22_organic_reactions_and_mechanisms",
+    "title": "Hydrogenation of alkenes",
+    "slug": "hydrogenation-of-alkenes"
+  },
+  {
+    "number": 844,
+    "module": "22_organic_reactions_and_mechanisms",
+    "title": "Hydration of alkenes",
+    "slug": "hydration-of-alkenes"
+  },
+  {
+    "number": 845,
+    "module": "22_organic_reactions_and_mechanisms",
+    "title": "Hydrohalogenation",
+    "slug": "hydrohalogenation"
+  },
+  {
+    "number": 846,
+    "module": "22_organic_reactions_and_mechanisms",
+    "title": "Markovnikov's rule",
+    "slug": "markovnikov-s-rule"
+  },
+  {
+    "number": 847,
+    "module": "22_organic_reactions_and_mechanisms",
+    "title": "Anti-Markovnikov addition",
+    "slug": "anti-markovnikov-addition"
+  },
+  {
+    "number": 848,
+    "module": "22_organic_reactions_and_mechanisms",
+    "title": "Halohydrin formation",
+    "slug": "halohydrin-formation"
+  },
+  {
+    "number": 849,
+    "module": "22_organic_reactions_and_mechanisms",
+    "title": "Epoxide formation",
+    "slug": "epoxide-formation"
+  },
+  {
+    "number": 850,
+    "module": "22_organic_reactions_and_mechanisms",
+    "title": "Alkyne additions",
+    "slug": "alkyne-additions"
+  },
+  {
+    "number": 851,
+    "module": "22_organic_reactions_and_mechanisms",
+    "title": "Aromatic electrophilic substitution",
+    "slug": "aromatic-electrophilic-substitution"
+  },
+  {
+    "number": 852,
+    "module": "22_organic_reactions_and_mechanisms",
+    "title": "Nitration of benzene",
+    "slug": "nitration-of-benzene"
+  },
+  {
+    "number": 853,
+    "module": "22_organic_reactions_and_mechanisms",
+    "title": "Halogenation of benzene",
+    "slug": "halogenation-of-benzene"
+  },
+  {
+    "number": 854,
+    "module": "22_organic_reactions_and_mechanisms",
+    "title": "Friedel-Crafts alkylation",
+    "slug": "friedel-crafts-alkylation"
+  },
+  {
+    "number": 855,
+    "module": "22_organic_reactions_and_mechanisms",
+    "title": "Friedel-Crafts acylation",
+    "slug": "friedel-crafts-acylation"
+  },
+  {
+    "number": 856,
+    "module": "22_organic_reactions_and_mechanisms",
+    "title": "Nucleophilic substitution",
+    "slug": "nucleophilic-substitution"
+  },
+  {
+    "number": 857,
+    "module": "22_organic_reactions_and_mechanisms",
+    "title": "SN2 mechanism",
+    "slug": "sn2-mechanism"
+  },
+  {
+    "number": 858,
+    "module": "22_organic_reactions_and_mechanisms",
+    "title": "SN1 mechanism",
+    "slug": "sn1-mechanism"
+  },
+  {
+    "number": 859,
+    "module": "22_organic_reactions_and_mechanisms",
+    "title": "E2 elimination",
+    "slug": "e2-elimination"
+  },
+  {
+    "number": 860,
+    "module": "22_organic_reactions_and_mechanisms",
+    "title": "E1 elimination",
+    "slug": "e1-elimination"
+  },
+  {
+    "number": 861,
+    "module": "22_organic_reactions_and_mechanisms",
+    "title": "Substitution versus elimination",
+    "slug": "substitution-versus-elimination"
+  },
+  {
+    "number": 862,
+    "module": "22_organic_reactions_and_mechanisms",
+    "title": "Alcohol oxidation",
+    "slug": "alcohol-oxidation"
+  },
+  {
+    "number": 863,
+    "module": "22_organic_reactions_and_mechanisms",
+    "title": "Alcohol substitution",
+    "slug": "alcohol-substitution"
+  },
+  {
+    "number": 864,
+    "module": "22_organic_reactions_and_mechanisms",
+    "title": "Alcohol dehydration",
+    "slug": "alcohol-dehydration"
+  },
+  {
+    "number": 865,
+    "module": "22_organic_reactions_and_mechanisms",
+    "title": "Ether synthesis",
+    "slug": "ether-synthesis"
+  },
+  {
+    "number": 866,
+    "module": "22_organic_reactions_and_mechanisms",
+    "title": "Carbonyl nucleophilic addition",
+    "slug": "carbonyl-nucleophilic-addition"
+  },
+  {
+    "number": 867,
+    "module": "22_organic_reactions_and_mechanisms",
+    "title": "Aldehyde oxidation",
+    "slug": "aldehyde-oxidation"
+  },
+  {
+    "number": 868,
+    "module": "22_organic_reactions_and_mechanisms",
+    "title": "Ketone reduction",
+    "slug": "ketone-reduction"
+  },
+  {
+    "number": 869,
+    "module": "22_organic_reactions_and_mechanisms",
+    "title": "Acetal formation",
+    "slug": "acetal-formation"
+  },
+  {
+    "number": 870,
+    "module": "22_organic_reactions_and_mechanisms",
+    "title": "Grignard reactions",
+    "slug": "grignard-reactions"
+  },
+  {
+    "number": 871,
+    "module": "22_organic_reactions_and_mechanisms",
+    "title": "Carboxylic acid derivatives",
+    "slug": "carboxylic-acid-derivatives"
+  },
+  {
+    "number": 872,
+    "module": "22_organic_reactions_and_mechanisms",
+    "title": "Nucleophilic acyl substitution",
+    "slug": "nucleophilic-acyl-substitution"
+  },
+  {
+    "number": 873,
+    "module": "22_organic_reactions_and_mechanisms",
+    "title": "Esterification",
+    "slug": "esterification"
+  },
+  {
+    "number": 874,
+    "module": "22_organic_reactions_and_mechanisms",
+    "title": "Ester hydrolysis",
+    "slug": "ester-hydrolysis"
+  },
+  {
+    "number": 875,
+    "module": "22_organic_reactions_and_mechanisms",
+    "title": "Amide formation",
+    "slug": "amide-formation"
+  },
+  {
+    "number": 876,
+    "module": "22_organic_reactions_and_mechanisms",
+    "title": "Amines and basicity",
+    "slug": "amines-and-basicity"
+  },
+  {
+    "number": 877,
+    "module": "22_organic_reactions_and_mechanisms",
+    "title": "Diazonium chemistry",
+    "slug": "diazonium-chemistry"
+  },
+  {
+    "number": 878,
+    "module": "22_organic_reactions_and_mechanisms",
+    "title": "Aldol reactions",
+    "slug": "aldol-reactions"
+  },
+  {
+    "number": 879,
+    "module": "22_organic_reactions_and_mechanisms",
+    "title": "Diels-Alder reaction",
+    "slug": "diels-alder-reaction"
+  },
+  {
+    "number": 880,
+    "module": "22_organic_reactions_and_mechanisms",
+    "title": "Organic synthesis planning",
+    "slug": "organic-synthesis-planning"
+  },
+  {
+    "number": 881,
+    "module": "23_analytical_and_instrumental",
+    "title": "Analytical chemistry scope",
+    "slug": "analytical-chemistry-scope"
+  },
+  {
+    "number": 882,
+    "module": "23_analytical_and_instrumental",
+    "title": "Qualitative versus quantitative analysis",
+    "slug": "qualitative-versus-quantitative-analysis"
+  },
+  {
+    "number": 883,
+    "module": "23_analytical_and_instrumental",
+    "title": "Sampling and representativeness",
+    "slug": "sampling-and-representativeness"
+  },
+  {
+    "number": 884,
+    "module": "23_analytical_and_instrumental",
+    "title": "Calibration and standards",
+    "slug": "calibration-and-standards"
+  },
+  {
+    "number": 885,
+    "module": "23_analytical_and_instrumental",
+    "title": "External calibration",
+    "slug": "external-calibration"
+  },
+  {
+    "number": 886,
+    "module": "23_analytical_and_instrumental",
+    "title": "Internal standards",
+    "slug": "internal-standards"
+  },
+  {
+    "number": 887,
+    "module": "23_analytical_and_instrumental",
+    "title": "Standard addition",
+    "slug": "standard-addition"
+  },
+  {
+    "number": 888,
+    "module": "23_analytical_and_instrumental",
+    "title": "Limit of detection",
+    "slug": "limit-of-detection"
+  },
+  {
+    "number": 889,
+    "module": "23_analytical_and_instrumental",
+    "title": "Limit of quantitation",
+    "slug": "limit-of-quantitation"
+  },
+  {
+    "number": 890,
+    "module": "23_analytical_and_instrumental",
+    "title": "Selectivity and sensitivity",
+    "slug": "selectivity-and-sensitivity"
+  },
+  {
+    "number": 891,
+    "module": "23_analytical_and_instrumental",
+    "title": "Gravimetric analysis",
+    "slug": "gravimetric-analysis"
+  },
+  {
+    "number": 892,
+    "module": "23_analytical_and_instrumental",
+    "title": "Precipitation gravimetry",
+    "slug": "precipitation-gravimetry"
+  },
+  {
+    "number": 893,
+    "module": "23_analytical_and_instrumental",
+    "title": "Volumetric analysis",
+    "slug": "volumetric-analysis"
+  },
+  {
+    "number": 894,
+    "module": "23_analytical_and_instrumental",
+    "title": "Primary standards",
+    "slug": "primary-standards"
+  },
+  {
+    "number": 895,
+    "module": "23_analytical_and_instrumental",
+    "title": "Titrant standardization",
+    "slug": "titrant-standardization"
+  },
+  {
+    "number": 896,
+    "module": "23_analytical_and_instrumental",
+    "title": "Endpoint versus equivalence",
+    "slug": "endpoint-versus-equivalence"
+  },
+  {
+    "number": 897,
+    "module": "23_analytical_and_instrumental",
+    "title": "UV-visible spectroscopy",
+    "slug": "uv-visible-spectroscopy"
+  },
+  {
+    "number": 898,
+    "module": "23_analytical_and_instrumental",
+    "title": "Beer-Lambert law",
+    "slug": "beer-lambert-law"
+  },
+  {
+    "number": 899,
+    "module": "23_analytical_and_instrumental",
+    "title": "Absorbance and transmittance",
+    "slug": "absorbance-and-transmittance"
+  },
+  {
+    "number": 900,
+    "module": "23_analytical_and_instrumental",
+    "title": "UV-visible calibration curve",
+    "slug": "uv-visible-calibration-curve"
+  },
+  {
+    "number": 901,
+    "module": "23_analytical_and_instrumental",
+    "title": "Fluorescence spectroscopy",
+    "slug": "fluorescence-spectroscopy"
+  },
+  {
+    "number": 902,
+    "module": "23_analytical_and_instrumental",
+    "title": "Infrared spectroscopy",
+    "slug": "infrared-spectroscopy"
+  },
+  {
+    "number": 903,
+    "module": "23_analytical_and_instrumental",
+    "title": "IR functional-group regions",
+    "slug": "ir-functional-group-regions"
+  },
+  {
+    "number": 904,
+    "module": "23_analytical_and_instrumental",
+    "title": "NMR spectroscopy",
+    "slug": "nmr-spectroscopy"
+  },
+  {
+    "number": 905,
+    "module": "23_analytical_and_instrumental",
+    "title": "Chemical shift",
+    "slug": "chemical-shift"
+  },
+  {
+    "number": 906,
+    "module": "23_analytical_and_instrumental",
+    "title": "Spin-spin splitting",
+    "slug": "spin-spin-splitting"
+  },
+  {
+    "number": 907,
+    "module": "23_analytical_and_instrumental",
+    "title": "Mass spectrometry",
+    "slug": "mass-spectrometry"
+  },
+  {
+    "number": 908,
+    "module": "23_analytical_and_instrumental",
+    "title": "Mass-to-charge ratio",
+    "slug": "mass-to-charge-ratio"
+  },
+  {
+    "number": 909,
+    "module": "23_analytical_and_instrumental",
+    "title": "Isotope patterns in mass spectra",
+    "slug": "isotope-patterns-in-mass-spectra"
+  },
+  {
+    "number": 910,
+    "module": "23_analytical_and_instrumental",
+    "title": "Chromatography",
+    "slug": "chromatography"
+  },
+  {
+    "number": 911,
+    "module": "23_analytical_and_instrumental",
+    "title": "Thin-layer chromatography",
+    "slug": "thin-layer-chromatography"
+  },
+  {
+    "number": 912,
+    "module": "23_analytical_and_instrumental",
+    "title": "Gas chromatography",
+    "slug": "gas-chromatography"
+  },
+  {
+    "number": 913,
+    "module": "23_analytical_and_instrumental",
+    "title": "High-performance liquid chromatography",
+    "slug": "high-performance-liquid-chromatography"
+  },
+  {
+    "number": 914,
+    "module": "23_analytical_and_instrumental",
+    "title": "Retention time",
+    "slug": "retention-time"
+  },
+  {
+    "number": 915,
+    "module": "23_analytical_and_instrumental",
+    "title": "Chromatographic resolution",
+    "slug": "chromatographic-resolution"
+  },
+  {
+    "number": 916,
+    "module": "23_analytical_and_instrumental",
+    "title": "Electroanalytical chemistry",
+    "slug": "electroanalytical-chemistry"
+  },
+  {
+    "number": 917,
+    "module": "23_analytical_and_instrumental",
+    "title": "Potentiometry",
+    "slug": "potentiometry"
+  },
+  {
+    "number": 918,
+    "module": "23_analytical_and_instrumental",
+    "title": "Ion-selective electrodes",
+    "slug": "ion-selective-electrodes"
+  },
+  {
+    "number": 919,
+    "module": "23_analytical_and_instrumental",
+    "title": "Error analysis in measurements",
+    "slug": "error-analysis-in-measurements"
+  },
+  {
+    "number": 920,
+    "module": "23_analytical_and_instrumental",
+    "title": "Analytical workflow problem strategy",
+    "slug": "analytical-workflow-problem-strategy"
+  },
+  {
+    "number": 921,
+    "module": "24_biochemistry",
+    "title": "Biochemistry as molecular chemistry",
+    "slug": "biochemistry-as-molecular-chemistry"
+  },
+  {
+    "number": 922,
+    "module": "24_biochemistry",
+    "title": "Water in biological systems",
+    "slug": "water-in-biological-systems"
+  },
+  {
+    "number": 923,
+    "module": "24_biochemistry",
+    "title": "Amino acids",
+    "slug": "amino-acids"
+  },
+  {
+    "number": 924,
+    "module": "24_biochemistry",
+    "title": "Zwitterions",
+    "slug": "zwitterions"
+  },
+  {
+    "number": 925,
+    "module": "24_biochemistry",
+    "title": "Peptide bonds",
+    "slug": "peptide-bonds"
+  },
+  {
+    "number": 926,
+    "module": "24_biochemistry",
+    "title": "Protein primary structure",
+    "slug": "protein-primary-structure"
+  },
+  {
+    "number": 927,
+    "module": "24_biochemistry",
+    "title": "Protein secondary structure",
+    "slug": "protein-secondary-structure"
+  },
+  {
+    "number": 928,
+    "module": "24_biochemistry",
+    "title": "Protein tertiary structure",
+    "slug": "protein-tertiary-structure"
+  },
+  {
+    "number": 929,
+    "module": "24_biochemistry",
+    "title": "Protein quaternary structure",
+    "slug": "protein-quaternary-structure"
+  },
+  {
+    "number": 930,
+    "module": "24_biochemistry",
+    "title": "Protein folding",
+    "slug": "protein-folding"
+  },
+  {
+    "number": 931,
+    "module": "24_biochemistry",
+    "title": "Denaturation",
+    "slug": "denaturation"
+  },
+  {
+    "number": 932,
+    "module": "24_biochemistry",
+    "title": "Enzyme active sites",
+    "slug": "enzyme-active-sites"
+  },
+  {
+    "number": 933,
+    "module": "24_biochemistry",
+    "title": "Enzyme catalysis",
+    "slug": "enzyme-catalysis"
+  },
+  {
+    "number": 934,
+    "module": "24_biochemistry",
+    "title": "Michaelis-Menten model",
+    "slug": "michaelis-menten-model"
+  },
+  {
+    "number": 935,
+    "module": "24_biochemistry",
+    "title": "Competitive inhibition",
+    "slug": "competitive-inhibition"
+  },
+  {
+    "number": 936,
+    "module": "24_biochemistry",
+    "title": "Noncompetitive inhibition",
+    "slug": "noncompetitive-inhibition"
+  },
+  {
+    "number": 937,
+    "module": "24_biochemistry",
+    "title": "Allosteric regulation",
+    "slug": "allosteric-regulation"
+  },
+  {
+    "number": 938,
+    "module": "24_biochemistry",
+    "title": "Carbohydrates",
+    "slug": "carbohydrates"
+  },
+  {
+    "number": 939,
+    "module": "24_biochemistry",
+    "title": "Monosaccharides",
+    "slug": "monosaccharides"
+  },
+  {
+    "number": 940,
+    "module": "24_biochemistry",
+    "title": "Disaccharides",
+    "slug": "disaccharides"
+  },
+  {
+    "number": 941,
+    "module": "24_biochemistry",
+    "title": "Polysaccharides",
+    "slug": "polysaccharides"
+  },
+  {
+    "number": 942,
+    "module": "24_biochemistry",
+    "title": "Glycosidic bonds",
+    "slug": "glycosidic-bonds"
+  },
+  {
+    "number": 943,
+    "module": "24_biochemistry",
+    "title": "Lipids",
+    "slug": "lipids"
+  },
+  {
+    "number": 944,
+    "module": "24_biochemistry",
+    "title": "Fatty acids",
+    "slug": "fatty-acids"
+  },
+  {
+    "number": 945,
+    "module": "24_biochemistry",
+    "title": "Phospholipids",
+    "slug": "phospholipids"
+  },
+  {
+    "number": 946,
+    "module": "24_biochemistry",
+    "title": "Micelles and bilayers",
+    "slug": "micelles-and-bilayers"
+  },
+  {
+    "number": 947,
+    "module": "24_biochemistry",
+    "title": "Membrane fluidity",
+    "slug": "membrane-fluidity"
+  },
+  {
+    "number": 948,
+    "module": "24_biochemistry",
+    "title": "Nucleotides",
+    "slug": "nucleotides"
+  },
+  {
+    "number": 949,
+    "module": "24_biochemistry",
+    "title": "DNA base pairing",
+    "slug": "dna-base-pairing"
+  },
+  {
+    "number": 950,
+    "module": "24_biochemistry",
+    "title": "RNA structure",
+    "slug": "rna-structure"
+  },
+  {
+    "number": 951,
+    "module": "24_biochemistry",
+    "title": "ATP energy coupling",
+    "slug": "atp-energy-coupling"
+  },
+  {
+    "number": 952,
+    "module": "24_biochemistry",
+    "title": "NADH and electron transfer",
+    "slug": "nadh-and-electron-transfer"
+  },
+  {
+    "number": 953,
+    "module": "24_biochemistry",
+    "title": "Glycolysis chemistry",
+    "slug": "glycolysis-chemistry"
+  },
+  {
+    "number": 954,
+    "module": "24_biochemistry",
+    "title": "Citric acid cycle chemistry",
+    "slug": "citric-acid-cycle-chemistry"
+  },
+  {
+    "number": 955,
+    "module": "24_biochemistry",
+    "title": "Oxidative phosphorylation",
+    "slug": "oxidative-phosphorylation"
+  },
+  {
+    "number": 956,
+    "module": "24_biochemistry",
+    "title": "Photosynthesis chemistry",
+    "slug": "photosynthesis-chemistry"
+  },
+  {
+    "number": 957,
+    "module": "24_biochemistry",
+    "title": "Buffers in blood",
+    "slug": "buffers-in-blood"
+  },
+  {
+    "number": 958,
+    "module": "24_biochemistry",
+    "title": "Metals in enzymes",
+    "slug": "metals-in-enzymes"
+  },
+  {
+    "number": 959,
+    "module": "24_biochemistry",
+    "title": "Biomolecular recognition",
+    "slug": "biomolecular-recognition"
+  },
+  {
+    "number": 960,
+    "module": "24_biochemistry",
+    "title": "Biochemistry problem strategy",
+    "slug": "biochemistry-problem-strategy"
+  },
+  {
+    "number": 961,
+    "module": "25_materials_environment_nuclear_lab",
+    "title": "Nuclear stability",
+    "slug": "nuclear-stability"
+  },
+  {
+    "number": 962,
+    "module": "25_materials_environment_nuclear_lab",
+    "title": "Band of stability",
+    "slug": "band-of-stability"
+  },
+  {
+    "number": 963,
+    "module": "25_materials_environment_nuclear_lab",
+    "title": "Radioactive decay",
+    "slug": "radioactive-decay"
+  },
+  {
+    "number": 964,
+    "module": "25_materials_environment_nuclear_lab",
+    "title": "Alpha decay",
+    "slug": "alpha-decay"
+  },
+  {
+    "number": 965,
+    "module": "25_materials_environment_nuclear_lab",
+    "title": "Beta decay",
+    "slug": "beta-decay"
+  },
+  {
+    "number": 966,
+    "module": "25_materials_environment_nuclear_lab",
+    "title": "Gamma emission",
+    "slug": "gamma-emission"
+  },
+  {
+    "number": 967,
+    "module": "25_materials_environment_nuclear_lab",
+    "title": "Half-life calculations",
+    "slug": "half-life-calculations"
+  },
+  {
+    "number": 968,
+    "module": "25_materials_environment_nuclear_lab",
+    "title": "Nuclear equations",
+    "slug": "nuclear-equations"
+  },
+  {
+    "number": 969,
+    "module": "25_materials_environment_nuclear_lab",
+    "title": "Nuclear fission",
+    "slug": "nuclear-fission"
+  },
+  {
+    "number": 970,
+    "module": "25_materials_environment_nuclear_lab",
+    "title": "Nuclear fusion",
+    "slug": "nuclear-fusion"
+  },
+  {
+    "number": 971,
+    "module": "25_materials_environment_nuclear_lab",
+    "title": "Binding energy per nucleon",
+    "slug": "binding-energy-per-nucleon"
+  },
+  {
+    "number": 972,
+    "module": "25_materials_environment_nuclear_lab",
+    "title": "Radiation detection",
+    "slug": "radiation-detection"
+  },
+  {
+    "number": 973,
+    "module": "25_materials_environment_nuclear_lab",
+    "title": "Biological effects of radiation",
+    "slug": "biological-effects-of-radiation"
+  },
+  {
+    "number": 974,
+    "module": "25_materials_environment_nuclear_lab",
+    "title": "Radiocarbon dating",
+    "slug": "radiocarbon-dating"
+  },
+  {
+    "number": 975,
+    "module": "25_materials_environment_nuclear_lab",
+    "title": "Medical radioisotopes",
+    "slug": "medical-radioisotopes"
+  },
+  {
+    "number": 976,
+    "module": "25_materials_environment_nuclear_lab",
+    "title": "Polymerization",
+    "slug": "polymerization"
+  },
+  {
+    "number": 977,
+    "module": "25_materials_environment_nuclear_lab",
+    "title": "Addition polymers",
+    "slug": "addition-polymers"
+  },
+  {
+    "number": 978,
+    "module": "25_materials_environment_nuclear_lab",
+    "title": "Condensation polymers",
+    "slug": "condensation-polymers"
+  },
+  {
+    "number": 979,
+    "module": "25_materials_environment_nuclear_lab",
+    "title": "Thermoplastics",
+    "slug": "thermoplastics"
+  },
+  {
+    "number": 980,
+    "module": "25_materials_environment_nuclear_lab",
+    "title": "Thermosets",
+    "slug": "thermosets"
+  },
+  {
+    "number": 981,
+    "module": "25_materials_environment_nuclear_lab",
+    "title": "Elastomers",
+    "slug": "elastomers"
+  },
+  {
+    "number": 982,
+    "module": "25_materials_environment_nuclear_lab",
+    "title": "Polymer molecular weight",
+    "slug": "polymer-molecular-weight"
+  },
+  {
+    "number": 983,
+    "module": "25_materials_environment_nuclear_lab",
+    "title": "Glass transition",
+    "slug": "glass-transition"
+  },
+  {
+    "number": 984,
+    "module": "25_materials_environment_nuclear_lab",
+    "title": "Composite materials",
+    "slug": "composite-materials"
+  },
+  {
+    "number": 985,
+    "module": "25_materials_environment_nuclear_lab",
+    "title": "Ceramics",
+    "slug": "ceramics"
+  },
+  {
+    "number": 986,
+    "module": "25_materials_environment_nuclear_lab",
+    "title": "Metals and alloys",
+    "slug": "metals-and-alloys"
+  },
+  {
+    "number": 987,
+    "module": "25_materials_environment_nuclear_lab",
+    "title": "Nanomaterials",
+    "slug": "nanomaterials"
+  },
+  {
+    "number": 988,
+    "module": "25_materials_environment_nuclear_lab",
+    "title": "Quantum dots",
+    "slug": "quantum-dots"
+  },
+  {
+    "number": 989,
+    "module": "25_materials_environment_nuclear_lab",
+    "title": "Carbon nanotubes",
+    "slug": "carbon-nanotubes"
+  },
+  {
+    "number": 990,
+    "module": "25_materials_environment_nuclear_lab",
+    "title": "Graphene",
+    "slug": "graphene"
+  },
+  {
+    "number": 991,
+    "module": "25_materials_environment_nuclear_lab",
+    "title": "Catalysts and green chemistry",
+    "slug": "catalysts-and-green-chemistry"
+  },
+  {
+    "number": 992,
+    "module": "25_materials_environment_nuclear_lab",
+    "title": "Atom economy",
+    "slug": "atom-economy"
+  },
+  {
+    "number": 993,
+    "module": "25_materials_environment_nuclear_lab",
+    "title": "Renewable feedstocks",
+    "slug": "renewable-feedstocks"
+  },
+  {
+    "number": 994,
+    "module": "25_materials_environment_nuclear_lab",
+    "title": "Life-cycle thinking",
+    "slug": "life-cycle-thinking"
+  },
+  {
+    "number": 995,
+    "module": "25_materials_environment_nuclear_lab",
+    "title": "Air pollutants",
+    "slug": "air-pollutants"
+  },
+  {
+    "number": 996,
+    "module": "25_materials_environment_nuclear_lab",
+    "title": "Water treatment chemistry",
+    "slug": "water-treatment-chemistry"
+  },
+  {
+    "number": 997,
+    "module": "25_materials_environment_nuclear_lab",
+    "title": "Atmospheric ozone",
+    "slug": "atmospheric-ozone"
+  },
+  {
+    "number": 998,
+    "module": "25_materials_environment_nuclear_lab",
+    "title": "Climate chemistry",
+    "slug": "climate-chemistry"
+  },
+  {
+    "number": 999,
+    "module": "25_materials_environment_nuclear_lab",
+    "title": "Soil chemistry",
+    "slug": "soil-chemistry"
+  },
+  {
+    "number": 1000,
+    "module": "25_materials_environment_nuclear_lab",
+    "title": "Chemical laboratory safety",
+    "slug": "chemical-laboratory-safety"
+  }
+]

@@ -1,0 +1,31 @@
+{
+  "series": "Chemistry Explainer Series",
+  "episode": 1,
+  "file": "delivery/videos/0001_what_chemistry_studies.mp4",
+  "video_stream": {
+    "codec": "h264",
+    "width": 1080,
+    "height": 1920,
+    "frame_rate": "30/1",
+    "duration_seconds": 50.697982
+  },
+  "audio_stream": null,
+  "caption_status": "captions-only; SRT supplied",
+  "visual_checks": {
+    "title_card": "pass",
+    "continuous_particle_and_network_motion": "pass",
+    "caption_placement": "pass",
+    "closing_state": "pass",
+    "obvious_clipping_at_review_scale": "none observed"
+  },
+  "series_status": {
+    "curriculum_topics": 1000,
+    "episode_specs": 1000,
+    "source_wrappers": 1000,
+    "timed_scripts": 1000,
+    "srt_captions": 1000,
+    "descriptions": 1000,
+    "rendered_mp4_files": 1
+  },
+  "limitation": "The remaining 999 MP4 files are not pre-rendered in this sandbox; render_all.sh is included as a resumable full-resolution queue. The episode content is a first-draft reusable storyboard scaffold and requires chemistry educator review before public release."
+}
